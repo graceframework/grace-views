@@ -1,9 +1,7 @@
 package grails.views.gradle
 
-import grails.io.ResourceUtils
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
-import org.codehaus.groovy.tools.shell.util.PackageHelper
 import org.gradle.api.Action
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
@@ -11,10 +9,11 @@ import org.gradle.api.tasks.Nested
 import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.compile.AbstractCompile
-import org.gradle.api.tasks.incremental.IncrementalTaskInputs
 import org.gradle.process.ExecResult
 import org.gradle.process.JavaExecSpec
 import org.gradle.work.InputChanges
+
+import grails.views.gradle.util.SourceSets
 
 /**
  * Abstract Gradle task for compiling templates, using GenericGroovyTemplateCompiler
@@ -29,6 +28,10 @@ abstract class AbstractGroovyTemplateCompileTask extends AbstractCompile {
     @Optional
     String packageName
 
+    @Input
+    @Optional
+    String appDir
+
     @InputDirectory
     File srcDir
 
@@ -38,6 +41,7 @@ abstract class AbstractGroovyTemplateCompileTask extends AbstractCompile {
     @Override
     void setSource(Object source) {
         try {
+            appDir = SourceSets.resolveGrailsAppDir(project)
             srcDir = project.file(source)
             if(srcDir.exists() && !srcDir.isDirectory()) {
                 throw new IllegalArgumentException("The source for GSP compilation must be a single directory, but was $source")
@@ -86,7 +90,7 @@ abstract class AbstractGroovyTemplateCompileTask extends AbstractCompile {
                                 targetCompatibility,
                                 packageImports,
                                 packageName,
-                                project.file("grails-app/conf/application.yml").canonicalPath,
+                                project.file("$appDir/conf/application.yml").canonicalPath,
                                 compileOptions.encoding
                                 ]
 
@@ -116,7 +120,7 @@ abstract class AbstractGroovyTemplateCompileTask extends AbstractCompile {
     abstract String getScriptBaseName()
 
     Iterable<String> getProjectPackageNames(File baseDir) {
-        File rootDir = baseDir ? new File(baseDir, "grails-app${File.separator}domain") : null
+        File rootDir = baseDir ? new File(baseDir, "${appDir}${File.separator}domain") : null
         Set<String> packageNames = []
         if (rootDir?.exists()) {
             populatePackages(rootDir, packageNames, "")

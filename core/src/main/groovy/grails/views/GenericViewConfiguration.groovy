@@ -10,7 +10,6 @@ import grails.util.Metadata
 import groovy.transform.CompileStatic
 import org.grails.config.CodeGenConfig
 import org.grails.core.artefact.DomainClassArtefactHandler
-import org.grails.io.support.GrailsResourceUtils
 import org.springframework.beans.BeanUtils
 
 import java.beans.PropertyDescriptor
@@ -67,11 +66,8 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
     /**
      * The path to the templates
      */
-    String templatePath = {
-        def current = Environment.current
-        def pathToTemplates = current.hasReloadLocation() ? current.reloadLocation : BuildSettings.BASE_DIR?.path
-        pathToTemplates ? new File(pathToTemplates, GrailsResourceUtils.VIEWS_DIR_PATH).path : "./grails-app/views"
-    }()
+    String templatePath = findTemplatePath()
+
     /**
      * The default package imports
      */
@@ -131,4 +127,19 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
         }
         packages as String[]
     }
+
+    static String findTemplatePath() {
+        def current = Environment.current
+        def pathToTemplates = current.hasReloadLocation() ? current.reloadLocation : BuildSettings.BASE_DIR?.path
+        if (pathToTemplates) {
+            for (String appDir in ['grails-app', 'app']) {
+                File viewDir = new File(pathToTemplates, "$appDir/views")
+                if (viewDir.exists()) {
+                    return viewDir.path
+                }
+            }
+        }
+        return null
+    }
+
 }

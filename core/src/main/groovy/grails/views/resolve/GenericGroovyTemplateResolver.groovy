@@ -5,7 +5,6 @@ import grails.views.TemplateResolver
 import groovy.text.Template
 import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j
-import org.grails.io.support.GrailsResourceUtils
 
 /**
  * A generic TemplateResolver for resolving Groovy templates that are compiled into classes
@@ -23,7 +22,7 @@ class GenericGroovyTemplateResolver implements TemplateResolver {
     public static final char UNDERSCORE_CHAR = '_' as char
 
 
-    File baseDir = BuildSettings.BASE_DIR ? new File(BuildSettings.BASE_DIR, GrailsResourceUtils.VIEWS_DIR_PATH) : null
+    File baseDir = getAppDir()
 
     /**
      * The base package to load templates as classes in production mode
@@ -34,6 +33,18 @@ class GenericGroovyTemplateResolver implements TemplateResolver {
      * The class loader to use for template loading in production mode
      */
     ClassLoader classLoader
+
+    static File getAppDir() {
+        ['grails-app', 'app'].each { String appDir ->
+            if (BuildSettings.BASE_DIR) {
+                File viewDir = new File(BuildSettings.BASE_DIR, appDir + "/views")
+                if (viewDir.exists()) {
+                    return viewDir
+                }
+            }
+        }
+        return null
+    }
 
     @Override
     URL resolveTemplate(String path) {

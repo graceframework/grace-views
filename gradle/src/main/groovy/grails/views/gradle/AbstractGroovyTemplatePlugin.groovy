@@ -14,8 +14,10 @@ import org.gradle.api.tasks.SourceSet
 import org.gradle.api.tasks.SourceSetOutput
 import org.gradle.api.tasks.bundling.Jar
 import org.gradle.api.tasks.bundling.War
+
+import grails.views.gradle.util.SourceSets
+
 import org.grails.gradle.plugin.core.GrailsExtension
-import org.grails.gradle.plugin.util.SourceSets
 
 /**
  * Abstract implementation of a plugin that compiles views
@@ -28,12 +30,11 @@ class AbstractGroovyTemplatePlugin implements Plugin<Project> {
 
     final Class<? extends AbstractGroovyTemplateCompileTask> taskClass
     final String fileExtension
-    final String pathToSource
+    String pathToSource
 
     AbstractGroovyTemplatePlugin(Class<? extends AbstractGroovyTemplateCompileTask> taskClass, String fileExtension) {
         this.taskClass = taskClass
         this.fileExtension = fileExtension
-        this.pathToSource = "grails-app/views"
     }
 
     AbstractGroovyTemplatePlugin(Class<? extends AbstractGroovyTemplateCompileTask> taskClass, String fileExtension, String pathToSource) {
@@ -49,7 +50,7 @@ class AbstractGroovyTemplatePlugin implements Plugin<Project> {
 
         AbstractGroovyTemplateCompileTask templateCompileTask = (AbstractGroovyTemplateCompileTask)allTasks.create("compile${upperCaseName}Views".toString(), (Class<? extends Task>)taskClass)
 
-
+        this.pathToSource = SourceSets.resolveGrailsAppDir(project)
         SourceSet mainSourceSet = SourceSets.findMainSourceSet(project)
         SourceSetOutput output = mainSourceSet?.output
         FileCollection classesDir = resolveClassesDirs(output, project)
