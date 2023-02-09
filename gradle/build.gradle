@@ -66,6 +66,12 @@ gradlePlugin {
 			displayName = "Grails Markup Views Gradle Plugin"
 			description = 'The Gradle plugin for Markup Views'
 		}
+		viewsComponent {
+			id = 'org.grails.plugins.views-component'
+			implementationClass = 'grails.views.gradle.component.GrailsComponentViewsPlugin'
+			displayName = "Grails Component Views Gradle Plugin"
+			description = 'The Gradle plugin for Component Views'
+		}
 	}
 }
 

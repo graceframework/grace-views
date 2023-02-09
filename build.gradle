@@ -54,7 +54,7 @@ subprojects { project->
         return
     }
 
-    ext.isGrailsPlugin = project.name in ['views-markup', 'views-json']
+    ext.isGrailsPlugin = project.name in ['views-component', 'views-markup', 'views-json']
 
     apply plugin: 'eclipse'
     apply plugin: 'idea'
@@ -83,7 +83,7 @@ subprojects { project->
     apply from: '../publishing/grailsCentralPublishing.gradle'
 
 
-    if (project.name in ["views-core", "views-json", "views-markup", "views-json-testing-support"]) {
+    if (project.name in ["views-core", "views-component", "views-json", "views-markup", "views-json-testing-support"]) {
 
         configurations {
             documentation

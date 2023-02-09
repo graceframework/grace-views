@@ -29,6 +29,7 @@ buildCache {
 
 
 ['core',
+ 'component',
  'json',
  'markup',
  'gradle',
