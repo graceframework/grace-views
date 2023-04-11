@@ -1,17 +1,4 @@
-buildscript {
-    repositories {
-        maven { url "https://repo.grails.org/grails/core" }
-    }
-    dependencies {
-        classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
-        classpath "io.github.gradle-nexus:publish-plugin:1.1.0"
-        classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
-    }
-}
-
 group "org.grails"
-
-apply plugin: "io.spring.dependency-management"
 
 ext {
     gradleWrapperVersion = project.gradleWrapperVersion
@@ -21,27 +8,12 @@ ext {
     projectDesc = "Grails Views Core"
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.grails:grails-bom:$grailsVersion"
-    }
-    applyMavenExclusions false
-}
-
 dependencies {
-    api platform("org.codehaus.groovy:groovy-bom:$groovyVersion")
-    api "org.grails:grails-encoder:$grailsVersion"
-    api "org.grails:grails-web-common:$grailsVersion"
-    api "org.grails:grails-web-url-mappings:$grailsVersion"
-    api "org.grails:grails-plugin-rest:$grailsVersion"
+    api "org.grails:grails-encoder"
+    api "org.grails:grails-web-common"
+    api "org.grails:grails-web-url-mappings"
+    api "org.grails:grails-plugin-rest"
+    api "org.grails:grails-datastore-gorm-support"
     api "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
     api "javax.servlet:javax.servlet-api:$servletApiVersion"
 }

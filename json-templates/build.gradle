@@ -8,14 +8,9 @@ ext {
     projectDesc = "JSON Views Templates"
 }
 
-repositories {
-    mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
-}
-
 dependencies {
     api project(':views-json')
-    compileOnly "org.grails:grails-plugin-rest:$grailsVersion"
+    compileOnly "org.grails:grails-plugin-rest"
     compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
     compileOnly "org.grails:grails-datastore-gorm-mongodb:$mongodbVersion"
 }
