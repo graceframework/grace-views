@@ -10,7 +10,7 @@ dependencies {
     api project(":views-core")
     api "org.grails:grails-core"
 
-    testImplementation "org.grails:grails-web-testing-support:$testingSupportVersion"
+    testImplementation "org.grails:grails-test-support"
 
     console "org.grails:grails-console"
 }

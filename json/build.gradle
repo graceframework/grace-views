@@ -8,8 +8,7 @@ dependencies {
     api "org.grails:grails-core"
     api project(":views-core")
 
-    testImplementation "org.grails:grails-web-testing-support:$testingSupportVersion"
-    testImplementation "org.grails:grails-gorm-testing-support:$testingSupportVersion"
+    testImplementation "org.grails:grails-test-support"
     testImplementation "org.grails:grails-datastore-gorm-hibernate5"
     testRuntimeOnly "org.javassist:javassist:3.29.0-GA"
 
