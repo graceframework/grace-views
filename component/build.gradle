@@ -7,14 +7,10 @@ group "org.grails.plugins"
 apply plugin: "org.grails.grails-gsp"
 
 dependencies {
-    api "org.grails:grails-core"
+    api "org.grails:grails-core:$grailsVersion"
     api project(":views-core")
 
-    testImplementation "org.grails:grails-test-support"
+    testImplementation "org.grails:grails-test-support:$grailsVersion"
 
-    console "org.grails:grails-console"
-}
-
-springBoot {
-    mainClass.set('grails.plugin.component.view.Application')
+    console "org.grails:grails-console:$grailsVersion"
 }

@@ -8,13 +8,9 @@ apply plugin: "org.grails.grails-gsp"
 
 dependencies {
     api project(":views-core")
-    api "org.grails:grails-core"
+    api "org.grails:grails-core:$grailsVersion"
 
-    testImplementation "org.grails:grails-test-support"
+    testImplementation "org.grails:grails-test-support:$grailsVersion"
 
-    console "org.grails:grails-console"
-}
-
-springBoot {
-    mainClass.set('grails.plugin.markup.view.Application')
+    console "org.grails:grails-console:$grailsVersion"
 }

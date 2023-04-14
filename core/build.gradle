@@ -9,13 +9,13 @@ ext {
 }
 
 dependencies {
-    api "org.grails:grails-encoder"
-    api "org.grails:grails-web-common"
-    api "org.grails:grails-web-url-mappings"
-    api "org.grails:grails-plugin-rest"
-    api "org.grails:grails-datastore-gorm-support"
+    api "org.grails:grails-encoder:$grailsVersion"
+    api "org.grails:grails-web-common:$grailsVersion"
+    api "org.grails:grails-web-url-mappings:$grailsVersion"
+    api "org.grails:grails-plugin-rest:$grailsVersion"
+    api "org.grails:grails-datastore-gorm-support:$gormVersion"
     api "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
-    api "javax.servlet:javax.servlet-api:$servletApiVersion"
+    compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
 }
 
 if (!tasks.findByName("sourcesJar")) {
