@@ -1,8 +1,11 @@
 package grails.views.gradle
 
+import javax.inject.Inject
+
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
 import org.gradle.api.Action
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.Nested
@@ -36,7 +39,12 @@ abstract class AbstractGroovyTemplateCompileTask extends AbstractCompile {
     File srcDir
 
     @Nested
-    ViewCompileOptions compileOptions = new ViewCompileOptions()
+    ViewCompileOptions compileOptions = getObjectFactory().newInstance(ViewCompileOptions)
+
+    @Inject
+    protected ObjectFactory getObjectFactory() {
+        throw new UnsupportedOperationException();
+    }
 
     @Override
     void setSource(Object source) {
