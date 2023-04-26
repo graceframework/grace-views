@@ -24,11 +24,3 @@ if (!tasks.findByName("sourcesJar")) {
         from project.sourceSets.main.allSource
     }
 }
-
-if (!tasks.findByName("javadocJar")) {
-// no javadocs, just a workaround
-    tasks.register("javadocJar", Jar) {
-        classifier = 'javadoc'
-        from tasks.named("groovydoc").get().outputs
-    }
-}

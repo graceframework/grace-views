@@ -17,17 +17,3 @@ dependencies {
     api "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
     compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
 }
-
-if (!tasks.findByName("sourcesJar")) {
-    tasks.register("sourcesJar", Jar) {
-        classifier = 'sources'
-        from project.sourceSets.main.allSource
-    }
-}
-
-if (!tasks.findByName("javadocJar")) {
-    tasks.register("javadocJar", Jar) {
-        classifier = 'javadoc'
-        from groovydoc.outputs
-    }
-}
