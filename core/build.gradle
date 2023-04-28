@@ -15,5 +15,5 @@ dependencies {
     api "org.grails:grails-plugin-rest:$grailsVersion"
     api "org.grails:grails-datastore-gorm-support:$gormVersion"
     api "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
-    compileOnly "javax.servlet:javax.servlet-api:$servletApiVersion"
+    compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
 }
