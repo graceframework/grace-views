@@ -47,11 +47,11 @@ class ComponentViewResolver extends SmartViewResolver {
     @PostConstruct
     void initialize() {
         if(rendererRegistry != null) {
-            def defaultXmlRenderer = rendererRegistry.findRenderer(MimeType.HTML, Object.class)
+            def defaultHtmlRenderer = rendererRegistry.findRenderer(MimeType.HTML, Object.class)
             viewConfiguration.mimeTypes.each { String mimeTypeString ->
                 MimeType mimeType = new MimeType(mimeTypeString, "html")
                 rendererRegistry.addDefaultRenderer(
-                    new ComponentViewHtmlRenderer<Object>(Object.class, mimeType, this , proxyHandler, rendererRegistry, defaultXmlRenderer)
+                    new ComponentViewHtmlRenderer<Object>(Object.class, mimeType, this , proxyHandler, rendererRegistry, defaultHtmlRenderer)
                 )
             }
         }

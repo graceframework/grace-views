@@ -8,11 +8,6 @@ ext {
     projectDesc = "JSON Views Templates"
 }
 
-repositories {
-    mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
-}
-
 dependencies {
     api project(':views-json')
     compileOnly "org.grails:grails-plugin-rest:$grailsVersion"
@@ -26,21 +21,6 @@ def compileViews = tasks.register("compileViews", JavaExec) {
     main "grails.plugin.json.view.JsonViewCompiler"
     classpath configurations.compileClasspath + configurations.runtimeClasspath
     args("src/templates", "build/classes/groovy/main", "1.8", ' ', ' ', "none", "UTF-8")
-}
-
-if (!tasks.findByName("sourcesJar")) {
-    tasks.register("sourcesJar", Jar) {
-        classifier = 'sources'
-        from 'src/templates'
-    }
-}
-
-if (!tasks.findByName("javadocJar")) {
-// no javadocs, just a workaround
-    tasks.register("javadocJar", Jar) {
-        classifier = 'javadoc'
-        from 'src/templates'
-    }
 }
 
 classes.dependsOn(compileViews)

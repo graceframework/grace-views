@@ -1,17 +1,4 @@
-buildscript {
-    repositories {
-        maven { url "https://repo.grails.org/grails/core" }
-    }
-    dependencies {
-        classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
-        classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
-        classpath "io.github.gradle-nexus:publish-plugin:1.1.0"
-    }
-}
-
 group "org.grails"
-
-apply plugin: "io.spring.dependency-management"
 
 ext {
     gradleWrapperVersion = project.gradleWrapperVersion
@@ -21,21 +8,13 @@ ext {
     projectDesc = "JSON Views Testing Support"
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    maven { url "https://repo.grails.org/grails/core" }
-}
-
 dependencies {
-    api "org.grails:grails-core:$grailsVersion"
-    api "org.grails:grails-dependencies:$grailsVersion"
+    api project(":views-json")
+    api "org.grails:grails-core"
     api "javax.servlet:javax.servlet-api:$servletApiVersion"
 
-    api "org.grails:grails-gorm-testing-support:$testingSupportVersion"
-    api "org.grails:grails-web-testing-support:$testingSupportVersion"
+    api "org.grails:grails-test-support"
+    api "org.grails:grails-test-support"
     api project(":views-json")
 }
 
@@ -43,13 +22,5 @@ if (!tasks.findByName("sourcesJar")) {
     tasks.register("sourcesJar", Jar) {
         classifier = 'sources'
         from project.sourceSets.main.allSource
-    }
-}
-
-if (!tasks.findByName("javadocJar")) {
-// no javadocs, just a workaround
-    tasks.register("javadocJar", Jar) {
-        classifier = 'javadoc'
-        from tasks.named("groovydoc").get().outputs
     }
 }

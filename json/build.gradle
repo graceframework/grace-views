@@ -1,57 +1,18 @@
 import org.grails.gradle.plugin.web.gsp.GroovyPageCompileTask
 
-buildscript {
-    repositories {
-        maven { url "https://repo.grails.org/grails/core" }
-    }
-    dependencies {
-        classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
-        classpath "io.github.gradle-nexus:publish-plugin:1.1.0"
-        classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
-    }
-}
-
 group "org.grails.plugins"
 
 apply plugin: "org.grails.grails-gsp"
-apply plugin: "io.spring.dependency-management"
-
-dependencyManagement {
-    imports {
-        mavenBom "org.grails:grails-bom:$grailsVersion"
-    }
-    applyMavenExclusions false
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        if(details.requested.group == 'org.grails' &&
-                details.requested.name.startsWith('grails-datastore')) {
-
-            if (details.requested.name.equals("grails-datastore-gorm-hibernate5")) {
-                details.useVersion("$hibernateGormVersion")
-            } else if (details.requested.name.startsWith("grails-datastore-gorm-mongodb") ||
-                    details.requested.name.equals("grails-datastore-gorm-bson")) {
-                details.useVersion("$mongodbVersion")
-            } else {
-                details.useVersion("$gormVersion")
-            }
-        }
-
-    }
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-}
 
 dependencies {
     api "org.grails:grails-core:$grailsVersion"
     api project(":views-core")
 
-    testImplementation "org.grails:grails-web-testing-support:$testingSupportVersion"
-    testImplementation "org.grails:grails-gorm-testing-support:$testingSupportVersion"
-    testImplementation "org.grails:grails-datastore-gorm-hibernate5"
+    testImplementation "org.grails:grails-test-support:$grailsVersion"
+    testImplementation "org.grails:grails-datastore-gorm-hibernate5:$gormHibernateVersion"
     testRuntimeOnly "org.javassist:javassist:3.29.0-GA"
 
-    console "org.grails:grails-console"
+    console "org.grails:grails-console:$grailsVersion"
 }
 
 tasks.withType(GroovyPageCompileTask) {
@@ -60,8 +21,4 @@ tasks.withType(GroovyPageCompileTask) {
 
 jar {
   exclude "*.gson"
-}
-
-springBoot {
-    mainClass.set('grails.plugin.json.view.Application')
 }

@@ -1,9 +1,11 @@
 buildscript {
     repositories {
+        mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
+        maven { url 'https://repo.gradle.org/gradle/libs-releases' }
     }
     dependencies {
-        classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
+        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "org.grails.plugins:views-gradle:$functionalTestViewsGradleVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
         classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
@@ -37,7 +39,9 @@ assets {
 }
 
 repositories {
+    mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url 'https://repo.gradle.org/gradle/libs-releases' }
 }
 
 dependencyManagement {
@@ -46,34 +50,6 @@ dependencyManagement {
     }
     applyMavenExclusions false
 }
-
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        if (details.requested.group == 'org.grails' &&
-                details.requested.name.startsWith('grails-datastore')) {
-
-            if (details.requested.name.equals("grails-datastore-gorm-hibernate5")) {
-                details.useVersion("$hibernateGormVersion")
-            } else if (details.requested.name.startsWith("grails-datastore-gorm-mongodb") ||
-                    details.requested.name.equals("grails-datastore-gorm-bson")) {
-                details.useVersion("$mongodbVersion")
-            } else {
-                details.useVersion("$gormVersion")
-            }
-        } else if (details.requested.group == 'org.mongodb' && details.requested.module.name != 'mongodb-driver-rx') {
-            details.useVersion(mongodbDriverVersion)
-        } else if (details.requested.group == 'org.grails.plugins') {
-            if (details.requested.name == 'hibernate5') {
-                details.useVersion(hibernateGormVersion)
-            } else if (details.requested.name == 'mongodb') {
-                details.useVersion(mongodbVersion)
-            }
-        }
-
-    }
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-}
-
 
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-logging"

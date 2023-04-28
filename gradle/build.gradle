@@ -1,13 +1,3 @@
-buildscript {
-	repositories {
-		maven { url "https://repo.grails.org/grails/core" }
-	}
-	dependencies {
-		classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
-	}
-}
-
-apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'groovy'
 
@@ -19,21 +9,9 @@ ext {
 
 group "org.grails.plugins"
 
-repositories {
-	mavenCentral()
-	maven { url "https://repo.grails.org/grails/core" }
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "org.grails:grails-bom:$grailsVersion"
-	}
-	applyMavenExclusions false
-}
-
 dependencies {
 	compileOnly gradleApi()
-	api "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
+	api "org.grails:grails-gradle-plugin:$grailsVersion"
 	api "org.codehaus.groovy:groovy:$groovyVersion"
 }
 
