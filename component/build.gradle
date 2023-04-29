@@ -4,10 +4,12 @@ ext {
 
 group "org.grails.plugins"
 
-apply plugin: "org.grails.grails-gsp"
+apply plugin: "org.grails.grails-plugin"
 
 dependencies {
-    api "org.grails:grails-core:$grailsVersion"
+    api "org.grails:grails-core:$grailsVersion", {
+        exclude group: 'org.grails', module: 'grails-datastore-core'
+    }
     api project(":views-core")
 
     testImplementation "org.grails:grails-test-support:$grailsVersion"

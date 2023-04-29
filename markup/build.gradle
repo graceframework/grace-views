@@ -8,9 +8,14 @@ apply plugin: "org.grails.grails-gsp"
 
 dependencies {
     api project(":views-core")
-    api "org.grails:grails-core:$grailsVersion"
+    api "org.grails:grails-core:$grailsVersion", {
+        exclude group: 'org.grails', module: 'grails-datastore-core'
+    }
 
-    testImplementation "org.grails:grails-test-support:$grailsVersion"
+    testImplementation "org.grails:grails-test-support:$grailsVersion", {
+        exclude group: 'org.grails', module: 'grails-datastore-gorm'
+        exclude group: 'org.grails', module: 'grails-datastore-gorm-test'
+    }
 
     console "org.grails:grails-console:$grailsVersion"
 }

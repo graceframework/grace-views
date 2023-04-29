@@ -10,11 +10,15 @@ ext {
 
 dependencies {
     api project(":views-json")
-    api "org.grails:grails-core"
+    api "org.grails:grails-core", {
+        exclude group: 'org.grails', module: 'grails-datastore-core'
+    }
     api "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
 
-    api "org.grails:grails-test-support"
-    api "org.grails:grails-test-support"
+    api "org.grails:grails-test-support", {
+        exclude group: 'org.grails', module: 'grails-datastore-gorm'
+        exclude group: 'org.grails', module: 'grails-datastore-gorm-test'
+    }
     api project(":views-json")
 }
 

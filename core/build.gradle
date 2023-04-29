@@ -11,9 +11,13 @@ ext {
 dependencies {
     api "org.grails:grails-encoder:$grailsVersion"
     api "org.grails:grails-web-common:$grailsVersion"
-    api "org.grails:grails-web-url-mappings:$grailsVersion"
+    api "org.grails:grails-web-url-mappings:$grailsVersion", {
+        exclude group: 'org.grails', module: 'grails-datastore-gorm-validation'
+    }
     api "org.grails:grails-plugin-rest:$grailsVersion"
-    api "org.grails:grails-datastore-gorm-support:$gormVersion"
+    compileOnly "org.grails:grails-datastore-gorm-support:$gormVersion", {
+        exclude group:'org.codehaus.groovy', module:'groovy'
+    }
     api "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
     compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
 }
