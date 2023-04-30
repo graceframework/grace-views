@@ -8,6 +8,7 @@ dependencies {
     api "org.grails:grails-core:$grailsVersion", {
       exclude group: 'org.grails', module: 'grails-datastore-core'
     }
+    api "org.grails:grails-datastore-gorm:$gormVersion"
     api project(":views-core")
 
     testImplementation "org.grails:grails-test-support:$grailsVersion", {

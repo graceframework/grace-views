@@ -19,6 +19,9 @@ ext {
     userOrg = "grails"
 }
 
+ext['grails-gorm.version'] = gormVersion
+ext['grails-gorm-hibernate.version'] = gormVersion
+
 apply plugin:'idea'
 
 if (isReleaseVersion) {
