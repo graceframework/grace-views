@@ -5,7 +5,6 @@ import grails.rest.render.ContainerRenderer
 import grails.rest.render.RenderContext
 import grails.util.GrailsNameUtils
 import grails.views.Views
-import grails.views.resolve.TemplateResolverUtils
 import groovy.transform.CompileStatic
 import groovy.transform.InheritConstructors
 import org.grails.plugins.web.rest.render.ServletRenderContext
@@ -20,8 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired
  */
 @CompileStatic
 @InheritConstructors
-abstract class AbstractJsonViewContainerRenderer<C,T> extends DefaultJsonRenderer<T> implements ContainerRenderer<C, T> {
-
+abstract class AbstractJsonViewContainerRenderer<T, C> extends DefaultJsonRenderer<T> implements ContainerRenderer<T, C> {
 
     @Autowired
     JsonViewResolver jsonViewResolver
