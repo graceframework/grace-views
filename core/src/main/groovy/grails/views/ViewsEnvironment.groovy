@@ -17,4 +17,19 @@ class ViewsEnvironment {
     static boolean isDevelopmentMode() {
         DEVELOPMENT_MODE
     }
+
+    static String findTemplatePath() {
+        def current = Environment.getCurrent()
+        def pathToTemplates = current.hasReloadLocation() ? current.getReloadLocation() : BuildSettings.BASE_DIR.absolutePath
+        if (pathToTemplates) {
+            for (String appDir in ['grails-app', 'app']) {
+                File viewDir = new File(pathToTemplates, "$appDir/views")
+                if (viewDir.exists()) {
+                    return viewDir.absolutePath
+                }
+            }
+        }
+        return null
+    }
+
 }

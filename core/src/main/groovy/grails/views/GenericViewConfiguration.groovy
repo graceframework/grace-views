@@ -4,7 +4,6 @@ import grails.config.ConfigMap
 import grails.core.GrailsApplication
 import grails.core.GrailsClass
 import grails.core.support.GrailsApplicationAware
-import grails.util.BuildSettings
 import grails.util.Environment
 import grails.util.Metadata
 import groovy.transform.CompileStatic
@@ -66,7 +65,7 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
     /**
      * The path to the templates
      */
-    String templatePath = findTemplatePath()
+    String templatePath = ViewsEnvironment.findTemplatePath()
 
     /**
      * The default package imports
@@ -126,20 +125,6 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
             packages << cls.packageName
         }
         packages as String[]
-    }
-
-    static String findTemplatePath() {
-        def current = Environment.current
-        def pathToTemplates = current.hasReloadLocation() ? current.reloadLocation : BuildSettings.BASE_DIR?.path
-        if (pathToTemplates) {
-            for (String appDir in ['grails-app', 'app']) {
-                File viewDir = new File(pathToTemplates, "$appDir/views")
-                if (viewDir.exists()) {
-                    return viewDir.path
-                }
-            }
-        }
-        return null
     }
 
 }
