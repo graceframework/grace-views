@@ -87,7 +87,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         ''', [team:team])
 
         then:"The result is correct"
-        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"titles":null,"name":"Barcelona"},"relationships":{"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]},"captain":{"data":null}}},"links":{"self":"/team/1"}}'
+        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"name":"Barcelona","titles":null},"relationships":{"captain":{"data":null},"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]}}},"links":{"self":"/team/1"}}'
     }
 
     void "test render toOne association"() {
@@ -101,14 +101,14 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         def result = viewHelper.render(team)
 
         then:"The result is correct"
-        result.toString() == '{"titles":["La Liga"],"name":"Barcelona"}'
+        result.toString() == '{"name":"Barcelona","titles":["La Liga"]}'
 
         when:"We render an object with deep argument and no child id"
 
         result = viewHelper.render(team, [deep:true])
 
         then:"The result is correct"
-        result.toString() == '{"titles":["La Liga"],"name":"Barcelona","captain":{"name":"Iniesta"}}'
+        result.toString() == '{"name":"Barcelona","captain":{"name":"Iniesta"},"titles":["La Liga"]}'
 
         when:"We render an object without deep argument and a child id"
 
@@ -116,7 +116,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         result = viewHelper.render(team)
 
         then:"The result is correct"
-        result.toString() == '{"titles":["La Liga"],"name":"Barcelona","captain":{"id":1}}'
+        result.toString() == '{"name":"Barcelona","captain":{"id":1},"titles":["La Liga"]}'
 
         when:"We render an object with deep argument and a child id"
 
@@ -124,7 +124,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         result = viewHelper.render(team, [deep:true])
 
         then:"The result is correct"
-        result.toString() == '{"titles":["La Liga"],"name":"Barcelona","captain":{"id":1,"name":"Iniesta"}}'
+        result.toString() == '{"name":"Barcelona","captain":{"id":1,"name":"Iniesta"},"titles":["La Liga"]}'
 
         when:"We render an object with deep argument and a child id and excludes"
 
@@ -132,7 +132,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         result = viewHelper.render(team, [deep:true, excludes: ['captain.name']])
 
         then:"The result is correct"
-        result.toString() == '{"titles":["La Liga"],"name":"Barcelona","captain":{"id":1}}'
+        result.toString() == '{"name":"Barcelona","captain":{"id":1},"titles":["La Liga"]}'
 
         when:"We render an object with deep argument and a child id and includes"
 
@@ -214,7 +214,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         ''', [team:team])
 
         then:"The result is correct"
-        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"titles":null},"relationships":{"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]},"captain":{"data":null}}},"links":{"self":"/team/1"}}'
+        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"titles":null},"relationships":{"captain":{"data":null},"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]}}},"links":{"self":"/team/1"}}'
 
         when:"We expand a relationship"
         renderResult = render('''
@@ -227,7 +227,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         ''', [team:team])
 
         then:"The result is correct"
-        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"titles":null,"name":"Barcelona"},"relationships":{"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]},"captain":{"data":null}}},"links":{"self":"/team/1"},"included":[{"type":"player","id":"1","attributes":{"name":"Iniesta"},"relationships":{"team":{"data":null}},"links":{"self":"/player/1"}},{"type":"player","id":"2","attributes":{"name":"Messi"},"relationships":{"team":{"data":null}},"links":{"self":"/player/2"}}]}'
+        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"name":"Barcelona","titles":null},"relationships":{"captain":{"data":null},"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]}}},"links":{"self":"/team/1"},"included":[{"type":"player","id":"1","attributes":{"name":"Iniesta"},"relationships":{"team":{"data":null}},"links":{"self":"/player/1"}},{"type":"player","id":"2","attributes":{"name":"Messi"},"relationships":{"team":{"data":null}},"links":{"self":"/player/2"}}]}'
 
         when:"We expand a relationship and exclude a nested property"
         team.captain = new Player(name: "Captain Hook")
@@ -242,7 +242,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         ''', [team:team])
 
         then:"The result is correct"
-        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"titles":null,"name":"Barcelona"},"relationships":{"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]},"captain":{"links":{"self":"/player/10"},"data":{"type":"player","id":"10"}}}},"links":{"self":"/team/1"},"included":[{"type":"player","id":"10","attributes":{},"relationships":{"team":{"data":null}},"links":{"self":"/player/10"}}]}'
+        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"name":"Barcelona","titles":null},"relationships":{"captain":{"links":{"self":"/player/10"},"data":{"type":"player","id":"10"}},"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]}}},"links":{"self":"/team/1"},"included":[{"type":"player","id":"10","attributes":{},"relationships":{"team":{"data":null}},"links":{"self":"/player/10"}}]}'
 
         when:"We expand a relationship and exclude a nested property"
         team.captain = new Player(name: "Captain Hook")
@@ -257,7 +257,7 @@ class JsonViewHelperSpec extends Specification implements JsonViewTest, GrailsUn
         ''', [team:team])
 
         then:"The result is correct"
-        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"titles":null,"name":"Barcelona"},"relationships":{"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]},"captain":{"links":{"self":"/player/10"},"data":{"type":"player","id":"10"}}}},"links":{"self":"/team/1"},"included":[{"type":"player","id":"1","attributes":{},"relationships":{"team":{"data":null}},"links":{"self":"/player/1"}},{"type":"player","id":"2","attributes":{},"relationships":{"team":{"data":null}},"links":{"self":"/player/2"}}]}'
+        renderResult.jsonText == '{"data":{"type":"team","id":"1","attributes":{"name":"Barcelona","titles":null},"relationships":{"captain":{"links":{"self":"/player/10"},"data":{"type":"player","id":"10"}},"players":{"data":[{"type":"player","id":"1"},{"type":"player","id":"2"}]}}},"links":{"self":"/team/1"},"included":[{"type":"player","id":"1","attributes":{},"relationships":{"team":{"data":null}},"links":{"self":"/player/1"}},{"type":"player","id":"2","attributes":{},"relationships":{"team":{"data":null}},"links":{"self":"/player/2"}}]}'
     }
 
     void "Test render object method with customizer"() {

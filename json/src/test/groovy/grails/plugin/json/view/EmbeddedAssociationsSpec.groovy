@@ -27,7 +27,7 @@ json g.render(person)
 ''', [person:p])
 
         then:"The result is correct"
-        result.jsonText == '{"otherAddresses":[{"postCode":"6789"},{"postCode":"54321"}],"name":"Robert","nickNames":["Rob","Bob"],"homeAddress":{"postCode":"12345"}}'
+        result.jsonText == '{"name":"Robert","homeAddress":{"postCode":"12345"},"otherAddresses":[{"postCode":"6789"},{"postCode":"54321"}],"nickNames":["Rob","Bob"]}'
     }
 
     void "Test render domain object with embedded associations in json api"() {
@@ -50,7 +50,7 @@ json jsonapi.render(person)
 ''', [person:p])
 
         then:"The result is correct"
-        result.jsonText == '''{"data":{"type":"person","id":"2","attributes":{"otherAddresses":[{"postCode":"6789"},{"postCode":"54321"}],"name":"Robert","nickNames":["Rob","Bob"],"homeAddress":{"postCode":"12345"}}},"links":{"self":"/person/2"}}'''
+        result.jsonText == '''{"data":{"type":"person","id":"2","attributes":{"name":"Robert","homeAddress":{"postCode":"12345"},"otherAddresses":[{"postCode":"6789"},{"postCode":"54321"}],"nickNames":["Rob","Bob"]}},"links":{"self":"/person/2"}}'''
 
     }
 

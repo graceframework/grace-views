@@ -165,7 +165,7 @@ json hal.render(team)
 ''', [team: team])
 
         then:'the result is correct'
-        result.jsonText == '{"_embedded":{"players":[{"_links":{"self":{"href":"http://localhost:8080/player/1","hreflang":"en","type":"application/hal+json"}},"name":"Cantona"}],"captain":{"_links":{"self":{"href":"http://localhost:8080/player/2","hreflang":"en","type":"application/hal+json"}},"name":"Keane"}},"_links":{"self":{"href":"http://localhost:8080/team/1","hreflang":"en","type":"application/hal+json"}},"id":1,"name":"Manchester United"}'
+        result.jsonText == '{"_embedded":{"captain":{"_links":{"self":{"href":"http://localhost:8080/player/2","hreflang":"en","type":"application/hal+json"}},"name":"Keane"},"players":[{"_links":{"self":{"href":"http://localhost:8080/player/1","hreflang":"en","type":"application/hal+json"}},"name":"Cantona"}]},"_links":{"self":{"href":"http://localhost:8080/team/1","hreflang":"en","type":"application/hal+json"}},"id":1,"name":"Manchester United"}'
         result.json.'_embedded'
     }
 
@@ -192,7 +192,7 @@ json {
 ''', [team: team])
 
         then:'the result is correct'
-        result.jsonText == '{"_embedded":{"players":[{"_links":{"self":{"href":"http://localhost:8080/player/1","hreflang":"en","type":"application/hal+json"}},"name":"Cantona"}],"captain":{"_links":{"self":{"href":"http://localhost:8080/player","hreflang":"en","type":"application/hal+json"}},"name":"Keane"}},"name":"Manchester United"}'
+        result.jsonText == '{"_embedded":{"captain":{"_links":{"self":{"href":"http://localhost:8080/player","hreflang":"en","type":"application/hal+json"}},"name":"Keane"},"players":[{"_links":{"self":{"href":"http://localhost:8080/player/1","hreflang":"en","type":"application/hal+json"}},"name":"Cantona"}]},"name":"Manchester United"}'
         result.json.'_embedded'
     }
 
@@ -240,7 +240,7 @@ json hal.render(parent)
 ''', [parent:parent])
 
         then:"The result is correct"
-        result.jsonText == '{"_embedded":{"person":{"_links":{"self":{"href":"http://localhost:8080/person","hreflang":"en","type":"application/hal+json"}},"otherAddresses":[{"postCode":"6789"},{"postCode":"54321"}],"name":"Robert","nickNames":["Rob","Bob"],"homeAddress":{"postCode":"12345"}}},"_links":{"self":{"href":"http://localhost:8080/parent","hreflang":"en","type":"application/hal+json"}},"name":"Joe"}'
+        result.jsonText == '{"_embedded":{"person":{"_links":{"self":{"href":"http://localhost:8080/person","hreflang":"en","type":"application/hal+json"}},"name":"Robert","homeAddress":{"postCode":"12345"},"otherAddresses":[{"postCode":"6789"},{"postCode":"54321"}],"nickNames":["Rob","Bob"]}},"_links":{"self":{"href":"http://localhost:8080/parent","hreflang":"en","type":"application/hal+json"}},"name":"Joe"}'
 
 
     }
