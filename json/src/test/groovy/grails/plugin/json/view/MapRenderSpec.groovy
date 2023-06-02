@@ -98,7 +98,7 @@ json g.render(map)
         def renderResult = render(templateText, [map: [player1: player1, player2: player2]])
 
         then: "The result is correct"
-        renderResult.jsonText == '{"player1":{"id":1,"team":{"id":1},"name":"Cantona"},"player2":{"id":2,"team":{"id":1}}}'
+        renderResult.jsonText == '{"player1":{"id":1,"name":"Cantona","team":{"id":1}},"player2":{"id":2,"team":{"id":1}}}'
     }
 
     void "Test property errors is excluded for command objects"() {
@@ -147,7 +147,7 @@ json g.render(map)
         def renderResult = render(templateText, [map: [player1: player1, player2: player2]])
 
         then: "The result is correct"
-        renderResult.jsonText == '{"player1":{"id":1,"team":{"id":1},"name":"Cantona"},"player2":{"id":2,"team":{"id":1},"name":"Giggs"}}'
+        renderResult.jsonText == '{"player1":{"id":1,"name":"Cantona","team":{"id":1}},"player2":{"id":2,"name":"Giggs","team":{"id":1}}}'
     }
 
     void "Test render a map type"() {

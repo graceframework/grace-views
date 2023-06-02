@@ -16,6 +16,7 @@ dependencies {
       exclude group: 'org.grails', module: 'grails-datastore-gorm-test'
     }
     testImplementation "org.grails:grails-datastore-gorm-hibernate5:$gormHibernateVersion"
+    testImplementation "org.grails:grails-datastore-gorm-test:$gormHibernateVersion"
     testRuntimeOnly "org.javassist:javassist:3.29.0-GA"
 
     console "org.grails:grails-console:$grailsVersion"
