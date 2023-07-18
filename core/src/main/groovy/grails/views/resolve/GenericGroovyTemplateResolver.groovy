@@ -35,15 +35,8 @@ class GenericGroovyTemplateResolver implements TemplateResolver {
     ClassLoader classLoader
 
     static File getAppDir() {
-        ['grails-app', 'app'].each { String appDir ->
-            if (BuildSettings.BASE_DIR) {
-                File viewDir = new File(BuildSettings.BASE_DIR, appDir + "/views")
-                if (viewDir.exists()) {
-                    return viewDir
-                }
-            }
-        }
-        return null
+        File viewDir = new File(BuildSettings.GRAILS_APP_DIR, "views")
+        return viewDir
     }
 
     @Override

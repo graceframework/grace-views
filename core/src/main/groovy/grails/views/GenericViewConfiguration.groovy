@@ -129,17 +129,8 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
     }
 
     static String findTemplatePath() {
-        def current = Environment.current
-        def pathToTemplates = current.hasReloadLocation() ? current.reloadLocation : BuildSettings.BASE_DIR?.path
-        if (pathToTemplates) {
-            for (String appDir in ['grails-app', 'app']) {
-                File viewDir = new File(pathToTemplates, "$appDir/views")
-                if (viewDir.exists()) {
-                    return viewDir.path
-                }
-            }
-        }
-        return null
+        File viewDir = new File(BuildSettings.GRAILS_APP_DIR, "views")
+        return viewDir
     }
 
 }
