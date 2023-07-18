@@ -13,7 +13,7 @@ dependencies {
     api "org.grails:grails-core", {
         exclude group: 'org.grails', module: 'grails-datastore-core'
     }
-    api "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
+    compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
 
     api "org.grails:grails-test-support", {
         exclude group: 'org.grails', module: 'grails-datastore-gorm'
