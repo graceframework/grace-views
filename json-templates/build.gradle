@@ -21,7 +21,7 @@ dependencies {
 def compileViews = tasks.register("compileViews", JavaExec) {
     inputs.files 'src/templates'
     outputs.dir 'build/classes/groovy/main'
-    main "grails.plugin.json.view.JsonViewCompiler"
+    mainClass.set("grails.plugin.json.view.JsonViewCompiler")
     classpath configurations.compileClasspath + configurations.runtimeClasspath
     args("src/templates", "build/classes/groovy/main", "1.8", ' ', ' ', "none", "UTF-8")
 }
