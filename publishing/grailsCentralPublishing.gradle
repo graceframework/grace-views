@@ -37,11 +37,11 @@ publishing {
                 from components.java
             }
 
-            if (isGrailsPlugin) {
-                artifact source: "${project.sourceSets.main.groovy.classesDirectory}/META-INF/grails-plugin.xml",
-                        classifier: "plugin",
-                        extension: 'xml'
-            }
+            // if (isGrailsPlugin) {
+            //     artifact source: "${project.sourceSets.main.groovy.classesDirectory}/META-INF/grails-plugin.xml",
+            //             classifier: "plugin",
+            //             extension: 'xml'
+            // }
 
             pom {
                 name = 'Grails Views'
