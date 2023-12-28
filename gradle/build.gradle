@@ -60,13 +60,13 @@ gradlePlugin {
 		viewsJson {
 			id = 'org.graceframework.plugins.views-json'
 			implementationClass = 'grails.views.gradle.json.GrailsJsonViewsPlugin'
-			displayName = "Grails Json Views Gradle Plugin"
+			displayName = "Grace Json Views Gradle Plugin"
 			description = 'The Gradle plugin for Json Views'
 		}
 		viewsMarkup {
 			id = 'org.graceframework.plugins.views-markup'
 			implementationClass = 'grails.views.gradle.markup.GrailsMarkupViewsPlugin'
-			displayName = "Grails Markup Views Gradle Plugin"
+			displayName = "Grace Markup Views Gradle Plugin"
 			description = 'The Gradle plugin for Markup Views'
 		}
 	}
