@@ -26,7 +26,7 @@ ext.pomInfo = {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        pluginMaven(MavenPublication) {
             artifactId project.name
             if (project.name != "views-gradle") {
                 from components.java
