@@ -1,6 +1,8 @@
 buildscript {
     repositories {
+        mavenCentral()
         maven { url "https://repo.grails.org/grails/core" }
+        maven { url 'https://repo.gradle.org/gradle/libs-releases' }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
@@ -8,27 +10,28 @@ buildscript {
 }
 
 ext {
-    userOrg = 'grails'
+    userOrg = 'graceframework'
 }
 
-group "org.grails.plugins"
+group "org.graceframework.plugins"
 
 apply plugin: "org.grails.grails-gsp"
 
 dependencyManagement {
     imports {
-        mavenBom "org.grails:grails-bom:$grailsVersion"
+        mavenBom "org.graceframework:grace-bom:$graceVersion"
     }
     applyMavenExclusions false
 }
 
 dependencies {
-    api "org.grails:grails-core:$grailsVersion"
+    api "org.graceframework:grace-core:$graceVersion"
+    compileOnly "org.graceframework:grace-boot:$graceVersion"
     api project(":views-core")
 
-    testImplementation "org.grails:grails-web-testing-support:$testingSupportVersion"
+    testImplementation "org.graceframework:grace-test-support:$graceVersion"
 
-    console "org.grails:grails-console"
+    console "org.graceframework:grace-console"
 }
 
 springBoot {
