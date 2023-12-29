@@ -31,10 +31,6 @@ publishing {
             if (project.name != "views-gradle") {
                 from components.java
             }
-            afterEvaluate {
-                artifact source: sourcesJar, classifier: "sources"
-                artifact source: javadocJar, classifier: "javadoc"
-            }
 
             if (isGrailsPlugin) {
                 artifact source: "${project.sourceSets.main.groovy.outputDir}/META-INF/grails-plugin.xml",
