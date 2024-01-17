@@ -2,6 +2,7 @@ import org.grails.gradle.plugin.web.gsp.GroovyPageCompileTask
 
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
         maven { url "https://repo.grails.org/grails/core" }
         maven { url 'https://repo.gradle.org/gradle/libs-releases' }
@@ -15,7 +16,7 @@ buildscript {
 
 group "org.graceframework.plugins"
 
-apply plugin: "org.graceframework.grace-gsp"
+apply plugin: "org.graceframework.grace-plugin"
 apply plugin: "io.spring.dependency-management"
 
 dependencyManagement {
