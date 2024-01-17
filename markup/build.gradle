@@ -5,7 +5,7 @@ buildscript {
         maven { url 'https://repo.gradle.org/gradle/libs-releases' }
     }
     dependencies {
-        classpath "org.grails:grails-gradle-plugin:$grailsGradlePluginVersion"
+        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
     }
 }
 
@@ -15,7 +15,7 @@ ext {
 
 group "org.graceframework.plugins"
 
-apply plugin: "org.grails.grails-gsp"
+apply plugin: "org.graceframework.grace-gsp"
 
 dependencyManagement {
     imports {

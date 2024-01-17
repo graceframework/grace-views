@@ -3,7 +3,7 @@ buildscript {
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
-        classpath "org.graceframework:grace-gradle-plugin:$grailsGradlePluginVersion"
+        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
         classpath "org.grails.plugins:views-gradle:$functionalTestViewsGradleVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
         classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
