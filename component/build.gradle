@@ -41,3 +41,9 @@ dependencies {
 springBoot {
     mainClass.set('grails.plugin.component.view.Application')
 }
+
+jar {
+    enabled = true
+    archiveClassifier.set('')
+    includeEmptyDirs = false
+}

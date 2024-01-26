@@ -46,7 +46,10 @@ tasks.withType(GroovyPageCompileTask) {
 }
 
 jar {
-  exclude "*.gson"
+    exclude "*.gson"
+    enabled = true
+    archiveClassifier.set('')
+    includeEmptyDirs = false
 }
 
 springBoot {
