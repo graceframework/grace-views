@@ -21,7 +21,7 @@ apply plugin: "org.graceframework.grace-plugin"
 apply plugin: "org.graceframework.plugins.views-json"
 apply plugin: "io.spring.dependency-management"
 apply plugin: "org.gradle.test-retry"
-//apply plugin: "org.grails.plugins.views-markup"
+apply plugin: "org.graceframework.views-markup"
 
 ext {
     gradleWrapperVersion = project.gradleWrapperVersion

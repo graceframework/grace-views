@@ -4,7 +4,7 @@ buildscript {
     }
     dependencies {
         classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
-        classpath "org.grails.plugins:views-gradle:$functionalTestViewsGradleVersion"
+        classpath "org.graceframework.plugins:views-gradle:$functionalTestViewsGradleVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
         classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
         classpath "org.gradle:test-retry-gradle-plugin:1.3.1"
@@ -24,8 +24,8 @@ apply plugin: "io.spring.dependency-management"
 apply plugin: "org.gradle.test-retry"
 
 // uncommenting fails because we have functional tests for compilation errors
-//apply plugin: "org.grails.plugins.views-json"
-//apply plugin: "org.grails.plugins.views-markup"
+apply plugin: "org.graceframework.plugins.views-json"
+apply plugin: "org.graceframework.plugins.views-markup"
 
 ext {
     gradleWrapperVersion = project.gradleWrapperVersion
