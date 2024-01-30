@@ -1,10 +1,13 @@
 package grails.plugin.component.view
 
-import grails.boot.GrailsApp
-import grails.boot.config.GrailsAutoConfiguration
+import grails.boot.Grails
+import grails.plugins.metadata.PluginSource
+import groovy.transform.CompileStatic
 
-class Application extends GrailsAutoConfiguration {
+@PluginSource
+@CompileStatic
+class Application {
     static void main(String[] args) {
-        GrailsApp.run(Application, args)
+        Grails.run(Application, args)
     }
 }
