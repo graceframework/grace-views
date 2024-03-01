@@ -1,12 +1,16 @@
 buildscript {
     repositories {
-        mavenLocal()
+        mavenCentral()
         maven { url "https://repo.grails.org/grails/core" }
+        maven { url "https://plugins.gradle.org/m2/" }
         maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+        if (project.projectVersion.endsWith('-SNAPSHOT')) {
+            maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        }
     }
     dependencies {
-        classpath "io.github.gradle-nexus:publish-plugin:1.1.0"
-        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "io.github.gradle-nexus:publish-plugin:1.3.0"
+        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
         classpath "org.gradle:test-retry-gradle-plugin:1.4.0"
         classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
     }
@@ -14,28 +18,29 @@ buildscript {
 
 ext {
     isReleaseVersion = !project.projectVersion.endsWith('-SNAPSHOT')
-    grailsVersion = project.grailsVersion
+    graceVersion = project.graceVersion
     gradleWrapperVersion = project.gradleWrapperVersion
-    userOrg = "grails"
+    userOrg = "graceframework"
 }
+
+version project.projectVersion
 
 apply plugin:'idea'
 
-if (isReleaseVersion) {
-    apply plugin: 'maven-publish'
-    apply plugin: "io.github.gradle-nexus.publish-plugin"
+apply plugin: 'maven-publish'
+apply plugin: "io.github.gradle-nexus.publish-plugin"
 
-    nexusPublishing {
-        repositories {
-            sonatype {
-                def ossUser = System.getenv("SONATYPE_USERNAME") ?: project.hasProperty("sonatypeOssUsername") ? project.sonatypeOssUsername : ''
-                def ossPass = System.getenv("SONATYPE_PASSWORD") ?: project.hasProperty("sonatypeOssPassword") ? project.sonatypeOssPassword : ''
-                def ossStagingProfileId = System.getenv("SONATYPE_STAGING_PROFILE_ID") ?: project.hasProperty("sonatypeOssStagingProfileId") ? project.sonatypeOssStagingProfileId : ''
-                nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
-                username = ossUser
-                password = ossPass
-                stagingProfileId = ossStagingProfileId
-            }
+nexusPublishing {
+    repositories {
+        sonatype {
+            def ossUser = System.getenv("SONATYPE_USERNAME") ?: project.hasProperty("sonatypeOssUsername") ? project.sonatypeOssUsername : ''
+            def ossPass = System.getenv("SONATYPE_PASSWORD") ?: project.hasProperty("sonatypeOssPassword") ? project.sonatypeOssPassword : ''
+            def ossStagingProfileId = System.getenv("SONATYPE_STAGING_PROFILE_ID") ?: project.hasProperty("sonatypeOssStagingProfileId") ? project.sonatypeOssStagingProfileId : ''
+            nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
+            snapshotRepositoryUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            username = ossUser
+            password = ossPass
+            stagingProfileId = ossStagingProfileId
         }
     }
 }
@@ -48,6 +53,14 @@ subprojects { project->
             if(details.requested.group == 'org.codehaus.groovy') {
                 details.useVersion(groovyVersion)
             }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.grails.org/grails/core" }
+        if (project.projectVersion.endsWith('-SNAPSHOT')) {
+            maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
         }
     }
 
@@ -67,31 +80,17 @@ subprojects { project->
     apply plugin: "io.spring.dependency-management"
 
     if (ext.isGrailsPlugin) {
-        apply plugin: "org.grails.grails-plugin"
+        apply plugin: "org.graceframework.grace-plugin"
     }
 
     sourceCompatibility = 11
     targetCompatibility = 11
 
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url "https://repo.grails.org/grails/core" }
-        maven { url 'https://repo.gradle.org/gradle/libs-releases' }
-    }
-
-    dependencyManagement {
-        imports {
-            mavenBom "org.grails:grails-bom:$grailsVersion"
-        }
-        applyMavenExclusions false
-    }
-
     task wrapper(type: Wrapper) {
         gradleVersion = gradleWrapperVersion
     }
 
-    apply from: '../publishing/grailsCentralPublishing.gradle'
+    apply from: '../publishing/mavenCentral.gradle'
 
 
     if (project.name in ["views-core", "views-component", "views-json", "views-markup", "views-json-testing-support"]) {
@@ -111,6 +110,11 @@ subprojects { project->
             testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.2"
             testImplementation "org.junit.platform:junit-platform-runner:1.8.2"
             testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+        }
+
+        java {
+            withJavadocJar()
+            withSourcesJar()
         }
 
         tasks.withType(Test) {
