@@ -30,15 +30,8 @@ repositories {
     mavenCentral()
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.graceframework:grace-bom:$graceVersion"
-    }
-    applyMavenExclusions false
-}
-
 dependencies {
-    api platform("org.codehaus.groovy:groovy-bom:$groovyVersion")
+    api "org.codehaus.groovy:groovy:$groovyVersion"
     api "org.graceframework:grace-encoder:$graceVersion"
     api "org.graceframework:grace-web-common:$graceVersion"
     api "org.graceframework:grace-web-url-mappings:$graceVersion"
