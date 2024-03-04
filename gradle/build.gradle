@@ -38,19 +38,9 @@ dependencies {
 	api "org.codehaus.groovy:groovy:$groovyVersion"
 }
 
-if (!tasks.findByName("sourcesJar")) {
-	tasks.register("sourcesJar", Jar) {
-		classifier = 'sources'
-		from project.sourceSets.main.allSource
-	}
-}
-
-if (!tasks.findByName("javadocJar")) {
-// no javadocs, just a workaround
-	tasks.register("javadocJar", Jar) {
-		classifier = 'javadoc'
-		from tasks.named("groovydoc").get().outputs
-	}
+java {
+	withJavadocJar()
+	withSourcesJar()
 }
 
 gradlePlugin {

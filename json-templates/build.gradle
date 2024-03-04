@@ -28,18 +28,16 @@ def compileViews = tasks.register("compileViews", JavaExec) {
     args("src/templates", "build/classes/groovy/main", "11", ' ', ' ', "none", "UTF-8")
 }
 
-if (!tasks.findByName("sourcesJar")) {
-    tasks.register("sourcesJar", Jar) {
-        classifier = 'sources'
-        from 'src/templates'
-    }
+java {
+	withJavadocJar()
+	withSourcesJar()
 }
 
-if (!tasks.findByName("javadocJar")) {
-// no javadocs, just a workaround
-    tasks.register("javadocJar", Jar) {
-        classifier = 'javadoc'
-        from 'src/templates'
+sourceSets {
+    main {
+        resources {
+            srcDirs = ['src/templates']
+        }
     }
 }
 
