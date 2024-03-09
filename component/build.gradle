@@ -1,20 +1,49 @@
-ext {
-    userOrg = 'grails'
+buildscript {
+    repositories {
+        // mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.grails.org/grails/core" }
+        maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+        if (project.projectVersion.endsWith('-SNAPSHOT')) {
+            maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        }
+    }
+    dependencies {
+        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
+    }
 }
 
-group "org.grails.plugins"
+ext {
+    userOrg = 'graceframework'
+}
 
-apply plugin: "org.grails.grails-gsp"
+group "org.graceframework.plugins"
+
+apply plugin: "org.graceframework.grace-plugin"
+
+dependencyManagement {
+    imports {
+        mavenBom "org.graceframework:grace-bom:$graceVersion"
+    }
+    applyMavenExclusions false
+}
 
 dependencies {
-    api "org.grails:grails-core"
+    api "org.graceframework:grace-core:$graceVersion"
+    compileOnly "org.graceframework:grace-boot:$graceVersion"
     api project(":views-core")
 
-    testImplementation "org.grails:grails-test-support"
+    testImplementation "org.graceframework:grace-test-support:$graceVersion"
 
-    console "org.grails:grails-console"
+    console "org.graceframework:grace-console"
 }
 
 springBoot {
     mainClass.set('grails.plugin.component.view.Application')
+}
+
+jar {
+    enabled = true
+    archiveClassifier.set('')
+    includeEmptyDirs = false
 }
