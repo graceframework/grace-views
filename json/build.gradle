@@ -22,9 +22,9 @@ apply plugin: "org.graceframework.grace-plugin"
 apply plugin: "io.spring.dependency-management"
 
 dependencyManagement {
-    imports {
-        mavenBom "org.graceframework:grace-bom:$graceVersion"
-    }
+    // imports {
+    //     mavenBom "org.graceframework:grace-bom:$graceVersion"
+    // }
     applyMavenExclusions false
 }
 
