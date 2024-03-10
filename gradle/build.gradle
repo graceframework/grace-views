@@ -25,11 +25,6 @@ repositories {
     maven { url 'https://repo.gradle.org/gradle/libs-releases' }
 }
 
-configurations.all {
-	exclude group: 'org.codehaus.groovy', module: 'groovy-xml'
-	// resolutionStrategy.force "org.codehaus.groovy:groovy-xml:$groovyVersion"
-}
-
 dependencyManagement {
 	// imports {
 	// 	mavenBom "org.graceframework:grace-bom:$graceVersion"
@@ -39,7 +34,9 @@ dependencyManagement {
 
 dependencies {
 	compileOnly gradleApi()
-	api "org.graceframework:grace-gradle-plugin:$graceVersion"
+	api "org.graceframework:grace-gradle-plugin:$graceVersion", {
+		exclude group: 'org.codehaus.groovy', module: 'groovy-xml'
+	}
 	api "org.codehaus.groovy:groovy:$groovyVersion"
 }
 
