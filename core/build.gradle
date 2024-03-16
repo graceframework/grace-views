@@ -29,10 +29,13 @@ repositories {
 
 dependencies {
     api "org.apache.groovy:groovy:$groovyVersion"
+    api "org.graceframework:grace-core:$graceVersion", {
+        exclude group: 'org.graceframework', module: 'grace-datastore-core'
+    }
     api "org.graceframework:grace-encoder:$graceVersion"
     api "org.graceframework:grace-web-common:$graceVersion"
     api "org.graceframework:grace-web-url-mappings:$graceVersion", {
-        exclude group: 'org.grails', module: 'grails-datastore-gorm-validation'
+        exclude group: 'org.graceframework', module: 'grace-datastore-gorm-validation'
     }
     api "org.graceframework:grace-plugin-rest:$graceVersion"
     api "org.graceframework:grace-datastore-gorm-support:$gormVersion"

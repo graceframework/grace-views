@@ -22,7 +22,7 @@ group "org.graceframework.plugins"
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+    maven { url "https://plugins.gradle.org/m2/" }
 }
 
 dependencyManagement {
@@ -34,7 +34,10 @@ dependencyManagement {
 
 dependencies {
     compileOnly gradleApi()
-    api "org.graceframework:grace-gradle-plugin:$graceVersion"
+    api "org.graceframework:grace-gradle-plugin:$graceVersion", {
+        exclude group: 'org.graceframework', module: 'grace-shell'
+        exclude group: 'org.apache.groovy', module: 'groovy-xml'
+    }
     api "org.apache.groovy:groovy:$groovyVersion"
 }
 

@@ -30,11 +30,12 @@ dependencyManagement {
 
 dependencies {
     api "org.graceframework:grace-core:$graceVersion", {
-      exclude group: 'org.grails', module: 'grails-datastore-core'
+        exclude group: 'org.graceframework', module: 'grace-datastore-core'
     }
     compileOnly "org.graceframework:grace-boot:$graceVersion"
     api project(":views-core")
 
+    api "org.graceframework:grace-datastore-gorm:$gormVersion"
     testImplementation "org.graceframework:grace-test-support:$graceVersion"
     testImplementation "org.graceframework:grace-datastore-gorm-hibernate5"
     testRuntimeOnly "org.javassist:javassist:3.29.0-GA"
