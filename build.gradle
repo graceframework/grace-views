@@ -1,12 +1,15 @@
 buildscript {
     repositories {
-        mavenLocal()
-        maven { url "https://repo.grails.org/grails/core" }
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
         maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+        if (project.projectVersion.endsWith('-SNAPSHOT')) {
+            maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+        }
     }
     dependencies {
         classpath "io.github.gradle-nexus:publish-plugin:1.3.0"
-        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "org.graceframework:grace-gradle-plugin:$graceVersion"
         classpath "org.gradle:test-retry-gradle-plugin:1.4.0"
         classpath "io.spring.gradle:dependency-management-plugin:$springDependencyManagementPluginVersion"
     }
@@ -14,31 +17,29 @@ buildscript {
 
 ext {
     isReleaseVersion = !project.projectVersion.endsWith('-SNAPSHOT')
-    grailsVersion = project.grailsVersion
+    graceVersion = project.graceVersion
     gradleWrapperVersion = project.gradleWrapperVersion
-    userOrg = "grails"
+    userOrg = "graceframework"
 }
 
-ext['grails-gorm.version'] = gormVersion
-ext['grails-gorm-hibernate.version'] = gormVersion
+version project.projectVersion
 
 apply plugin:'idea'
 
-if (isReleaseVersion) {
-    apply plugin: 'maven-publish'
-    apply plugin: "io.github.gradle-nexus.publish-plugin"
+apply plugin: 'maven-publish'
+apply plugin: "io.github.gradle-nexus.publish-plugin"
 
-    nexusPublishing {
-        repositories {
-            sonatype {
-                def ossUser = System.getenv("SONATYPE_USERNAME") ?: project.hasProperty("sonatypeOssUsername") ? project.sonatypeOssUsername : ''
-                def ossPass = System.getenv("SONATYPE_PASSWORD") ?: project.hasProperty("sonatypeOssPassword") ? project.sonatypeOssPassword : ''
-                def ossStagingProfileId = System.getenv("SONATYPE_STAGING_PROFILE_ID") ?: project.hasProperty("sonatypeOssStagingProfileId") ? project.sonatypeOssStagingProfileId : ''
-                nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
-                username = ossUser
-                password = ossPass
-                stagingProfileId = ossStagingProfileId
-            }
+nexusPublishing {
+    repositories {
+        sonatype {
+            def ossUser = System.getenv("SONATYPE_USERNAME") ?: project.hasProperty("sonatypeOssUsername") ? project.sonatypeOssUsername : ''
+            def ossPass = System.getenv("SONATYPE_PASSWORD") ?: project.hasProperty("sonatypeOssPassword") ? project.sonatypeOssPassword : ''
+            def ossStagingProfileId = System.getenv("SONATYPE_STAGING_PROFILE_ID") ?: project.hasProperty("sonatypeOssStagingProfileId") ? project.sonatypeOssStagingProfileId : ''
+            nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
+            snapshotRepositoryUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            username = ossUser
+            password = ossPass
+            stagingProfileId = ossStagingProfileId
         }
     }
 }
@@ -47,10 +48,25 @@ subprojects { project->
     version project.projectVersion
 
     configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            if(details.requested.group == 'org.codehaus.groovy') {
-                details.useVersion(groovyVersion)
+        resolutionStrategy {
+            // Force groovy using 4.0
+            dependencySubstitution {
+                substitute(module("org.codehaus.groovy:groovy")).using(module("org.apache.groovy:groovy:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-ant")).using(module("org.apache.groovy:groovy-ant:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-dateutil")).using(module("org.apache.groovy:groovy-dateutil:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-json")).using(module("org.apache.groovy:groovy-json:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-jmx")).using(module("org.apache.groovy:groovy-jmx:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-sql")).using(module("org.apache.groovy:groovy-sql:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-templates")).using(module("org.apache.groovy:groovy-templates:4.0.10"))
+                substitute(module("org.codehaus.groovy:groovy-xml")).using(module("org.apache.groovy:groovy-xml:4.0.10"))
             }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+        if (project.projectVersion.endsWith('-SNAPSHOT')) {
+            maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
         }
     }
 
@@ -70,31 +86,22 @@ subprojects { project->
     apply plugin: "io.spring.dependency-management"
 
     if (ext.isGrailsPlugin) {
-        apply plugin: "org.grails.grails-plugin"
+        apply plugin: "org.graceframework.grace-plugin"
     }
 
-    sourceCompatibility = 17
-    targetCompatibility = 17
-
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven { url "https://repo.grails.org/grails/core" }
-        maven { url 'https://repo.gradle.org/gradle/libs-releases' }
-    }
-
-    dependencyManagement {
-        imports {
-            mavenBom "org.grails:grails-bom:$grailsVersion"
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
         }
-        applyMavenExclusions false
+        withJavadocJar()
+        withSourcesJar()
     }
 
     task wrapper(type: Wrapper) {
         gradleVersion = gradleWrapperVersion
     }
 
-    apply from: '../publishing/grailsCentralPublishing.gradle'
+    apply from: '../publishing/mavenCentral.gradle'
 
 
     if (project.name in ["views-core", "views-component", "views-json", "views-markup", "views-json-testing-support"]) {
