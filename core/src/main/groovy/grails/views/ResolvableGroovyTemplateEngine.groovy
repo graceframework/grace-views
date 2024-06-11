@@ -146,10 +146,12 @@ abstract class ResolvableGroovyTemplateEngine extends TemplateEngine {
         this.viewUriResolver = new GenericViewUriResolver(".$extension")
         compilerConfiguration.setScriptBaseClass(configuration.baseTemplateClass.name)
         prepareCustomizers(compilerConfiguration)
-        this.templateResolver = new GenericGroovyTemplateResolver(
-                packageName: configuration.packageName,
-                baseDir: configuration.templatePath ? new File(configuration.templatePath) : null,
-                classLoader: classLoader)
+        if (configuration.templatePath) {
+            this.templateResolver = new GenericGroovyTemplateResolver(packageName: configuration.packageName, baseDir: new File(configuration.templatePath), classLoader: classLoader)
+        }
+        else {
+            this.templateResolver = new GenericGroovyTemplateResolver(packageName: configuration.packageName, classLoader: classLoader)
+        }
         this.classLoader = new GroovyClassLoader(classLoader, new CompilerConfiguration(compilerConfiguration))
 
     }
