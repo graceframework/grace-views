@@ -1,6 +1,8 @@
 rootProject.name = 'Grace.Views'
 
-['core', 'component', 'json', 'markup', 'gradle', 'docs', 'json-templates', 'json-testing-support'].each {
+include "docs"
+
+['core', 'component', 'json', 'markup', 'gradle', 'json-templates', 'json-testing-support'].each {
     include("views-$it")
     project(":views-$it").projectDir = new File(settingsDir, it)
 }
