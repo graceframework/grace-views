@@ -1,16 +1,21 @@
-group "org.grails.plugins"
+group "org.graceframework.plugins"
 
 ext {
     gradleWrapperVersion = project.gradleWrapperVersion
-    userOrg = 'grails'
-    repo = 'plugins'
+    userOrg = 'graceframework'
+    repo = 'grace-views'
     isGrailsPlugin = false
-    projectDesc = "JSON Views Templates"
+    projectDesc = "Grace JSON Views Templates"
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.grails.org/grails/core" }
 }
 
 dependencies {
     api project(':views-json')
-    compileOnly "org.grails:grails-plugin-rest:$grailsVersion"
+    compileOnly "org.graceframework:grace-plugin-rest:$graceVersion"
     compileOnly "jakarta.servlet:jakarta.servlet-api:$servletApiVersion"
     compileOnly "org.grails:grails-datastore-gorm-mongodb:$mongodbVersion", {
         exclude group: 'org.codehaus.groovy', module: 'groovy'
@@ -23,7 +28,15 @@ def compileViews = tasks.register("compileViews", JavaExec) {
     outputs.dir 'build/classes/groovy/main'
     mainClass.set("grails.plugin.json.view.JsonViewCompiler")
     classpath configurations.compileClasspath + configurations.runtimeClasspath
-    args("src/templates", "build/classes/groovy/main", "1.8", ' ', ' ', "none", "UTF-8")
+    args("src/templates", "build/classes/groovy/main", "11", ' ', ' ', "none", "UTF-8")
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ['src/templates']
+        }
+    }
 }
 
 classes.dependsOn(compileViews)
