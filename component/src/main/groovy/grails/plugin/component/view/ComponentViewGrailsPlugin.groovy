@@ -19,7 +19,7 @@ import org.grails.io.support.GrailsResourceUtils
 class ComponentViewGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "2022.0.0 > *"
+    def grailsVersion = "2023.0.0 > *"
 
     def title = "Component View" // Headline display name of the plugin
     def author = "Graeme Rocher"
