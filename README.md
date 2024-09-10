@@ -9,6 +9,25 @@
 
 # Grace Views
 
-Additional View Technologies for Grace 2023.0 and above.
+Grace Views project provides additional view technologies to [Grace Framework](https://github.com/graceframework/grace-framework), including JSON and Markup views.
 
-Initial implementation includes JSON views powered by Groovy's JsonBuilder, however this project provides the basis for implementation other view types.
+JSON views allow rendering of JSON responses using Groovy's [StreamingJsonBuilder](https://docs.groovy-lang.org/latest/html/documentation/#_streamingjsonbuilder).
+
+Markup views allow rendering of XML responses using Groovy's [MarkupTemplateEngine](https://docs.groovy-lang.org/latest/html/documentation/#_the_markuptemplateengine).
+
+
+## Versions
+
+To make it easier for users to use and upgrade, Plugin adopts a version policy consistent with the [Grace Framework](https://github.com/graceframework/grace-framework).
+
+| Plugin Version | Grace Version |
+|----------------|---------------|
+| 6.0.x          | 2023.0.x      |
+| 5.2.x          | 2022.2.x      |
+| 5.1.x          | 2022.1.x      |
+| 5.0.x          | 2022.0.x      |
+
+## Links
+
+- [Grace Framework](https://github.com/graceframework/grace-framework)
+- [Grace Plugins](https://github.com/grace-plugins)
