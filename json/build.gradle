@@ -50,7 +50,7 @@ tasks.withType(GroovyPageCompileTask) {
 jar {
     exclude "*.gson"
     enabled = true
-    archiveClassifier.set('')
+    archiveClassifier.set('plugin')
     includeEmptyDirs = false
 }
 
