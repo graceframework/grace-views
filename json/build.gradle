@@ -38,7 +38,7 @@ dependencies {
     api "org.graceframework:grace-datastore-gorm:$gormVersion"
     testImplementation "org.graceframework:grace-test-support:$graceVersion"
     testImplementation "org.graceframework:grace-datastore-gorm-hibernate"
-    testRuntimeOnly "org.javassist:javassist:3.29.0-GA"
+    testRuntimeOnly "org.javassist:javassist:$javassistVersion"
 
     console "org.graceframework:grace-console"
 }
