@@ -1,11 +1,10 @@
 package grails.plugin.json.view
 
-import grails.plugin.json.view.test.JsonViewTest
 import grails.views.ViewException
-import org.grails.testing.GrailsUnitTest
+import grails.views.json.test.JsonViewUnitTest
 import spock.lang.Specification
 
-class IterableRenderSpec extends Specification implements JsonViewTest, GrailsUnitTest {
+class IterableRenderSpec extends Specification implements JsonViewUnitTest {
 
     void "Test render a collection type"() {
         given:"A collection"
@@ -42,7 +41,7 @@ json hal.render(players)
 ''', [players:players])
 
         then:"The result is an array"
-        renderResult.jsonText == '{"_links":{"self":{"href":"http://localhost:8080/player","hreflang":"en","type":"application/hal+json"}},"_embedded":[{"_links":{"self":{"href":"http://localhost:8080/player","hreflang":"en","type":"application/hal+json"}},"name":"Cantona"}]}'
+        renderResult.jsonText == '{"_links":{"self":{"href":"http://localhost:8080/player/index","hreflang":"en","type":"application/hal+json"}},"_embedded":[{"_links":{"self":{"href":"http://localhost:8080/player/index","hreflang":"en","type":"application/hal+json"}},"name":"Cantona"}]}'
 
     }
 
@@ -116,7 +115,7 @@ json jsonapi.render(players, [pagination: [resource: Player, total: 11]])
         }
 
         then: "The result is an array"
-        renderResult.jsonText == '{"data":[{"type":"player","id":"1","attributes":{"name":"Cantona"},"relationships":{"team":{"data":null}}},{"type":"player","id":"2","attributes":{"name":"Louis"},"relationships":{"team":{"data":null}}}],"links":{"self":"/foo","first":"http://localhost:8080/player?offset=0&max=10","next":"http://localhost:8080/player?offset=10&max=10","last":"http://localhost:8080/player?offset=10&max=10"}}'
+        renderResult.jsonText == '{"data":[{"type":"player","id":"1","attributes":{"name":"Cantona"},"relationships":{"team":{"data":null}}},{"type":"player","id":"2","attributes":{"name":"Louis"},"relationships":{"team":{"data":null}}}],"links":{"self":"/foo","first":"http://localhost:8080/player/index?offset=0&max=10","next":"http://localhost:8080/player/index?offset=10&max=10","last":"http://localhost:8080/player/index?offset=10&max=10"}}'
     }
 
     void "Test render a collection type with JSON API and pagination override max"() {
@@ -141,7 +140,7 @@ json jsonapi.render(players, [pagination: [resource: Player, total: 11, max: 5]]
         }
 
         then: "The result is an array"
-        renderResult.jsonText == '{"data":[{"type":"player","id":"1","attributes":{"name":"Cantona"},"relationships":{"team":{"data":null}}},{"type":"player","id":"2","attributes":{"name":"Louis"},"relationships":{"team":{"data":null}}}],"links":{"self":"/foo","first":"http://localhost:8080/player?offset=0&max=5","next":"http://localhost:8080/player?offset=5&max=5","last":"http://localhost:8080/player?offset=10&max=5"}}'
+        renderResult.jsonText == '{"data":[{"type":"player","id":"1","attributes":{"name":"Cantona"},"relationships":{"team":{"data":null}}},{"type":"player","id":"2","attributes":{"name":"Louis"},"relationships":{"team":{"data":null}}}],"links":{"self":"/foo","first":"http://localhost:8080/player/index?offset=0&max=5","next":"http://localhost:8080/player/index?offset=5&max=5","last":"http://localhost:8080/player/index?offset=10&max=5"}}'
     }
 
     void "Test render a collection type with JSON API and pagination (incorrect arguments)"() {
