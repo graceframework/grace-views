@@ -1,14 +1,6 @@
 package grails.plugin.component.view
 
-import grails.plugin.component.view.mvc.ComponentViewResolver
 import grails.plugins.Plugin
-import grails.util.BuildSettings
-import grails.util.Environment
-import grails.util.Metadata
-import grails.views.ViewsEnvironment
-import grails.views.mvc.GenericGroovyTemplateViewResolver
-import grails.views.resolve.PluginAwareTemplateResolver
-import org.grails.io.support.GrailsResourceUtils
 
 /**
  * Plugin class for markup views
@@ -50,11 +42,6 @@ A plugin that allows rendering of Component views
     def scm = [ url: "http://github.com/graceframework/grace-views" ]
 
     Closure doWithSpring() { {->
-        componentViewConfiguration(ComponentViewConfiguration)
-        componentTemplateEngine(ComponentViewTemplateEngine, componentViewConfiguration, applicationContext.classLoader)
-        smartComponentViewResolver(ComponentViewResolver, componentTemplateEngine) {
-            templateResolver = bean(PluginAwareTemplateResolver, componentViewConfiguration)
-        }
-        componentViewResolver(GenericGroovyTemplateViewResolver, smartComponentViewResolver)
+
     } }
 }
