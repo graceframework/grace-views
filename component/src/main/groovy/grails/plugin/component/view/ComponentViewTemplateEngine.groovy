@@ -40,7 +40,7 @@ class ComponentViewTemplateEngine extends ResolvableGroovyTemplateEngine {
 
     ComponentViewTemplateEngine(ComponentViewConfiguration config = new ComponentViewConfiguration(), ClassLoader classLoader = Thread.currentThread().contextClassLoader) {
         super(config, classLoader)
-        this.compileStatic = compileStatic
+        this.compileStatic = config.compileStatic
         innerEngine = new MarkupTemplateEngine(classLoader, config, new TemplateResolver() {
             @Override
             void configure(ClassLoader templateClassLoader, TemplateConfiguration configuration) {
