@@ -47,12 +47,15 @@ import java.beans.PropertyDescriptor
  * @author Graeme Rocher
  */
 @CompileStatic
-@InheritConstructors
 @Slf4j
 class DefaultGrailsJsonViewHelper extends DefaultJsonViewHelper implements GrailsJsonViewHelper {
 
     public static final String BEFORE_CLOSURE = "beforeClosure"
     public static final String PROCESSED_OBJECT_VARIABLE = "org.json.views.RENDER_PROCESSED_OBJECTS"
+
+    DefaultGrailsJsonViewHelper(GrailsView view) {
+        super(view)
+    }
 
     @Override
     JsonOutput.JsonWritable render(Object object, @DelegatesTo(StreamingJsonDelegate) Closure customizer) {
@@ -787,7 +790,7 @@ class DefaultGrailsJsonViewHelper extends DefaultJsonViewHelper implements Grail
 
 
             ViewUriResolver viewUriResolver = templateEngine
-                                                 .getViewUriResolver()
+                    .getViewUriResolver()
 
             String templateUri
             Template childTemplate

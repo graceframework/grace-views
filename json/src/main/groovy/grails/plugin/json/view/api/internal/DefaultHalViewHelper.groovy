@@ -61,7 +61,7 @@ class DefaultHalViewHelper extends DefaultJsonViewHelper implements HalViewHelpe
      * Same as {@link GrailsJsonViewHelper#render(java.lang.Object, java.util.Map, groovy.lang.Closure)} but renders HAL links too
      */
     @Override
-    JsonOutput.JsonWritable render(Object object, Map arguments, @DelegatesTo(StreamingJsonBuilder.StreamingJsonDelegate) Closure customizer) {
+    JsonOutput.JsonWritable render(Object object, Map arguments, @DelegatesTo(StreamingJsonDelegate) Closure customizer) {
         if(arguments == null) {
             arguments = new LinkedHashMap()
         }
@@ -110,7 +110,7 @@ class DefaultHalViewHelper extends DefaultJsonViewHelper implements HalViewHelpe
      * Same as {@link GrailsJsonViewHelper#render(java.lang.Object, java.util.Map, groovy.lang.Closure)} but renders HAL links too
      */
     @Override
-    JsonOutput.JsonWritable render(Object object,  @DelegatesTo(StreamingJsonBuilder.StreamingJsonDelegate) Closure customizer ) {
+    JsonOutput.JsonWritable render(Object object,  @DelegatesTo(StreamingJsonDelegate) Closure customizer ) {
         render(object, (Map)null, customizer)
     }
 
@@ -316,7 +316,7 @@ class DefaultHalViewHelper extends DefaultJsonViewHelper implements HalViewHelpe
 
             if(!embeddedValues.isEmpty()) {
                 embedded {
-                    StreamingJsonBuilder.StreamingJsonDelegate jsonDelegate = (StreamingJsonBuilder.StreamingJsonDelegate)getDelegate()
+                    StreamingJsonDelegate jsonDelegate = (StreamingJsonDelegate)getDelegate()
                     for(entry in embeddedValues) {
                         def embeddedObject = entry.value
                         Association association = entry.key
@@ -359,7 +359,7 @@ class DefaultHalViewHelper extends DefaultJsonViewHelper implements HalViewHelpe
             def proxyHandler = mappingContext.proxyFactory
 
             embedded {
-                StreamingJsonBuilder.StreamingJsonDelegate jsonDelegate = (StreamingJsonBuilder.StreamingJsonDelegate)getDelegate()
+                StreamingJsonDelegate jsonDelegate = (StreamingJsonDelegate)getDelegate()
                 for(entry in model.entrySet()) {
                     Object embeddedObject = proxyHandler.unwrap( entry.value )
 
@@ -421,7 +421,7 @@ class DefaultHalViewHelper extends DefaultJsonViewHelper implements HalViewHelpe
         }
     }
 
-    protected void renderProperty(Object embeddedObject, PersistentProperty prop,  EntityReflector associationReflector, StreamingJsonBuilder.StreamingJsonDelegate jsonDelegate) {
+    protected void renderProperty(Object embeddedObject, PersistentProperty prop,  EntityReflector associationReflector, StreamingJsonDelegate jsonDelegate) {
         def propertyName = prop.name
         def propVal = associationReflector.getProperty(embeddedObject, propertyName)
         def propertyType = prop.type
@@ -539,36 +539,36 @@ class DefaultHalViewHelper extends DefaultJsonViewHelper implements HalViewHelpe
         @Override
         Object invokeMethod(String name, Object args) {
             Object[] arr = (Object[]) args
-                switch(arr.length) {
-                    case 1:
-                        final Object value = arr[0]
-                        if(value instanceof Closure) {
-                            call(name, (Closure)value)
+            switch(arr.length) {
+                case 1:
+                    final Object value = arr[0]
+                    if(value instanceof Closure) {
+                        call(name, (Closure)value)
+                    }
+                    else {
+                        call(name, value)
+                    }
+                    return null
+                case 2:
+                    if(arr[-1] instanceof Closure) {
+                        final Object obj = arr[0]
+                        final Closure callable = (Closure) arr[1]
+                        if(obj instanceof Iterable) {
+                            call(name, (Iterable)obj, callable)
+                            return null
+                        }
+                        else if(obj.getClass().isArray()) {
+                            call(name, Arrays.asList(obj as Object[]), callable)
+                            return null
                         }
                         else {
-                            call(name, value)
+                            call(name, obj, callable)
+                            return null
                         }
-                        return null
-                    case 2:
-                        if(arr[-1] instanceof Closure) {
-                            final Object obj = arr[0]
-                            final Closure callable = (Closure) arr[1]
-                            if(obj instanceof Iterable) {
-                                call(name, (Iterable)obj, callable)
-                                return null
-                            }
-                            else if(obj.getClass().isArray()) {
-                                call(name, Arrays.asList(obj as Object[]), callable)
-                                return null
-                            }
-                            else {
-                                call(name, obj, callable)
-                                return null
-                            }
-                        }
-                    default:
-                        return delegate.invokeMethod(name, args)
-                }
+                    }
+                default:
+                    return delegate.invokeMethod(name, args)
+            }
         }
 
         @Override

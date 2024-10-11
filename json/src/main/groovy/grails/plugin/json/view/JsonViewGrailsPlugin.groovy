@@ -1,18 +1,6 @@
 package grails.plugin.json.view
 
-import grails.plugin.json.renderer.ErrorsJsonViewRenderer
-import grails.plugin.json.view.api.jsonapi.DefaultJsonApiIdRenderer
-import grails.plugin.json.view.api.jsonapi.JsonApiIdRenderStrategy
-import grails.plugin.json.view.mvc.JsonViewResolver
 import grails.plugins.*
-import grails.util.BuildSettings
-import grails.util.Environment
-import grails.util.Metadata
-import grails.views.ViewsEnvironment
-import grails.views.mvc.GenericGroovyTemplateViewResolver
-import grails.views.resolve.PluginAwareTemplateResolver
-import org.grails.io.support.GrailsResourceUtils
-import org.springframework.validation.Errors
 
 class JsonViewGrailsPlugin extends Plugin {
 
@@ -48,13 +36,5 @@ A plugin that allows rendering of JSON views
     def scm = [ url: "http://github.com/graceframework/grace-views" ]
 
     Closure doWithSpring() { {->
-            jsonApiIdRenderStrategy(DefaultJsonApiIdRenderer)
-            jsonViewConfiguration(JsonViewConfiguration)
-            jsonTemplateEngine(JsonViewTemplateEngine, jsonViewConfiguration, applicationContext.classLoader)
-            jsonSmartViewResolver(JsonViewResolver, jsonTemplateEngine) {
-                templateResolver = bean(PluginAwareTemplateResolver, jsonViewConfiguration)
-            }
-            jsonViewResolver(GenericGroovyTemplateViewResolver, jsonSmartViewResolver )
-        }
-    }
+    } }
 }

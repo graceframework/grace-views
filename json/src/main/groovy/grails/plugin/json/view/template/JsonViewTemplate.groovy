@@ -5,14 +5,22 @@ import grails.plugin.json.view.JsonViewWritableScript
 import grails.plugin.json.view.api.jsonapi.JsonApiIdRenderStrategy
 import grails.views.GrailsViewTemplate
 import groovy.transform.CompileStatic
-import groovy.transform.InheritConstructors
+
+import grails.views.api.GrailsView
 
 @CompileStatic
-@InheritConstructors
 class JsonViewTemplate extends GrailsViewTemplate {
 
     JsonGenerator generator
     JsonApiIdRenderStrategy jsonApiIdRenderStrategy
+
+    JsonViewTemplate(Class<? extends GrailsView> templateClass) {
+        super(templateClass)
+    }
+
+    JsonViewTemplate(Class<? extends GrailsView> templateClass, File sourceFile) {
+        super(templateClass, sourceFile)
+    }
 
     @Override
     Writable make(Map binding) {
