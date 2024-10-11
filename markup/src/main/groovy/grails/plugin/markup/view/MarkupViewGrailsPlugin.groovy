@@ -1,14 +1,6 @@
 package grails.plugin.markup.view
 
-import grails.plugin.markup.view.mvc.MarkupViewResolver
 import grails.plugins.Plugin
-import grails.util.BuildSettings
-import grails.util.Environment
-import grails.util.Metadata
-import grails.views.ViewsEnvironment
-import grails.views.mvc.GenericGroovyTemplateViewResolver
-import grails.views.resolve.PluginAwareTemplateResolver
-import org.grails.io.support.GrailsResourceUtils
 
 /**
  * Plugin class for markup views
@@ -50,11 +42,6 @@ A plugin that allows rendering of JSON views
     def scm = [ url: "http://github.com/graceframework/grace-views" ]
 
     Closure doWithSpring() { {->
-        markupViewConfiguration(MarkupViewConfiguration)
-        markupTemplateEngine(MarkupViewTemplateEngine, markupViewConfiguration, applicationContext.classLoader)
-        smartMarkupViewResolver(MarkupViewResolver, markupTemplateEngine) {
-            templateResolver = bean(PluginAwareTemplateResolver, markupViewConfiguration)
-        }
-        markupViewResolver(GenericGroovyTemplateViewResolver, smartMarkupViewResolver)
+
     } }
 }

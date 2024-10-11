@@ -1,12 +1,14 @@
 package grails.views
 
+import groovy.text.markup.BaseTemplate
+import groovy.transform.CompileStatic
+
 import grails.config.ConfigMap
 import grails.core.GrailsApplication
 import grails.core.GrailsClass
 import grails.core.support.GrailsApplicationAware
 import grails.util.Environment
 import grails.util.Metadata
-import groovy.transform.CompileStatic
 import org.grails.config.CodeGenConfig
 import org.grails.core.artefact.DomainClassArtefactHandler
 import org.springframework.beans.BeanUtils
@@ -53,7 +55,7 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
     /**
      * The template base class
      */
-    Class baseTemplateClass
+    Class<? extends BaseTemplate> baseTemplateClass
     /**
      * Whether the cache templates
      */
