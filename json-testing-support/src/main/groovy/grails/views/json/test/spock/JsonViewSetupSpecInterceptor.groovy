@@ -1,10 +1,16 @@
 package grails.views.json.test.spock
 
 import grails.core.GrailsApplication
-import grails.plugin.json.view.JsonViewGrailsPlugin
+import grails.plugin.json.view.JsonViewConfiguration
+import grails.plugin.json.view.JsonViewTemplateEngine
+import grails.plugin.json.view.api.jsonapi.DefaultJsonApiIdRenderer
+import grails.plugin.json.view.mvc.JsonViewResolver
 import grails.views.json.test.JsonViewUnitTest
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
+
+import grails.views.mvc.GenericGroovyTemplateViewResolver
+import grails.views.resolve.PluginAwareTemplateResolver
 import org.grails.datastore.mapping.keyvalue.mapping.config.KeyValueMappingContext
 import org.grails.web.mapping.DefaultLinkGenerator
 import org.grails.web.mapping.UrlMappingsHolderFactoryBean
@@ -37,9 +43,14 @@ class JsonViewSetupSpecInterceptor implements IMethodInterceptor {
             grailsDomainClassMappingContext(KeyValueMappingContext, 'test') {
                 canInitializeEntities = true
             }
+            jsonApiIdRenderStrategy(DefaultJsonApiIdRenderer)
+            jsonViewConfiguration(JsonViewConfiguration)
+            jsonTemplateEngine(JsonViewTemplateEngine, jsonViewConfiguration, grailsApplication.classLoader)
+            jsonSmartViewResolver(JsonViewResolver, jsonTemplateEngine) {
+                templateResolver = bean(PluginAwareTemplateResolver, jsonViewConfiguration)
+            }
+            jsonViewResolver(GenericGroovyTemplateViewResolver, jsonSmartViewResolver )
         }
-        JsonViewGrailsPlugin plugin = new JsonViewGrailsPlugin()
-        plugin.setApplicationContext(grailsApplication.mainContext)
-        test.defineBeans(plugin)
+
     }
 }
