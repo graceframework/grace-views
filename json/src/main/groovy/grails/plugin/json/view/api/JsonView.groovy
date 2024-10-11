@@ -54,7 +54,6 @@ trait JsonView extends GrailsView {
     /**
      * @return The default view helper
      */
-    @Override
     GrailsJsonViewHelper getG() {
         return viewHelper
     }
