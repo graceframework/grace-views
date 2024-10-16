@@ -2,7 +2,7 @@ package grails.plugin.json.view
 
 import grails.gorm.annotation.Entity
 import grails.plugin.json.view.test.JsonViewTest
-import org.grails.orm.hibernate.cfg.HibernateMappingContext
+import org.grails.datastore.mapping.keyvalue.mapping.config.KeyValueMappingContext
 import spock.lang.Specification
 
 /**
@@ -11,7 +11,7 @@ import spock.lang.Specification
 class CompositeIdSpec extends Specification implements JsonViewTest {
 
     void setup() {
-        mappingContext = new HibernateMappingContext()
+        mappingContext = new KeyValueMappingContext("test")
         templateEngine.mappingContext = mappingContext
     }
 
