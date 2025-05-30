@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>2.9 HAL Support 6.3.0-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Views</h1>
+            <h3 class="docSubTitle">Provides JSON and Markup views technologies to the Grace framework</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/json.html"><strong>2</strong><span>JSON Views</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/markup.html"><strong>3</strong><span>Markup Views</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../../guide/markup.html"><strong>3</strong><span>Markup Views</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>2.9 HAL Support</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                </div>
+
+                
+
+                
+
+<h2 id="jsonHal"><a class="anchor" href="#jsonHal"></a>2.9 HAL Support</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/6.3.x/docs/src/docs/guide/json/jsonHal.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://stateless.co/hal_specification.html">HAL</a> is a standard format for representing JSON that has gained traction for its ability to represent links between resources and provide navigable APIs.</p>
+</div>
+<div class="paragraph">
+<p>The JSON views plugin for Grails provides HAL support out-of-the-box. All JSON views have access to the <code>hal</code> instance which implements <a href="api/grails/plugin/json/view/api/HalViewHelper.html">HalViewHelper</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.links(book)
+    hal.embedded {
+        author( book.authors.first() ) { Author author -&gt;
+            name author.name
+        }
+    }
+    title book.title
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The call to <code>hal.links()</code> has to be the first element within the <code>json{}</code> closure.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This produces the HAL output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">_links</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">self</span><span class="delimiter">&quot;</span></span>: {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/book/show/1</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
+        }
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">_embedded</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">author</span><span class="delimiter">&quot;</span></span>: {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">_links</span><span class="delimiter">&quot;</span></span>: {
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">self</span><span class="delimiter">&quot;</span></span>: {
+                    <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/author/show/1</span><span class="delimiter">&quot;</span></span>,
+                    <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>,
+                    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
+                }
+            },
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Stephen King</span><span class="delimiter">&quot;</span></span>
+        }
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The Stand</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_generating_hal_links">Generating HAL Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The above example uses the <code>hal.links(..)</code> method to render links for a domain resource and the <code>hal.embedded(..)</code> method to define any embedded objects that form part of the HAL response.</p>
+</div>
+<div class="paragraph">
+<p>The <code>hal.links(..)</code> method will by default create a link to the resource, but you can define additional links by annotating the domain class with either <code>grails.rest.Linkable</code> or <code>grails.rest.Resource</code> and using the <code>link</code> method on the object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">book.link(<span class="key">rel</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">publisher</span><span class="delimiter">&quot;</span></span>, <span class="key">href</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">http://foo.com/books</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The link will then be included in the HAL output.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to be specific about which links to include you can do so by passing a map of objects to link to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.links(<span class="key">self</span>:book, <span class="key">author</span>: book.author)
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, if you prefer to define the HAL links yourself then you can do so by passing a closure to the <code>hal.links</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.links {
+        self {
+            href <span class="string"><span class="delimiter">'</span><span class="content">...</span><span class="delimiter">'</span></span>
+            hreflang <span class="string"><span class="delimiter">'</span><span class="content">en</span><span class="delimiter">'</span></span>
+            type <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
+        }
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_rendering_domain_classes_as_hal">Rendering Domain Classes as HAL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you prefer to let the plugin handle the rendering of your object you can use the <code>hal.render(..)</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json hal.render(book)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>hal.render</code> method works the same as the <code>g.render</code> method, accepting the same arguments, the difference being it will output HAL links for the object via <code>hal.links</code> and also output associations fetched via a join query for <code>hal.embedded</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example you can also customize the content of the generated HAL with a closure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json hal.render(book) {
+    pages <span class="integer">1000</span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_embedded_association_and_hal">Embedded Association and HAL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Generally, when using the <code>hal.render(..)</code> method, <code>_embedded</code> associations are only rendered for associations that have been initialized and eagerly fetched. This means that the following query will not render the <code>book.authors</code> association:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Book</span>.get(params.id)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, this query will render the <code>book.authors</code> association:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="predefined-type">Book</span>.get(params.id, [<span class="key">fetch</span>:[<span class="key">authors</span>:<span class="string"><span class="delimiter">'</span><span class="content">eager</span><span class="delimiter">'</span></span>]])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is by design and to prevent unexpected performance degradation due to N+1 query loading. If you wish to force the <code>render</code> method to render <code>_embedded</code> associations for HAL you can do see using the <code>deep</code> argument:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">json hal.render(book, [<span class="key">deep</span>:<span class="predefined-constant">true</span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can prevent HAL <code>_embedded</code> associations from being rendering using the <code>embedded:false</code> parameter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json hal.render(book, [<span class="key">embedded</span>:<span class="predefined-constant">false</span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also render embedded associations without using the <code>hal.render(..)</code> method, by using the <code>hal.embedded(..)</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.embedded(book)
+    title book.title
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Like the <code>hal.links(..)</code> method, the <code>hal.embedded(..)</code> method should come first, before any other attributes, in your JSON output
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can also control which associations should be embedded by using a map argument instead:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.embedded(<span class="key">authors</span>: book.authors)
+    title book.title
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And you can inline the contents of the book without any associations using the <code>hal.inline(..)</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.embedded(<span class="key">authors</span>: book.authors)
+    hal.inline(book)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To customize the contents of the inlined JSON output use a closure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.embedded(<span class="key">authors</span>: book.authors)
+    hal.inline(book) {
+        pages <span class="integer">300</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You cannot include additional content after the call to <code>hal.inline(..)</code> as this will produce invalid JSON
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can combine <code>hal.embeddded(..)</code> and <code>hal.links(..)</code> to obtain exactly the links and the embedded content you want:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+json {
+    hal.links(<span class="key">self</span>: book )
+    hal.embedded(<span class="key">authors</span>: book.authors)
+    hal.inline(book) {
+        pages <span class="integer">300</span>
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specifying_the_hal_content_type">Specifying the HAL Content Type</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default HAL response content type is <code>application/hal+json</code>, however as discussed in the section on <a href="json/contentNegotiation.html#mimeTypes">Custom Mime Type</a> you can define your own response content types to represent your resources.</p>
+</div>
+<div class="paragraph">
+<p>For example given the following configuration in <code>grails-app/conf/application.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">grails</span>:
+    <span class="key">mime</span>:
+        <span class="key">types</span>:
+            <span class="key">all</span>:      <span class="string"><span class="delimiter">&quot;</span><span class="content">*/*</span><span class="delimiter">&quot;</span></span>
+            <span class="key">book</span>:     <span class="string"><span class="delimiter">&quot;</span><span class="content">application/vnd.books.org.book+json</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can set the HAL content type to an explicit content type or one of the named content types defined in <code>grails.mime.types</code> in <code>application.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Book</span> book
+}
+hal.type(<span class="string"><span class="delimiter">&quot;</span><span class="content">book</span><span class="delimiter">&quot;</span></span>)
+json {
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hal_pagination">HAL Pagination</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The JSON views plugin for Grails provides navigable pagination support.
+Like the GSP <code>&lt;g:paginate&gt;</code> tag, the parameters include: <code>total</code>, <code>max</code>, <code>offset</code>, <code>sort</code> and <code>order</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    <span class="predefined-type">Iterable</span>&lt;<span class="predefined-type">Book</span>&gt; bookList
+    <span class="predefined-type">Integer</span> bookCount
+    <span class="predefined-type">Integer</span> max <span class="comment">// optional, defaults to 10</span>
+    <span class="predefined-type">Integer</span> offset <span class="comment">// optional, defaults to 0</span>
+    <span class="predefined-type">String</span> sort <span class="comment">// optional</span>
+    <span class="predefined-type">String</span> order <span class="comment">// optional</span>
+}
+json {
+    hal.paginate(<span class="predefined-type">Book</span>, bookCount, max, offset, sort, order)
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Similar to <code>hal.links()</code> the <code>hal.paginate()</code> has to be the first element within the <code>json{}</code> closure.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When accessing <code><a href="http://localhost:8080/book?offset=10" class="bare">http://localhost:8080/book?offset=10</a></code> this produces the navigable output like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">_links</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">self</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/book/index?offset=10&amp;max=10</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en_US</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">first</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/book/index?offset=0&amp;max=10</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en_US</span><span class="delimiter">&quot;</span></span>
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">prev</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/book/index?offset=0&amp;max=10</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en_US</span><span class="delimiter">&quot;</span></span>
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">next</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/book/index?offset=20&amp;max=10</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en_US</span><span class="delimiter">&quot;</span></span>
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">last</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/book/index?offset=40&amp;max=10</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en_US</span><span class="delimiter">&quot;</span></span>
+    }
+  },
+  ...
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If there aren&#8217;t enough results to paginate the navigation links will not appear, Likewise, the <code>prev</code> and <code>next</code> links are only present when there is a previous or next page.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you have other links that you want to include along with the pagination links then you can use the <code>hal.links(..)</code> method with pagination arguments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">model {
+    Author author
+    <span class="predefined-type">Iterable</span>&lt;<span class="predefined-type">Book</span>&gt; bookList
+    <span class="predefined-type">Integer</span> bookCount
+}
+json {
+    <span class="comment">// the model, type to paginate, and the total count</span>
+    hal.links([<span class="key">author</span>:author], <span class="predefined-type">Book</span>, bookCount)
+    ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/introduction.html">&lt;&lt; <strong>1</strong><span>Introduction</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../../guide/markup.html"><strong>3</strong><span>Markup Views</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

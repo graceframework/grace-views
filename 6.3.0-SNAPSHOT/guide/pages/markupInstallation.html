@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>3.2 Installation 6.3.0-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Views</h1>
+            <h3 class="docSubTitle">Provides JSON and Markup views technologies to the Grace framework</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/json.html"><strong>2</strong><span>JSON Views</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/markup.html"><strong>3</strong><span>Markup Views</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../../guide/json.html">&lt;&lt; <strong>2</strong><span>JSON Views</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+
+
+                <div class="project">
+                    <h1>3.2 Installation</h1>
+
+                    <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                </div>
+
+                
+
+                
+
+<h2 id="markupInstallation"><a class="anchor" href="#markupInstallation"></a>3.2 Installation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/6.3.x/docs/src/docs/guide/markup/markupInstallation.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>To activate Markup views, add the following dependency to the <code>dependencies</code> block of your <code>build.gradle</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">compile "org.grails.plugins:views-markup:6.3.0-SNAPSHOT"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To enable Gradle compilation of Markup views for production environment add the following to the <code>buildscript</code> <code>dependencies</code> block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
+    ...
+    dependencies {
+        ...
+        classpath "org.grails.plugins:views-gradle:6.3.0-SNAPSHOT"
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then apply the <code>org.grails.plugins.views-markup</code> Gradle plugin after any Grails core gradle plugins:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">...
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails.grails-web</span><span class="delimiter">&quot;</span></span>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails.plugins.views-markup</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will add a <code>compileMarkupViews</code> task to Gradle that is executed when producing a JAR or WAR file.</p>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../../guide/json.html">&lt;&lt; <strong>2</strong><span>JSON Views</span></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>

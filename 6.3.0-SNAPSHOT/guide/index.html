@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>Grace Views 6.3.0-SNAPSHOT</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
+        <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
+    <script type="text/javascript">
+function addJsClass(el) {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+    </head>
+
+    <body class="body" onload="addJsClass();">
+        <div id="navigation">
+            <div class="navHeader">
+                
+                <span id="logo">
+                    <a href="https://graceframework.org" title="Go to Grace Framework Website">
+                        <img src="../img/grace.svg" alt="Grace Framework" />
+                    </a>
+                </span>
+                
+                <div class="docHeader">
+                    <h1 class="docTitle">Grace Views</h1>
+                    <h3 class="docSubTitle">Provides JSON and Markup views technologies to the Grace framework</h3>
+                    <span class="docVersion">6.3.0-SNAPSHOT</span>
+                </div>
+            </div>
+            <div class="navLinks">
+                <ul>
+                    <li>
+                        <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                            <a href="../guide/index.html" class="button">Table of contents</a>
+                            <div id="nav-summary-childs" style="display:none;">
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="../guide/json.html"><strong>2</strong><span>JSON Views</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="../guide/markup.html"><strong>3</strong><span>Markup Views</span></a></div>
+                                
+                            </div>
+                        </div>
+                    </li>
+                    <li class="separator selected">
+                        <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+                    </li>
+                    <li class="separator selected">
+                        <a id="ref-button" href="../api/index.html">API Docs</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <table id="colset" cellpadding="0" cellspacing="0">
+            <tr>
+                <td id="col1">
+                    <div id="main" class="corner-all">
+
+                        <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                        <div class="project">
+                            <h1>Grace Views</h1>
+                            <p><strong>Authors:</strong> Michael Yan</p>
+                            <p><strong>Version:</strong> 6.3.0-SNAPSHOT</p>
+                            
+                        </div>
+
+                        
+                        <div id="table-of-content">
+                            <h2>Table of Contents</h2>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="../guide/json.html"><strong>2</strong><span>JSON Views</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonIntroduction"><strong>2.1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#history"><strong>2.2</strong><span>Version History</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonInstallation"><strong>2.3</strong><span>Installation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#templates"><strong>2.4</strong><span>Templates</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#rendering"><strong>2.5</strong><span>Rendering Domain Classes</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonViewApi"><strong>2.6</strong><span>JSON View API</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#modelNaming"><strong>2.7</strong><span>Model Naming</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonContentNegotiation"><strong>2.8</strong><span>Content Negotiation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonHal"><strong>2.9</strong><span>HAL Support</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonapi"><strong>2.10</strong><span>JSON API Support</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#templateEngine"><strong>2.11</strong><span>The JsonTemplateEngine</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#staticCompilation"><strong>2.12</strong><span>Static Compilation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonTesting"><strong>2.13</strong><span>Testing</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#pluginSupport"><strong>2.14</strong><span>Plugin Support</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#jsonConfiguration"><strong>2.15</strong><span>Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#converters"><strong>2.16</strong><span>Custom Converters</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#intellij"><strong>2.17</strong><span>IntelliJ Support</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/json.html#debugging"><strong>2.18</strong><span>Debugging Views</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="../guide/markup.html"><strong>3</strong><span>Markup Views</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/markup.html#markupIntroduction"><strong>3.1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/markup.html#markupInstallation"><strong>3.2</strong><span>Installation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/markup.html#markupViewApi"><strong>3.3</strong><span>Markup View API</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="../guide/markup.html#markupConfiguration"><strong>3.4</strong><span>Configuration</span></a></div>
+                            
+                            <div style="clear:both" ></div>
+                        </div>
+                        
+                        
+                    </div>
+                </td>
+                <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                </div>
+            </div>
+        </td>
+            </tr>
+        </table>
+
+        <div id="footer">
+            Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+            
+        </div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+    </body>
+</html>
