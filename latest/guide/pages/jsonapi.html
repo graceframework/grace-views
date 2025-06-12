@@ -103,16 +103,16 @@ function addJsClass() {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://jsonapi.org/">JSON API</a> is a standard format for representing JSON.</p>
+<p><a href="https://jsonapi.org/">JSON API</a> is a standard format for representing JSON.</p>
 </div>
 <div class="paragraph">
-<p>The JSON views plugin for Grails provides JSON API support out-of-the-box. All JSON views have access to the <code>jsonapi</code> instance which implements <a href="api/grails/plugin/json/view/api/JsonApiViewHelper.html">JsonApiViewHelper</a>.</p>
+<p>The JSON views plugin for Grace provides JSON API support out-of-the-box. All JSON views have access to the <code>jsonapi</code> instance which implements <a href="../api/grails/plugin/json/view/api/JsonApiViewHelper.html">JsonApiViewHelper</a>.</p>
 </div>
 <div class="paragraph">
-<p>Grails views makes a best effort to conform to the JSON API standard, however that only applies to the format of the data. The specification makes many assertions about response codes, url conventions, and other server related concepts that are overreaching.</p>
+<p>Grace views makes a best effort to conform to the JSON API standard, however that only applies to the format of the data. The specification makes many assertions about response codes, url conventions, and other server related concepts that are overreaching.</p>
 </div>
 <div class="paragraph">
-<p>The JSON API support in Grails also only applies to domain classes. Because the specification relies on concepts of relationships and identifiers, there is no clear way to determine how those concepts would apply to conventional Groovy classes. As a result, normal Groovy classes are not supported.</p>
+<p>The JSON API support in Grace also only applies to domain classes. Because the specification relies on concepts of relationships and identifiers, there is no clear way to determine how those concepts would apply to conventional Groovy classes. As a result, normal Groovy classes are not supported.</p>
 </div>
 <div class="paragraph">
 <p>The simplest example of using JSON API simply passes a domain class to the <code>render</code> method of the <code>jsonapi</code> object.</p>
@@ -175,7 +175,7 @@ json jsonapi.render(book)</code></pre>
 <h2 id="_json_api_object">JSON API Object</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To include the <a href="http://jsonapi.org/format/#document-jsonapi-object">JSON API Object</a> in the response, include a <code>jsonApiObject</code> argument to the <code>render</code> method.</p>
+<p>To include the <a href="https://jsonapi.org/format/#document-jsonapi-object">JSON API Object</a> in the response, include a <code>jsonApiObject</code> argument to the <code>render</code> method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -194,7 +194,7 @@ json jsonapi.render(book, [<span class="key">jsonApiObject</span>: <span class="
 <h2 id="_meta_object">Meta Object</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To add <a href="http://jsonapi.org/format/#document-meta">metadata</a> to your response, the <code>meta</code> argument can be passed to render with the value being the object that should be rendered. If this functionality is used in addition to <code>jsonApiObject: true</code>, the metadata will be rendered as the "meta" property of the "jsonapi" object.</p>
+<p>To add <a href="https://jsonapi.org/format/#document-meta">metadata</a> to your response, the <code>meta</code> argument can be passed to render with the value being the object that should be rendered. If this functionality is used in addition to <code>jsonApiObject: true</code>, the metadata will be rendered as the "meta" property of the "jsonapi" object.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -213,7 +213,7 @@ json jsonapi.render(book, [<span class="key">meta</span>: [<span class="key">nam
 <h2 id="_rendering_errors">Rendering Errors</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API specification has <a href="http://jsonapi.org/format/#errors">instructions on how to render errors</a>. In the case of the Grails implementation, this applies to both exceptions and validation errors.</p>
+<p>The JSON API specification has <a href="https://jsonapi.org/format/#errors">instructions on how to render errors</a>. In the case of the Grace implementation, this applies to both exceptions and validation errors.</p>
 </div>
 <div class="sect2">
 <h3 id="_exceptions">Exceptions</h3>
@@ -309,7 +309,7 @@ json jsonapi.render(book, [<span class="key">meta</span>: [<span class="key">nam
 <h2 id="_pagination">Pagination</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API specification has a section which explains <a href="http://jsonapi.org/format/#fetching-pagination">pagination</a>. The Grails implementation follows that specification as it is written.</p>
+<p>The JSON API specification has a section which explains <a href="https://jsonapi.org/format/#fetching-pagination">pagination</a>. The Grace implementation follows that specification as it is written.</p>
 </div>
 <div class="paragraph">
 <p>To enable pagination links in your output you must be rendering a collection and also include some arguments in addition to the collection being rendered. There are two required arguments: total and resource. The default offset is 0 and max is 10.</p>
@@ -354,7 +354,7 @@ json jsonapi.render(books, [<span class="key">pagination</span>: [<span class="k
 <h2 id="_associations">Associations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API specification details how relationships should be rendered. The first way is through a relationships object described <a href="http://jsonapi.org/format/#document-resource-object-relationships">here</a>. By default that is now relationships will be rendered in json views.</p>
+<p>The JSON API specification details how relationships should be rendered. The first way is through a relationships object described <a href="https://jsonapi.org/format/#document-resource-object-relationships">here</a>. By default that is now relationships will be rendered in json views.</p>
 </div>
 <div class="paragraph">
 <p>If you do not wish to render the relationships at all, the <code>associations</code> argument can be passed to <code>render</code> with the value of false.</p>
@@ -368,7 +368,7 @@ json jsonapi.render(book, [<span class="key">associations</span>: <span class="p
 </div>
 </div>
 <div class="paragraph">
-<p>The specification also has a section that describes <a href="http://jsonapi.org/format/#document-compound-documents">compound documents</a>. If you want one or more of your relationships to be rendered in that manner, you can include the <code>expand</code> argument.</p>
+<p>The specification also has a section that describes <a href="https://jsonapi.org/format/#document-compound-documents">compound documents</a>. If you want one or more of your relationships to be rendered in that manner, you can include the <code>expand</code> argument.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -384,7 +384,7 @@ json jsonapi.render(book, [<span class="key">expand</span>: <span class="string"
 <h2 id="_includes_excludes">Includes / Excludes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API implementation in Grails supports the same includes and excludes support as normal json views. Please see the section on <a href="rendering.html">rendering</a> for details.</p>
+<p>The JSON API implementation in Grace supports the same includes and excludes support as normal json views. Please see the section on <a href="rendering.html">rendering</a> for details.</p>
 </div>
 </div>
 </div>
@@ -392,10 +392,10 @@ json jsonapi.render(book, [<span class="key">expand</span>: <span class="string"
 <h2 id="_identifier_rendering">Identifier Rendering</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Grails provides a way to customize the rendering of your domain class identifiers. To override the default behavior, register a bean that implements <a href="api/grails/plugin/json/view/api/jsonapi/JsonApiIdRenderStrategy.html">JsonApiIdRenderStrategy</a>.</p>
+<p>Grace provides a way to customize the rendering of your domain class identifiers. To override the default behavior, register a bean that implements <a href="../api/grails/plugin/json/view/api/jsonapi/JsonApiIdRenderStrategy.html">JsonApiIdRenderStrategy</a>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/conf/spring/resources.groovy</div>
+<div class="title">app/conf/spring/resources.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">beans = {
     jsonApiIdRenderStrategy(MyCustomImplementation)

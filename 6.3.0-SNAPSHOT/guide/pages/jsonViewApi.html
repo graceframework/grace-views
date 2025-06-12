@@ -103,10 +103,10 @@ function addJsClass() {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>All JSON views subclass the <a href="api/grails/plugin/json/view/JsonViewTemplate.html">JsonViewTemplate</a> class by default.</p>
+<p>All JSON views subclass the <a href="../api/grails/plugin/json/view/template/JsonViewTemplate.html">JsonViewTemplate</a> class by default.</p>
 </div>
 <div class="paragraph">
-<p>The <code>JsonViewTemplate</code> superclass implements the <a href="api/grails/plugin/json/view/api/JsonView.html">JsonView</a> trait which in turn extends the the <a href="api/grails/views/api/GrailsView.html">GrailsView</a> trait.</p>
+<p>The <code>JsonViewTemplate</code> superclass implements the <a href="../api/grails/plugin/json/view/api/JsonView.html">JsonView</a> trait which in turn extends the the <a href="../api/grails/views/api/GrailsView.html">GrailsView</a> trait.</p>
 </div>
 <div class="paragraph">
 <p>Thanks to these traits several methods and properties are available to JSON views that can be used to accomplish different tasks.</p>
@@ -136,12 +136,13 @@ function addJsClass() {
 <h2 id="_altering_the_response_headers">Altering the Response Headers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To customize content types and headers use the <code>response</code> object defined by the <a href="api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
+<p>To customize content types and headers use the <code>response</code> object defined by the <a href="../api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">response.contentType <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
 response.header <span class="string"><span class="delimiter">&quot;</span><span class="content">Token</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>
+
 json.person {
     name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
@@ -168,25 +169,25 @@ The methods available are only a subset of the methods available via the <code>H
 <h2 id="_accessing_the_request">Accessing the Request</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Various aspects of the request can be accessed by the <code>request</code> object defined by the <a href="api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
+<p>Various aspects of the request can be accessed by the <code>request</code> object defined by the <a href="../api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">json.person {
- name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
- userAgent request.getHeader(<span class="string"><span class="delimiter">'</span><span class="content">User-Agent</span><span class="delimiter">'</span></span>)
+    name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
+    userAgent request.getHeader(<span class="string"><span class="delimiter">'</span><span class="content">User-Agent</span><span class="delimiter">'</span></span>)
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Parameters can be accessed via the <code>params</code> object which is an instance of <a href="api/grails/views/api/http/Parameters.html">Parameters</a>:</p>
+<p>Parameters can be accessed via the <code>params</code> object which is an instance of <a href="../api/grails/views/api/http/Parameters.html">Parameters</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">json.person {
- name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
- first params.int(<span class="string"><span class="delimiter">'</span><span class="content">offset</span><span class="delimiter">'</span></span>, <span class="integer">0</span>)
- sort params.get(<span class="string"><span class="delimiter">'</span><span class="content">sort</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>)
+    name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
+    first params.int(<span class="string"><span class="delimiter">'</span><span class="content">offset</span><span class="delimiter">'</span></span>, <span class="integer">0</span>)
+    sort params.get(<span class="string"><span class="delimiter">'</span><span class="content">sort</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>)
 }</code></pre>
 </div>
 </div>
@@ -252,7 +253,7 @@ The methods available are only a subset of the methods available via the <code>H
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-For more complex message lookups the <code>messageSource</code> property is an instance of the Spring <a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/MessageSource.html">MessageSource</a> class.
+For more complex message lookups the <code>messageSource</code> property is an instance of the Spring <a href="https://docs.spring.io/spring/docs/6.1.20/javadoc-api/org/springframework/context/MessageSource.html">MessageSource</a> class.
 </td>
 </tr>
 </table>

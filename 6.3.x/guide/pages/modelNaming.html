@@ -103,7 +103,7 @@ function addJsClass() {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Grails Framework supports a convention for the model names in your JSON views. If the convention does not meet your needs, model variables can be explicitly defined.</p>
+<p>Grace Framework supports a convention for the model names in your JSON views. If the convention does not meet your needs, model variables can be explicitly defined.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -127,7 +127,7 @@ Some model names are <em>reserved</em> since there are properties of the same na
 <p>Given a view:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> message
@@ -141,7 +141,7 @@ json.message {
 <p>Then the controller has to specify the name to be used in the view:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/controllers/HelloController.groovy</div>
+<div class="title">app/controllers/HelloController.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">index</span>() {
     respond(<span class="key">message</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)
@@ -153,7 +153,7 @@ json.message {
 <p>When using a template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/_msg.gson</div>
+<div class="title">app/views/hello/_msg.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> message
@@ -200,7 +200,7 @@ json {
 <p>When rendering a non iterable object, the property name of the type is used when a name is not specified.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> string
@@ -214,7 +214,7 @@ json.message {
 <p>The variable can be passed in directly to <code>respond</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/controllers/HelloController.groovy</div>
+<div class="title">app/controllers/HelloController.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">index</span>() {
     respond(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)
@@ -225,7 +225,7 @@ json.message {
 <p>This also applies when rendering templates with <code>tmpl</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/_msg.gson</div>
+<div class="title">app/views/hello/_msg.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> string
@@ -236,7 +236,7 @@ json.message {
 </div>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> someString
@@ -260,7 +260,7 @@ json tmpl.msg(someString)</code></pre>
 <p>If the collection is empty, <code>emptyCollection</code> will be used as the default model name. This is due to not being able to inspect the first object&#8217;s type.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> stringList
@@ -274,7 +274,7 @@ json {
 <p>The variable can be passed in directly to <code>respond</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/controllers/HelloController.groovy</div>
+<div class="title">app/controllers/HelloController.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">index</span>() {
     respond([<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>])
@@ -303,7 +303,7 @@ The component+collection convention does not apply when rendering collections wi
 <p>Given the following template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/_msg.gson</div>
+<div class="title">app/views/hello/_msg.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> msg <span class="comment">// or String string</span>
@@ -317,7 +317,7 @@ json.message {
 <p>To render a single message from another view using the template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">json.message tmpl.msg(message)</code></pre>
 </div>
@@ -326,7 +326,7 @@ json.message {
 <p>To render a collection of messages from another view using the template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; stringList

@@ -101,7 +101,7 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>It is possible to register custom converters to change how a given class is rendered with json views. To do so, create a class that implements <a href="api/grails/plugin/json/builder/JsonGenerator.Converter.html">Converter</a>. Then you must register the class in <code>src/main/resources/META-INF/services/grails.plugin.json.builder.JsonGenerator$Converter</code>.</p>
+<p>It is possible to register custom converters to change how a given class is rendered with json views. To do so, create a class that implements <a href="../api/grails/plugin/json/builder/JsonGenerator.Converter.html">Converter</a>. Then you must register the class in <code>src/main/resources/META-INF/services/grails.plugin.json.builder.JsonGenerator$Converter</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -127,7 +127,7 @@ function addJsClass() {
 </div>
 </div>
 <div class="paragraph">
-<p>Because plugins could potentially provide converters, you can also determine the order by implementing the <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/core/Ordered.html">Ordered</a> interface in your converter.</p>
+<p>Because plugins could potentially provide converters, you can also determine the order by implementing the <a href="https://docs.spring.io/spring/docs/6.1.20/javadoc-api/org/springframework/core/Ordered.html">Ordered</a> interface in your converter.</p>
 </div>
 <div class="listingblock">
 <div class="title">src/main/resources/META-INF/services/grails.plugin.json.builder.JsonGenerator$Converter</div>

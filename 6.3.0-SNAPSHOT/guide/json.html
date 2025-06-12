@@ -169,10 +169,10 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>JSON views are written in Groovy, end with the file extension <code>gson</code> and reside in the <code>grails-app/views</code> directory. They provide a DSL for producing output in the JSON format. A hello world example can be seen below:</p>
+<p>JSON views are written in Groovy, end with the file extension <code>gson</code> and reside in the <code>app/views</code> directory. They provide a DSL for producing output in the JSON format. A hello world example can be seen below:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/hello.gson</code></div>
+<div class="title"><code>app/views/hello.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">json.message {
     hello <span class="string"><span class="delimiter">&quot;</span><span class="content">world</span><span class="delimiter">&quot;</span></span>
@@ -188,7 +188,7 @@ function addJsClass() {
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>json</code> variable is an instance of <a href="http://docs.groovy-lang.org/latest/html/api/groovy/json/StreamingJsonBuilder.html">StreamingJsonBuilder</a>. See the <a href="http://docs.groovy-lang.org/latest/html/documentation/core-domain-specific-languages.html#_streamingjsonbuilder">documentation</a> in the Groovy user guide for more information on <code>StreamingJsonBuilder</code>.</p>
+<p>The <code>json</code> variable is an instance of <a href="https://docs.groovy-lang.org/4.0.26/html/api/groovy/json/StreamingJsonBuilder.html">StreamingJsonBuilder</a>. See the <a href="https://docs.groovy-lang.org/4.0.26/html/documentation/core-domain-specific-languages.html#_streamingjsonbuilder">documentation</a> in the Groovy user guide for more information on <code>StreamingJsonBuilder</code>.</p>
 </div>
 <div class="paragraph">
 <p>More example usages:</p>
@@ -204,7 +204,7 @@ json([<span class="integer">1</span>,<span class="integer">2</span>,<span class=
 <p>You can specify a model to view in one of two ways. Either with a <code>model</code> block:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/hello.gson</code></div>
+<div class="title"><code>app/views/hello.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> message
@@ -218,9 +218,10 @@ json.message {
 <p>Or with the <code>@Field</code> transformation provided by Groovy:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/hello.gson</code></div>
+<div class="title"><code>app/views/hello.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">import</span> <span class="include">groovy.transform.Field</span>
+
 <span class="annotation">@Field</span> <span class="predefined-type">String</span> message
 json.message {
     hello message
@@ -243,7 +244,7 @@ json.message {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile "org.grails.plugins:views-json:6.3.0-SNAPSHOT"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.plugins:views-json:6.3.0-SNAPSHOT"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -251,7 +252,7 @@ json.message {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile "org.grails.plugins:views-json-templates:6.3.0-SNAPSHOT"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.plugins:views-json-templates:6.3.0-SNAPSHOT"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -263,19 +264,19 @@ json.message {
     ...
     dependencies {
         ...
-        classpath "org.grails.plugins:views-gradle:6.3.0-SNAPSHOT"
+        classpath "org.graceframework.plugins:views-gradle:6.3.0-SNAPSHOT"
     }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then apply the <code>org.grails.plugins.views-json</code> Gradle plugin after any Grails core gradle plugins:</p>
+<p>Then apply the <code>org.grails.plugins.views-json</code> Gradle plugin after any Grace core gradle plugins:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">...
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails.grails-web</span><span class="delimiter">&quot;</span></span>
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails.plugins.views-json</span><span class="delimiter">&quot;</span></span></code></pre>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.grace-web</span><span class="delimiter">&quot;</span></span>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.plugins.views-json</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -301,7 +302,7 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 <p>You can define templates starting with underscore <code>_</code>. For example given the following template called <code>_person.gson</code>:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/_person.gson</code></div>
+<div class="title"><code>app/views/person/_person.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -316,7 +317,7 @@ json {
 <p>You can render the template with the <code>g.render</code> method:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -328,7 +329,7 @@ json g.render(<span class="key">template</span>:<span class="string"><span class
 <p>The above assumes the view is in the same directory as the template. If this is not the case you may need to use a relative URI to the template:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/family/show.gson</code></div>
+<div class="title"><code>app/views/family/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -343,7 +344,7 @@ json g.render(<span class="key">template</span>:<span class="string"><span class
 <p>The previous example can be simplified using the template namespace:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -358,7 +359,7 @@ json tmpl.person(person)</code></pre>
 <p>The argument to the template becomes the model. The name of the model variable is the same as the template name. If you wish to alter this you can pass a map instead:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -373,7 +374,7 @@ json tmpl.person(<span class="key">individual</span>:person)</code></pre>
 <p>This technique may also be used when you want to render a template using a relative path:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -385,7 +386,7 @@ json tmpl.<span class="string"><span class="delimiter">'</span><span class="cont
 <p>The template namespace even accepts a collection (or any <code>Iterable</code> object):</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -405,7 +406,7 @@ json tmpl.person(people)</code></pre>
 <p>When rendering an <code>Iterable</code>, you can also specify the model name:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -420,7 +421,7 @@ json tmpl.person(<span class="string"><span class="delimiter">&quot;</span><span
 <p>If you need additional data that will be static over each iteration of the template, you can also pass in a model:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -435,7 +436,7 @@ json tmpl.person(people, [<span class="key">relationship</span>: <span class="st
 <p>By passing in a collection the plugin will iterate over each element on the collection and render the template as a JSON array. If you do not want this to happen then use the variation of the method that takes a map instead:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -485,7 +486,7 @@ json {
 <p>JSON templates can inherit from a parent template. For example consider the following parent template:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/_parent.gson</code></div>
+<div class="title"><code>app/views/_parent.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">Object</span> object
@@ -500,7 +501,7 @@ json {
 <p>A child template can inherit from the above template by using the <code>inherits</code> method:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/_person.gson</code></div>
+<div class="title"><code>app/views/_person.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">inherits <span class="key">template</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">parent</span><span class="delimiter">&quot;</span></span>
 model {
@@ -516,17 +517,17 @@ json {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="json"> {
+<pre class="CodeRay highlight"><code data-lang="json">{
    <span class="key"><span class="delimiter">&quot;</span><span class="content">_links</span><span class="delimiter">&quot;</span></span>: {
-     <span class="key"><span class="delimiter">&quot;</span><span class="content">self</span><span class="delimiter">&quot;</span></span>: {
-       <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/person/1</span><span class="delimiter">&quot;</span></span>,
-       <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>,
-       <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
-     }
-   },
-   <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>,
-   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Fred</span><span class="delimiter">&quot;</span></span>
- }</code></pre>
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">self</span><span class="delimiter">&quot;</span></span>: {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/person/1</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
+        }
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Fred</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -758,10 +759,10 @@ request parameters can also be used to expand associations (eg. <code>?expand=au
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>All JSON views subclass the <a href="api/grails/plugin/json/view/JsonViewTemplate.html">JsonViewTemplate</a> class by default.</p>
+<p>All JSON views subclass the <a href="../api/grails/plugin/json/view/template/JsonViewTemplate.html">JsonViewTemplate</a> class by default.</p>
 </div>
 <div class="paragraph">
-<p>The <code>JsonViewTemplate</code> superclass implements the <a href="api/grails/plugin/json/view/api/JsonView.html">JsonView</a> trait which in turn extends the the <a href="api/grails/views/api/GrailsView.html">GrailsView</a> trait.</p>
+<p>The <code>JsonViewTemplate</code> superclass implements the <a href="../api/grails/plugin/json/view/api/JsonView.html">JsonView</a> trait which in turn extends the the <a href="../api/grails/views/api/GrailsView.html">GrailsView</a> trait.</p>
 </div>
 <div class="paragraph">
 <p>Thanks to these traits several methods and properties are available to JSON views that can be used to accomplish different tasks.</p>
@@ -791,12 +792,13 @@ request parameters can also be used to expand associations (eg. <code>?expand=au
 <h2 id="_altering_the_response_headers">Altering the Response Headers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To customize content types and headers use the <code>response</code> object defined by the <a href="api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
+<p>To customize content types and headers use the <code>response</code> object defined by the <a href="../api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">response.contentType <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
 response.header <span class="string"><span class="delimiter">&quot;</span><span class="content">Token</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>
+
 json.person {
     name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
@@ -823,25 +825,25 @@ The methods available are only a subset of the methods available via the <code>H
 <h2 id="_accessing_the_request">Accessing the Request</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Various aspects of the request can be accessed by the <code>request</code> object defined by the <a href="api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
+<p>Various aspects of the request can be accessed by the <code>request</code> object defined by the <a href="../api/grails/views/api/HttpView.html">HttpView</a> trait:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">json.person {
- name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
- userAgent request.getHeader(<span class="string"><span class="delimiter">'</span><span class="content">User-Agent</span><span class="delimiter">'</span></span>)
+    name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
+    userAgent request.getHeader(<span class="string"><span class="delimiter">'</span><span class="content">User-Agent</span><span class="delimiter">'</span></span>)
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Parameters can be accessed via the <code>params</code> object which is an instance of <a href="api/grails/views/api/http/Parameters.html">Parameters</a>:</p>
+<p>Parameters can be accessed via the <code>params</code> object which is an instance of <a href="../api/grails/views/api/http/Parameters.html">Parameters</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">json.person {
- name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
- first params.int(<span class="string"><span class="delimiter">'</span><span class="content">offset</span><span class="delimiter">'</span></span>, <span class="integer">0</span>)
- sort params.get(<span class="string"><span class="delimiter">'</span><span class="content">sort</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>)
+    name <span class="string"><span class="delimiter">&quot;</span><span class="content">bob</span><span class="delimiter">&quot;</span></span>
+    first params.int(<span class="string"><span class="delimiter">'</span><span class="content">offset</span><span class="delimiter">'</span></span>, <span class="integer">0</span>)
+    sort params.get(<span class="string"><span class="delimiter">'</span><span class="content">sort</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">name</span><span class="delimiter">'</span></span>)
 }</code></pre>
 </div>
 </div>
@@ -907,7 +909,7 @@ The methods available are only a subset of the methods available via the <code>H
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-For more complex message lookups the <code>messageSource</code> property is an instance of the Spring <a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/context/MessageSource.html">MessageSource</a> class.
+For more complex message lookups the <code>messageSource</code> property is an instance of the Spring <a href="https://docs.spring.io/spring/docs/6.1.20/javadoc-api/org/springframework/context/MessageSource.html">MessageSource</a> class.
 </td>
 </tr>
 </table>
@@ -971,7 +973,7 @@ For more complex message lookups the <code>messageSource</code> property is an i
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Grails Framework supports a convention for the model names in your JSON views. If the convention does not meet your needs, model variables can be explicitly defined.</p>
+<p>Grace Framework supports a convention for the model names in your JSON views. If the convention does not meet your needs, model variables can be explicitly defined.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -995,7 +997,7 @@ Some model names are <em>reserved</em> since there are properties of the same na
 <p>Given a view:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> message
@@ -1009,7 +1011,7 @@ json.message {
 <p>Then the controller has to specify the name to be used in the view:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/controllers/HelloController.groovy</div>
+<div class="title">app/controllers/HelloController.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">index</span>() {
     respond(<span class="key">message</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)
@@ -1021,7 +1023,7 @@ json.message {
 <p>When using a template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/_msg.gson</div>
+<div class="title">app/views/hello/_msg.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> message
@@ -1068,7 +1070,7 @@ json {
 <p>When rendering a non iterable object, the property name of the type is used when a name is not specified.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> string
@@ -1082,7 +1084,7 @@ json.message {
 <p>The variable can be passed in directly to <code>respond</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/controllers/HelloController.groovy</div>
+<div class="title">app/controllers/HelloController.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">index</span>() {
     respond(<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)
@@ -1093,7 +1095,7 @@ json.message {
 <p>This also applies when rendering templates with <code>tmpl</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/_msg.gson</div>
+<div class="title">app/views/hello/_msg.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> string
@@ -1104,7 +1106,7 @@ json.message {
 </div>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> someString
@@ -1128,7 +1130,7 @@ json tmpl.msg(someString)</code></pre>
 <p>If the collection is empty, <code>emptyCollection</code> will be used as the default model name. This is due to not being able to inspect the first object&#8217;s type.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> stringList
@@ -1142,7 +1144,7 @@ json {
 <p>The variable can be passed in directly to <code>respond</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/controllers/HelloController.groovy</div>
+<div class="title">app/controllers/HelloController.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">index</span>() {
     respond([<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>])
@@ -1171,7 +1173,7 @@ The component+collection convention does not apply when rendering collections wi
 <p>Given the following template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/_msg.gson</div>
+<div class="title">app/views/hello/_msg.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">String</span> msg <span class="comment">// or String string</span>
@@ -1185,7 +1187,7 @@ json.message {
 <p>To render a single message from another view using the template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">json.message tmpl.msg(message)</code></pre>
 </div>
@@ -1194,7 +1196,7 @@ json.message {
 <p>To render a collection of messages from another view using the template:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/hello/index.gson</div>
+<div class="title">app/views/hello/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; stringList
@@ -1224,10 +1226,10 @@ json {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>GSON views integrate with Grails' content negotiation infrastructure. For example if you create two views called <code>grails-app/views/book/show/show.gsp</code> (for HTML) and <code>grails-app/views/book/show/show.gson</code> (for JSON), you can then define the following action:</p>
+<p>GSON views integrate with Grace' content negotiation infrastructure. For example if you create two views called <code>app/views/book/show/show.gsp</code> (for HTML) and <code>app/views/book/show/show.gson</code> (for JSON), you can then define the following action:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/controllers/myapp/BookController.groovy</code></div>
+<div class="title"><code>app/controllers/myapp/BookController.groovy</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">def</span> <span class="function">show</span>() {
     respond <span class="predefined-type">Book</span>.get(params.id)
@@ -1249,7 +1251,7 @@ json {
 <p>Content negotiation also works nicely with domain classes, for example if you want to define a template to render any instance of the <code>Book</code> domain class you can create a <code>gson</code> file that matches the class name.</p>
 </div>
 <div class="paragraph">
-<p>For example given a class called <code>demo.Book</code> you can create <code>grails-app/views/book/_book.gson</code> and whenever <code>respond</code> is called with an instance of <code>Book</code> Grails will render <code>_book.gson</code>.</p>
+<p>For example given a class called <code>demo.Book</code> you can create <code>app/views/book/_book.gson</code> and whenever <code>respond</code> is called with an instance of <code>Book</code> Grace will render <code>_book.gson</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1269,10 +1271,10 @@ json {
 </div>
 </div>
 <div class="paragraph">
-<p>Then you can create a corresponding <code>grails-app/views/book/index.gson</code> file that renders each book:</p>
+<p>Then you can create a corresponding <code>app/views/book/index.gson</code> file that renders each book:</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/views/book/index.gson</div>
+<div class="title">app/views/book/index.gson</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="annotation">@Field</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">Book</span>&gt; bookList
 
@@ -1286,13 +1288,13 @@ json tmpl.book(bookList)</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When responding with a list of objects Grails automatically appends the suffix "List" to the model name, so in this case the model name is <code>bookList</code>
+When responding with a list of objects Grace automatically appends the suffix "List" to the model name, so in this case the model name is <code>bookList</code>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>By calling the <code>tmpl.book(..)</code> method with the list of books the <code>grails-app/views/book/_book.gson</code> template will be rendered for each one and a JSON array returned.</p>
+<p>By calling the <code>tmpl.book(..)</code> method with the list of books the <code>app/views/book/_book.gson</code> template will be rendered for each one and a JSON array returned.</p>
 </div>
 </div>
 </div>
@@ -1300,7 +1302,7 @@ When responding with a list of objects Grails automatically appends the suffix "
 <h2 id="_global_default_template">Global Default Template</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can also define a <code>/object/_object</code> template that is rendered by default if no other template is found during content negotiation. To do this create a file called <code>/grails-app/views/object/_object.gson</code> where the name of the model is <code>object</code>, for example:</p>
+<p>You can also define a <code>/object/_object</code> template that is rendered by default if no other template is found during content negotiation. To do this create a file called <code>/app/views/object/_object.gson</code> where the name of the model is <code>object</code>, for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1319,7 +1321,7 @@ json g.render(object)</code></pre>
 <p>A typical use case when building REST APIs is the requirement to support different versions of the API. GSON views can be versioned by including the version in the name of the view.</p>
 </div>
 <div class="paragraph">
-<p>Grails will then use the <code>ACCEPT-VERSION</code> header when resolving the view.</p>
+<p>Grace will then use the <code>ACCEPT-VERSION</code> header when resolving the view.</p>
 </div>
 <div class="paragraph">
 <p>For example given a view called <code>/book/show.gson</code> if you wish to deprecate your previous API and create a version 2.0 API, you can rename the previous view <code>/book/show_v1.0.gson</code> and create a new <code>/book/show.gson</code> representing the new version of the API.</p>
@@ -1333,7 +1335,7 @@ json g.render(object)</code></pre>
 <h2 id="_content_negotiation_and_view_resolving_strategy">Content Negotiation and View Resolving Strategy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Grails Framework takes into account a number of factors when attempting to resolve the view including the content type, version and locale.</p>
+<p>Grace Framework takes into account a number of factors when attempting to resolve the view including the content type, version and locale.</p>
 </div>
 <div class="paragraph">
 <p>The paths searched are following:</p>
@@ -1378,7 +1380,7 @@ json g.render(object)</code></pre>
 <h2 id="mimeTypes">Content Negotiation and Custom Mime Types</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Some REST APIs use the notion of custom mime types to represent resources. Within Grails you can for example define custom mime types in <code>grails-app/conf/application.yml</code>:</p>
+<p>Some REST APIs use the notion of custom mime types to represent resources. Within Grace you can for example define custom mime types in <code>app/conf/application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1412,7 +1414,7 @@ json g.render(object)</code></pre>
 <p><a href="http://stateless.co/hal_specification.html">HAL</a> is a standard format for representing JSON that has gained traction for its ability to represent links between resources and provide navigable APIs.</p>
 </div>
 <div class="paragraph">
-<p>The JSON views plugin for Grails provides HAL support out-of-the-box. All JSON views have access to the <code>hal</code> instance which implements <a href="api/grails/plugin/json/view/api/HalViewHelper.html">HalViewHelper</a>.</p>
+<p>The JSON views plugin for Grace provides HAL support out-of-the-box. All JSON views have access to the <code>hal</code> instance which implements <a href="../api/grails/plugin/json/view/api/HalViewHelper.html">HalViewHelper</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -1707,7 +1709,7 @@ json {
 <p>The default HAL response content type is <code>application/hal+json</code>, however as discussed in the section on <a href="json/contentNegotiation.html#mimeTypes">Custom Mime Type</a> you can define your own response content types to represent your resources.</p>
 </div>
 <div class="paragraph">
-<p>For example given the following configuration in <code>grails-app/conf/application.yml</code>:</p>
+<p>For example given the following configuration in <code>app/conf/application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1738,7 +1740,7 @@ json {
 <h2 id="_hal_pagination">HAL Pagination</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON views plugin for Grails provides navigable pagination support.
+<p>The JSON views plugin for Grace provides navigable pagination support.
 Like the GSP <code>&lt;g:paginate&gt;</code> tag, the parameters include: <code>total</code>, <code>max</code>, <code>offset</code>, <code>sort</code> and <code>order</code>.</p>
 </div>
 <div class="paragraph">
@@ -1850,16 +1852,16 @@ json {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://jsonapi.org/">JSON API</a> is a standard format for representing JSON.</p>
+<p><a href="https://jsonapi.org/">JSON API</a> is a standard format for representing JSON.</p>
 </div>
 <div class="paragraph">
-<p>The JSON views plugin for Grails provides JSON API support out-of-the-box. All JSON views have access to the <code>jsonapi</code> instance which implements <a href="api/grails/plugin/json/view/api/JsonApiViewHelper.html">JsonApiViewHelper</a>.</p>
+<p>The JSON views plugin for Grace provides JSON API support out-of-the-box. All JSON views have access to the <code>jsonapi</code> instance which implements <a href="../api/grails/plugin/json/view/api/JsonApiViewHelper.html">JsonApiViewHelper</a>.</p>
 </div>
 <div class="paragraph">
-<p>Grails views makes a best effort to conform to the JSON API standard, however that only applies to the format of the data. The specification makes many assertions about response codes, url conventions, and other server related concepts that are overreaching.</p>
+<p>Grace views makes a best effort to conform to the JSON API standard, however that only applies to the format of the data. The specification makes many assertions about response codes, url conventions, and other server related concepts that are overreaching.</p>
 </div>
 <div class="paragraph">
-<p>The JSON API support in Grails also only applies to domain classes. Because the specification relies on concepts of relationships and identifiers, there is no clear way to determine how those concepts would apply to conventional Groovy classes. As a result, normal Groovy classes are not supported.</p>
+<p>The JSON API support in Grace also only applies to domain classes. Because the specification relies on concepts of relationships and identifiers, there is no clear way to determine how those concepts would apply to conventional Groovy classes. As a result, normal Groovy classes are not supported.</p>
 </div>
 <div class="paragraph">
 <p>The simplest example of using JSON API simply passes a domain class to the <code>render</code> method of the <code>jsonapi</code> object.</p>
@@ -1922,7 +1924,7 @@ json jsonapi.render(book)</code></pre>
 <h2 id="_json_api_object">JSON API Object</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To include the <a href="http://jsonapi.org/format/#document-jsonapi-object">JSON API Object</a> in the response, include a <code>jsonApiObject</code> argument to the <code>render</code> method.</p>
+<p>To include the <a href="https://jsonapi.org/format/#document-jsonapi-object">JSON API Object</a> in the response, include a <code>jsonApiObject</code> argument to the <code>render</code> method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1941,7 +1943,7 @@ json jsonapi.render(book, [<span class="key">jsonApiObject</span>: <span class="
 <h2 id="_meta_object">Meta Object</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To add <a href="http://jsonapi.org/format/#document-meta">metadata</a> to your response, the <code>meta</code> argument can be passed to render with the value being the object that should be rendered. If this functionality is used in addition to <code>jsonApiObject: true</code>, the metadata will be rendered as the "meta" property of the "jsonapi" object.</p>
+<p>To add <a href="https://jsonapi.org/format/#document-meta">metadata</a> to your response, the <code>meta</code> argument can be passed to render with the value being the object that should be rendered. If this functionality is used in addition to <code>jsonApiObject: true</code>, the metadata will be rendered as the "meta" property of the "jsonapi" object.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1960,7 +1962,7 @@ json jsonapi.render(book, [<span class="key">meta</span>: [<span class="key">nam
 <h2 id="_rendering_errors">Rendering Errors</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API specification has <a href="http://jsonapi.org/format/#errors">instructions on how to render errors</a>. In the case of the Grails implementation, this applies to both exceptions and validation errors.</p>
+<p>The JSON API specification has <a href="https://jsonapi.org/format/#errors">instructions on how to render errors</a>. In the case of the Grace implementation, this applies to both exceptions and validation errors.</p>
 </div>
 <div class="sect2">
 <h3 id="_exceptions">Exceptions</h3>
@@ -2056,7 +2058,7 @@ json jsonapi.render(book, [<span class="key">meta</span>: [<span class="key">nam
 <h2 id="_pagination">Pagination</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API specification has a section which explains <a href="http://jsonapi.org/format/#fetching-pagination">pagination</a>. The Grails implementation follows that specification as it is written.</p>
+<p>The JSON API specification has a section which explains <a href="https://jsonapi.org/format/#fetching-pagination">pagination</a>. The Grace implementation follows that specification as it is written.</p>
 </div>
 <div class="paragraph">
 <p>To enable pagination links in your output you must be rendering a collection and also include some arguments in addition to the collection being rendered. There are two required arguments: total and resource. The default offset is 0 and max is 10.</p>
@@ -2101,7 +2103,7 @@ json jsonapi.render(books, [<span class="key">pagination</span>: [<span class="k
 <h2 id="_associations">Associations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API specification details how relationships should be rendered. The first way is through a relationships object described <a href="http://jsonapi.org/format/#document-resource-object-relationships">here</a>. By default that is now relationships will be rendered in json views.</p>
+<p>The JSON API specification details how relationships should be rendered. The first way is through a relationships object described <a href="https://jsonapi.org/format/#document-resource-object-relationships">here</a>. By default that is now relationships will be rendered in json views.</p>
 </div>
 <div class="paragraph">
 <p>If you do not wish to render the relationships at all, the <code>associations</code> argument can be passed to <code>render</code> with the value of false.</p>
@@ -2115,7 +2117,7 @@ json jsonapi.render(book, [<span class="key">associations</span>: <span class="p
 </div>
 </div>
 <div class="paragraph">
-<p>The specification also has a section that describes <a href="http://jsonapi.org/format/#document-compound-documents">compound documents</a>. If you want one or more of your relationships to be rendered in that manner, you can include the <code>expand</code> argument.</p>
+<p>The specification also has a section that describes <a href="https://jsonapi.org/format/#document-compound-documents">compound documents</a>. If you want one or more of your relationships to be rendered in that manner, you can include the <code>expand</code> argument.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2131,7 +2133,7 @@ json jsonapi.render(book, [<span class="key">expand</span>: <span class="string"
 <h2 id="_includes_excludes">Includes / Excludes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON API implementation in Grails supports the same includes and excludes support as normal json views. Please see the section on <a href="rendering.html">rendering</a> for details.</p>
+<p>The JSON API implementation in Grace supports the same includes and excludes support as normal json views. Please see the section on <a href="rendering.html">rendering</a> for details.</p>
 </div>
 </div>
 </div>
@@ -2139,10 +2141,10 @@ json jsonapi.render(book, [<span class="key">expand</span>: <span class="string"
 <h2 id="_identifier_rendering">Identifier Rendering</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Grails provides a way to customize the rendering of your domain class identifiers. To override the default behavior, register a bean that implements <a href="api/grails/plugin/json/view/api/jsonapi/JsonApiIdRenderStrategy.html">JsonApiIdRenderStrategy</a>.</p>
+<p>Grace provides a way to customize the rendering of your domain class identifiers. To override the default behavior, register a bean that implements <a href="../api/grails/plugin/json/view/api/jsonapi/JsonApiIdRenderStrategy.html">JsonApiIdRenderStrategy</a>.</p>
 </div>
 <div class="listingblock">
-<div class="title">grails-app/conf/spring/resources.groovy</div>
+<div class="title">app/conf/spring/resources.groovy</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">beans = {
     jsonApiIdRenderStrategy(MyCustomImplementation)
@@ -2166,10 +2168,10 @@ json jsonapi.render(book, [<span class="key">expand</span>: <span class="string"
 <h2 id="_the_jsontemplateengine">The JsonTemplateEngine</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON Views plugin registers a bean called <code>jsonTemplateEngine</code> of type <a href="api/grails/plugin/json/view/JsonViewTemplateEngine.html">JsonViewTemplateEngine</a>.</p>
+<p>The JSON Views plugin registers a bean called <code>jsonTemplateEngine</code> of type <a href="../api/grails/plugin/json/view/JsonViewTemplateEngine.html">JsonViewTemplateEngine</a>.</p>
 </div>
 <div class="paragraph">
-<p>This class is a regular Groovy <a href="http://docs.groovy-lang.org/latest/html/documentation/template-engines.html">TemplateEngine</a>, and you can use the engine to render JSON views outside the scope of an HTTP request.</p>
+<p>This class is a regular Groovy <a href="https://docs.groovy-lang.org/4.0.26/html/documentation/template-engines.html">TemplateEngine</a>, and you can use the engine to render JSON views outside the scope of an HTTP request.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -2260,13 +2262,14 @@ json {
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy"><span class="keyword">import</span> <span class="include">grails.plugin.json.view.test.*</span>
 <span class="keyword">import</span> <span class="include">spock.lang.Specification</span>
+
 <span class="type">class</span> <span class="class">MySpec</span> <span class="directive">extends</span> Specification <span class="directive">implements</span> JsonViewTest {
     ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The trait provides a number of different <code>render</code> method implementations that can either render a JSON view found in <code>grails-app/views</code> or render an inline String. For example to render an inline template:</p>
+<p>The trait provides a number of different <code>render</code> method implementations that can either render a JSON view found in <code>app/views</code> or render an inline String. For example to render an inline template:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2343,13 +2346,13 @@ Links generated by json views in a unit test may not match what they would norma
 <h2 id="_new_testing_framework">New Testing Framework</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Since the release of json views, a new testing framework was released for Grails. A new trait has been developed that works with the new testing framework that is designed to replace the existing trait. The existing trait will be left as is for backwards compatibility.</p>
+<p>Since the release of json views, a new testing framework was released for Grace. A new trait has been developed that works with the new testing framework that is designed to replace the existing trait. The existing trait will be left as is for backwards compatibility.</p>
 </div>
 <div class="paragraph">
 <p>The new trait works exactly the same way as the old one, however since the new trait is designed to work with the new framework, there are several benefits you can take advantage of. The first is configuration. In the old trait the application configuration was not included in the template engine, which had the potential to produce incorrect results. Other benefits include extensibility and features like <code>@OnceBefore</code>.</p>
 </div>
 <div class="paragraph">
-<p>To get started, add the <code>org.grails:views-json-testing-support:6.3.0-SNAPSHOT</code> dependency to your project and implement the <a href="api/grails/views/json/test/JsonViewUnitTest.html">JsonViewUnitTest</a> trait in your test instead of <code>JsonViewTest</code>.</p>
+<p>To get started, add the <code>org.graceframework:views-json-testing-support:6.3.0-SNAPSHOT</code> dependency to your project and implement the <a href="../api/grails/views/json/test/JsonViewUnitTest.html">JsonViewUnitTest</a> trait in your test instead of <code>JsonViewTest</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2379,18 +2382,18 @@ The new testing trait, like the testing framework, requires Spock.
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Grails plugins as well as standard Gradle Java/Groovy projects can provide json views to your application.</p>
+<p>Grace plugins as well as standard Gradle Java/Groovy projects can provide json views to your application.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_grails_plugins">Grails Plugins</h2>
+<h2 id="_grace_plugins">Grace Plugins</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Since JSON views are compiled all of a plugin&#8217;s views and templates are available for use in your applications.</p>
 </div>
 <div class="paragraph">
-<p>The view resolution will look through all of the application&#8217;s configured plugins for views that match a particular name. By default, the views a plugin supplies should be stored in <code>grails-app/views</code>, just like applications.</p>
+<p>The view resolution will look through all of the application&#8217;s configured plugins for views that match a particular name. By default, the views a plugin supplies should be stored in <code>app/views</code>, just like applications.</p>
 </div>
 </div>
 </div>
@@ -2407,10 +2410,10 @@ The new testing trait, like the testing framework, requires Spock.
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
     repositories {
-        maven { url "https://repo.grails.org/grails/core" }
+        mavenCentral()
     }
     dependencies {
-        classpath "org.grails.plugins:views-gradle:6.3.0-SNAPSHOT"
+        classpath "org.graceframework.plugins:views-gradle:6.3.0-SNAPSHOT"
     }
 }
 
@@ -2419,21 +2422,20 @@ import grails.views.gradle.json.*
 apply plugin:"java"
 
 repositories {
-    maven { url "https://repo.grails.org/grails/core" }
+    mavenCentral()
 }
 
 dependencies {
-    compile "org.grails.plugins:views-json:6.3.0-SNAPSHOT"
-    compileOnly "org.grails:grails-plugin-rest:3.1.7"
-    compileOnly "javax.servlet:javax.servlet-api:4.0.1"
+    implementation "org.graceframework.plugins:views-json:6.3.0-SNAPSHOT"
 }
 
-task( compileViews, type:JsonViewCompilerTask ) {
+task(compileViews, type: JsonViewCompilerTask) {
     source = project.file('src/main/gson')
     destinationDir = project.file('build/classes/main')
     packageName = ""
     classpath = configurations.compileClasspath + configurations.runtimeClasspath
 }
+
 classes.dependsOn compileViews</code></pre>
 </div>
 </div>
@@ -2450,7 +2452,7 @@ classes.dependsOn compileViews</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See the <a href="https://github.com/grails/grails-views/tree/master/json-templates/src/templates/grails/mongodb/geo">GeoJSON templates</a> for MongoDB for example of how it provides global templates for Mongo specific classes.
+See the <a href="https://github.com/graceframework/grace-views/tree/6.3.x/views-json-templates/src/templates/grails/mongodb/geo">GeoJSON templates</a> for MongoDB for example of how it provides global templates for Mongo specific classes.
 </td>
 </tr>
 </table>
@@ -2467,7 +2469,7 @@ See the <a href="https://github.com/grails/grails-views/tree/master/json-templat
 <p>In Gradle <code>project.name</code> is generally calculated from the current directory. That means that if there is mismatch between the current directory and your plugin name view resolution from a plugin could fail.</p>
 </div>
 <div class="paragraph">
-<p>For example consider a plugin named <code>FooBarGrailsPlugin</code>, in this case Grails will search for views that match the plugin name <code>foo-bar</code>. However, if the directory where the plugin is located is called <code>fooBar</code> instead of <code>foo-bar</code> then view resolution will fail and the view will not be found when the plugin is installed into an application.</p>
+<p>For example consider a plugin named <code>FooBarGrailsPlugin</code>, in this case Grace will search for views that match the plugin name <code>foo-bar</code>. However, if the directory where the plugin is located is called <code>fooBar</code> instead of <code>foo-bar</code> then view resolution will fail and the view will not be found when the plugin is installed into an application.</p>
 </div>
 <div class="paragraph">
 <p>To resolve this issue you can customize the <code>compileGsonViews</code> task in the plugin&#8217;s <code>build.gradle</code></p>
@@ -2498,7 +2500,7 @@ See the <a href="https://github.com/grails/grails-views/tree/master/json-templat
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>JSON views configuration can be altered within <code>grails-app/conf/application.yml</code>. Any of the properties within the <a href="api/grails/plugin/json/view/JsonViewConfiguration.html">JsonViewConfiguration</a> interface can be set. The json view configuration extends <a href="api/grails/views/GenericViewConfiguration.html">GenericViewConfiguration</a>, therefore any properties in that interface can be set as well.</p>
+<p>JSON views configuration can be altered within <code>app/conf/application.yml</code>. Any of the properties within the <a href="../api/grails/plugin/json/view/JsonViewConfiguration.html">JsonViewConfiguration</a> interface can be set. The json view configuration extends <a href="../api/grails/views/GenericViewConfiguration.html">GenericViewConfiguration</a>, therefore any properties in that interface can be set as well.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2516,10 +2518,10 @@ See the <a href="https://github.com/grails/grails-views/tree/master/json-templat
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively you can register a new <code>JsonViewConfiguration</code> bean using the bean name <code>jsonViewConfiguration</code> in <code>grails-app/conf/resources.groovy</code>.</p>
+<p>Alternatively you can register a new <code>JsonViewConfiguration</code> bean using the bean name <code>jsonViewConfiguration</code> in <code>app/conf/resources.groovy</code>.</p>
 </div>
 <div class="paragraph">
-<p>The same settings in <code>grails-app/conf/application.yml</code> will also be used by the Gradle plugin for production compilation.</p>
+<p>The same settings in <code>app/conf/application.yml</code> will also be used by the Gradle plugin for production compilation.</p>
 </div>
 <div class="paragraph">
 <p>The Gradle plugin compiles views using a forked compiler. You can configure the forked compilation task in Gradle as follows:</p>
@@ -2540,7 +2542,7 @@ See the <a href="https://github.com/grails/grails-views/tree/master/json-templat
 <h2 id="_changing_the_view_base_class">Changing the view base class</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>All JSON views subclass the <a href="api/grails/plugin/json/view/JsonViewTemplate.html">JsonViewTemplate</a> class by default.</p>
+<p>All JSON views subclass the <a href="../api/grails/plugin/json/view/template/JsonViewTemplate.html">JsonViewTemplate</a> class by default.</p>
 </div>
 <div class="paragraph">
 <p>You can however change the subclass (which should be a subclass of <code>JsonViewTemplate</code>) using configuration:</p>
@@ -2563,7 +2565,7 @@ See the <a href="https://github.com/grails/grails-views/tree/master/json-templat
 <p>Alternatively, rather than modifying the base class, you can instead just add new methods via traits.</p>
 </div>
 <div class="paragraph">
-<p>For example the <a href="api/grails/views/api/HttpView.html">HttpView</a> uses the <code>Enhances</code> annotation to add the <code>page</code> object to all views:</p>
+<p>For example the <a href="../api/grails/views/api/HttpView.html">HttpView</a> uses the <code>Enhances</code> annotation to add the <code>page</code> object to all views:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2596,7 +2598,7 @@ trait HttpView {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The trait cannot be defined in the same project as you are compilation as it needs to be on the classpath of the project you are compiling. You will need to create a Grails plugin and use a multi-project build in this scenario.
+The trait cannot be defined in the same project as you are compilation as it needs to be on the classpath of the project you are compiling. You will need to create a Grace plugin and use a multi-project build in this scenario.
 </td>
 </tr>
 </table>
@@ -2696,7 +2698,7 @@ The trait cannot be defined in the same project as you are compilation as it nee
 
 
 <div class="paragraph">
-<p>It is possible to register custom converters to change how a given class is rendered with json views. To do so, create a class that implements <a href="api/grails/plugin/json/builder/JsonGenerator.Converter.html">Converter</a>. Then you must register the class in <code>src/main/resources/META-INF/services/grails.plugin.json.builder.JsonGenerator$Converter</code>.</p>
+<p>It is possible to register custom converters to change how a given class is rendered with json views. To do so, create a class that implements <a href="../api/grails/plugin/json/builder/JsonGenerator.Converter.html">Converter</a>. Then you must register the class in <code>src/main/resources/META-INF/services/grails.plugin.json.builder.JsonGenerator$Converter</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2722,7 +2724,7 @@ The trait cannot be defined in the same project as you are compilation as it nee
 </div>
 </div>
 <div class="paragraph">
-<p>Because plugins could potentially provide converters, you can also determine the order by implementing the <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/core/Ordered.html">Ordered</a> interface in your converter.</p>
+<p>Because plugins could potentially provide converters, you can also determine the order by implementing the <a href="https://docs.spring.io/spring/docs/6.1.20/javadoc-api/org/springframework/core/Ordered.html">Ordered</a> interface in your converter.</p>
 </div>
 <div class="listingblock">
 <div class="title">src/main/resources/META-INF/services/grails.plugin.json.builder.JsonGenerator$Converter</div>
@@ -2757,13 +2759,13 @@ If you have multiple classes to register, put each one on it&#8217;s own line
 <p>When opening <code>.gson</code> files in Intellij they should be opened with the regular Groovy editor.</p>
 </div>
 <div class="paragraph">
-<p>The plugin includes an <a href="https://github.com/grails/grails-views/blob/master/json/src/main/resources/dsdl/gson.gdsl">IntelliJ GDSL file</a> that provides code completion when using IntelliJ IDEA.</p>
+<p>The plugin includes an <a href="https://github.com/graceframework/grace-views/blob/6.3.x/views-json/src/main/resources/dsdl/gson.gdsl">IntelliJ GDSL file</a> that provides code completion when using IntelliJ IDEA.</p>
 </div>
 <div class="paragraph">
 <p><a href="https://confluence.jetbrains.com/display/GRVY/Scripting+IDE+for+DSL+awareness">Intellij GDSL</a> is a way to describe the available methods and properties so that code completion is available to the developer when opening <code>.gson</code> files.</p>
 </div>
 <div class="paragraph">
-<p>The GDSL file is generally kept up-to-date with the codebase, however if any variation is spotted please <a href="https://github.com/grails/grails-views/issues">raise an issue</a>.</p>
+<p>The GDSL file is generally kept up-to-date with the codebase, however if any variation is spotted please <a href="https://github.com/graceframework/grace-views/issues">raise an issue</a>.</p>
 </div>
 
 
@@ -2811,7 +2813,7 @@ json g.render(book)</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you using the <code>log</code> variable then you will need to enabling logging for the <code>grails.views</code> package in <code>grails-app/conf/logback.groovy</code>
+If you using the <code>log</code> variable then you will need to enabling logging for the <code>grails.views</code> package in <code>app/conf/logback.groovy</code>
 </td>
 </tr>
 </table>

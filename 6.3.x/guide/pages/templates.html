@@ -109,7 +109,7 @@ function addJsClass() {
 <p>You can define templates starting with underscore <code>_</code>. For example given the following template called <code>_person.gson</code>:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/_person.gson</code></div>
+<div class="title"><code>app/views/person/_person.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -124,7 +124,7 @@ json {
 <p>You can render the template with the <code>g.render</code> method:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -136,7 +136,7 @@ json g.render(<span class="key">template</span>:<span class="string"><span class
 <p>The above assumes the view is in the same directory as the template. If this is not the case you may need to use a relative URI to the template:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/family/show.gson</code></div>
+<div class="title"><code>app/views/family/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -151,7 +151,7 @@ json g.render(<span class="key">template</span>:<span class="string"><span class
 <p>The previous example can be simplified using the template namespace:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -166,7 +166,7 @@ json tmpl.person(person)</code></pre>
 <p>The argument to the template becomes the model. The name of the model variable is the same as the template name. If you wish to alter this you can pass a map instead:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -181,7 +181,7 @@ json tmpl.person(<span class="key">individual</span>:person)</code></pre>
 <p>This technique may also be used when you want to render a template using a relative path:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     Person person
@@ -193,7 +193,7 @@ json tmpl.<span class="string"><span class="delimiter">'</span><span class="cont
 <p>The template namespace even accepts a collection (or any <code>Iterable</code> object):</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -213,7 +213,7 @@ json tmpl.person(people)</code></pre>
 <p>When rendering an <code>Iterable</code>, you can also specify the model name:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -228,7 +228,7 @@ json tmpl.person(<span class="string"><span class="delimiter">&quot;</span><span
 <p>If you need additional data that will be static over each iteration of the template, you can also pass in a model:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -243,7 +243,7 @@ json tmpl.person(people, [<span class="key">relationship</span>: <span class="st
 <p>By passing in a collection the plugin will iterate over each element on the collection and render the template as a JSON array. If you do not want this to happen then use the variation of the method that takes a map instead:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/person/show.gson</code></div>
+<div class="title"><code>app/views/person/show.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">List</span>&lt;Person&gt; people = <span class="type">[]</span>
@@ -293,7 +293,7 @@ json {
 <p>JSON templates can inherit from a parent template. For example consider the following parent template:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/_parent.gson</code></div>
+<div class="title"><code>app/views/_parent.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">model {
     <span class="predefined-type">Object</span> object
@@ -308,7 +308,7 @@ json {
 <p>A child template can inherit from the above template by using the <code>inherits</code> method:</p>
 </div>
 <div class="listingblock">
-<div class="title"><code>grails-app/views/_person.gson</code></div>
+<div class="title"><code>app/views/_person.gson</code></div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">inherits <span class="key">template</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">parent</span><span class="delimiter">&quot;</span></span>
 model {
@@ -324,17 +324,17 @@ json {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="json"> {
+<pre class="CodeRay highlight"><code data-lang="json">{
    <span class="key"><span class="delimiter">&quot;</span><span class="content">_links</span><span class="delimiter">&quot;</span></span>: {
-     <span class="key"><span class="delimiter">&quot;</span><span class="content">self</span><span class="delimiter">&quot;</span></span>: {
-       <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/person/1</span><span class="delimiter">&quot;</span></span>,
-       <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>,
-       <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
-     }
-   },
-   <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>,
-   <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Fred</span><span class="delimiter">&quot;</span></span>
- }</code></pre>
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">self</span><span class="delimiter">&quot;</span></span>: {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">href</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">http://localhost:8080/person/1</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">hreflang</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span>,
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">application/hal+json</span><span class="delimiter">&quot;</span></span>
+        }
+    },
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">version</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Fred</span><span class="delimiter">&quot;</span></span>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">

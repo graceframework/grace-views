@@ -105,7 +105,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile "org.grails.plugins:views-json:6.3.0-SNAPSHOT"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.plugins:views-json:6.3.0-SNAPSHOT"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -113,7 +113,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile "org.grails.plugins:views-json-templates:6.3.0-SNAPSHOT"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.plugins:views-json-templates:6.3.0-SNAPSHOT"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -125,19 +125,19 @@ function addJsClass() {
     ...
     dependencies {
         ...
-        classpath "org.grails.plugins:views-gradle:6.3.0-SNAPSHOT"
+        classpath "org.graceframework.plugins:views-gradle:6.3.0-SNAPSHOT"
     }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then apply the <code>org.grails.plugins.views-json</code> Gradle plugin after any Grails core gradle plugins:</p>
+<p>Then apply the <code>org.grails.plugins.views-json</code> Gradle plugin after any Grace core gradle plugins:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">...
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails.grails-web</span><span class="delimiter">&quot;</span></span>
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.grails.plugins.views-json</span><span class="delimiter">&quot;</span></span></code></pre>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.grace-web</span><span class="delimiter">&quot;</span></span>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.plugins.views-json</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">

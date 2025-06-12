@@ -106,7 +106,7 @@ function addJsClass() {
 <p><a href="http://stateless.co/hal_specification.html">HAL</a> is a standard format for representing JSON that has gained traction for its ability to represent links between resources and provide navigable APIs.</p>
 </div>
 <div class="paragraph">
-<p>The JSON views plugin for Grails provides HAL support out-of-the-box. All JSON views have access to the <code>hal</code> instance which implements <a href="api/grails/plugin/json/view/api/HalViewHelper.html">HalViewHelper</a>.</p>
+<p>The JSON views plugin for Grace provides HAL support out-of-the-box. All JSON views have access to the <code>hal</code> instance which implements <a href="../api/grails/plugin/json/view/api/HalViewHelper.html">HalViewHelper</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -401,7 +401,7 @@ json {
 <p>The default HAL response content type is <code>application/hal+json</code>, however as discussed in the section on <a href="json/contentNegotiation.html#mimeTypes">Custom Mime Type</a> you can define your own response content types to represent your resources.</p>
 </div>
 <div class="paragraph">
-<p>For example given the following configuration in <code>grails-app/conf/application.yml</code>:</p>
+<p>For example given the following configuration in <code>app/conf/application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -432,7 +432,7 @@ json {
 <h2 id="_hal_pagination">HAL Pagination</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JSON views plugin for Grails provides navigable pagination support.
+<p>The JSON views plugin for Grace provides navigable pagination support.
 Like the GSP <code>&lt;g:paginate&gt;</code> tag, the parameters include: <code>total</code>, <code>max</code>, <code>offset</code>, <code>sort</code> and <code>order</code>.</p>
 </div>
 <div class="paragraph">
