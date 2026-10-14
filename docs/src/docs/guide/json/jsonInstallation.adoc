@@ -4,14 +4,14 @@ To activate JSON views, add the following dependency to the `dependencies` block
 
 [source,groovy,subs="attributes"]
 ----
-implementation "org.graceframework.plugins:views-json:{version}"
+implementation "org.graceframework.views:grace-views-json:{version}"
 ----
 
 If you are also using MongoDB you may want to add the `views-json-templates` dependency too which includes support for GeoJSON:
 
 [source,groovy,subs="attributes"]
 ----
-implementation "org.graceframework.plugins:views-json-templates:{version}"
+implementation "org.graceframework.views:grace-views-json-templates:{version}"
 ----
 
 To enable Gradle compilation of JSON views for production environment add the following to the `buildscript` `dependencies` block:
@@ -22,18 +22,18 @@ buildscript {
     ...
     dependencies {
         ...
-        classpath "org.graceframework.plugins:views-gradle:{version}"
+        classpath "org.graceframework:grace-gradle-plugin:2024.0.0"
     }
 }
 ----
 
-Then apply the `org.grails.plugins.views-json` Gradle plugin after any Grace core gradle plugins:
+Then apply the `org.graceframework.grace-json` Gradle plugin after any Grace core gradle plugins:
 
 [source,groovy]
 ----
 ...
 apply plugin: "org.graceframework.grace-web"
-apply plugin: "org.graceframework.plugins.views-json"
+apply plugin: "org.graceframework.grace-json"
 ----
 
 This will add a `compileGsonViews` task to Gradle that is executed when producing a JAR or WAR file.

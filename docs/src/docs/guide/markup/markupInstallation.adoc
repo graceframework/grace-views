@@ -3,8 +3,9 @@
 To activate Markup views, add the following dependency to the `dependencies` block of your `build.gradle`:
 
 [source,groovy,subs="attributes"]
-implementation "org.graceframework.plugins:views-markup:{version}"
-
+----
+implementation "org.graceframework.views:grace-views-markup:{version}"
+----
 
 To enable Gradle compilation of Markup views for production environment add the following to the `buildscript` `dependencies` block:
 
@@ -13,15 +14,15 @@ buildscript {
     ...
     dependencies {
         ...
-        classpath "org.graceframework.plugins:views-gradle:{version}"
+        classpath "org.graceframework:grace-gradle-plugin:2024.0.0"
     }
 }
 
-Then apply the `org.grails.plugins.views-markup` Gradle plugin after any Grace core gradle plugins:
+Then apply the `org.graceframework.grace-markup` Gradle plugin after any Grace core gradle plugins:
 
 [source,groovy]
 ...
 apply plugin: "org.graceframework.grace-web"
-apply plugin: "org.graceframework.plugins.views-markup"
+apply plugin: "org.graceframework.grace-markup"
 
 This will add a `compileMarkupViews` task to Gradle that is executed when producing a JAR or WAR file.
