@@ -3,7 +3,7 @@ name: Grace Release
 on:
   push:
     tags:
-      - v*
+      - v7*
 
 permissions:
   contents: write
