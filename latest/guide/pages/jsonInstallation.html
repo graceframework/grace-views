@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>3.2 Installation 6.3.0</title>
+    <title>3.2 Installation 7.0.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -84,7 +84,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>3.2 Installation</h1>
 
-                    <p><strong>Version:</strong> 6.3.0</p>
+                    <p><strong>Version:</strong> 7.0.0</p>
                 </div>
 
                 
@@ -94,7 +94,7 @@ function addJsClass() {
 <h2 id="jsonInstallation"><a class="anchor" href="#jsonInstallation"></a>3.2 Installation</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/6.3.x/docs/src/docs/guide/json/jsonInstallation.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.0.x/docs/src/docs/guide/json/jsonInstallation.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -105,7 +105,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.plugins:views-json:6.3.0"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-json:7.0.0"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -113,7 +113,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.plugins:views-json-templates:6.3.0"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-json-templates:7.0.0"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -125,19 +125,19 @@ function addJsClass() {
     ...
     dependencies {
         ...
-        classpath "org.graceframework.plugins:views-gradle:6.3.0"
+        classpath "org.graceframework:grace-gradle-plugin:2024.0.0"
     }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then apply the <code>org.grails.plugins.views-json</code> Gradle plugin after any Grace core gradle plugins:</p>
+<p>Then apply the <code>org.graceframework.grace-json</code> Gradle plugin after any Grace core gradle plugins:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">...
 apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.grace-web</span><span class="delimiter">&quot;</span></span>
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.plugins.views-json</span><span class="delimiter">&quot;</span></span></code></pre>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.grace-json</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -169,7 +169,7 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 </table>
 
 <div id="footer">
-    Copyright &copy; 2022-2025 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    Copyright &copy; 2022-2026 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
     
 </div>
 
