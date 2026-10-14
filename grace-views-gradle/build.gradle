@@ -3,8 +3,6 @@ plugins {
     id 'groovy'
 }
 
-group = "org.graceframework.plugins"
-
 dependencies {
     compileOnly gradleApi()
     api "org.graceframework:grace-gradle-plugin", {

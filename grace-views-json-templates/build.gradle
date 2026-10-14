@@ -1,7 +1,5 @@
-group = "org.graceframework.plugins"
-
 dependencies {
-    api project(':views-json')
+    api project(':grace-views-json')
     compileOnly "org.graceframework:grace-plugin-rest"
     compileOnly "jakarta.servlet:jakarta.servlet-api"
     compileOnly "org.graceframework:grace-datastore-gorm-mongodb"

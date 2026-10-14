@@ -1,5 +1,3 @@
-group = "org.graceframework"
-
 dependencies {
     api "org.apache.groovy:groovy"
     api "org.graceframework:grace-core", {

@@ -31,6 +31,7 @@ ext {
 
 ext['grace-gorm.version'] = project.gormVersion
 
+group = "org.graceframework.views"
 version = project.projectVersion
 
 apply plugin: 'maven-publish'
@@ -84,7 +85,7 @@ subprojects { project->
         return
     }
 
-    ext.isPlugin = project.name in ['views-component', 'views-markup', 'views-json']
+    ext.isPlugin = project.name in ['grace-views-component', 'grace-views-markup', 'grace-views-json']
 
     apply plugin: 'eclipse'
     apply plugin: 'idea'
@@ -121,7 +122,7 @@ subprojects { project->
 
     apply from: '../publishing/mavenCentral.gradle'
 
-    if (project.name in ["views-core", "views-component", "views-json", "views-markup", "views-json-testing-support"]) {
+    if (project.name in ["grace-views-core", "grace-views-component", "grace-views-json", "grace-views-markup", "grace-views-json-testing-support"]) {
 
         dependencies {
             testImplementation "org.spockframework:spock-core", {

@@ -1,13 +1,13 @@
 rootProject.name = 'Grace.Views'
 
 include(
-    "views-core",
-    "views-component",
-    "views-json",
-    "views-markup",
-    "views-gradle",
-    "views-json-templates",
-    "views-json-testing-support",
+    "grace-views-core",
+    "grace-views-component",
+    "grace-views-json",
+    "grace-views-markup",
+    "grace-views-gradle",
+    "grace-views-json-templates",
+    "grace-views-json-testing-support",
     "docs"
 )
 
