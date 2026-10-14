@@ -1,12 +1,12 @@
 [![Main branch build status](https://github.com/graceframework/grace-views/workflows/Grace%20CI/badge.svg?style=flat)](https://github.com/graceframework/grace-views/actions?query=workflow%3A%Grace+CI%22)
 [![Apache 2.0 license](https://img.shields.io/badge/License-APACHE%202.0-green.svg?logo=APACHE&style=flat)](https://opensource.org/licenses/Apache-2.0)
-[![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.graceframework/views-core.svg?label=Maven%20Central&logo=apache-maven&style=flat)](https://search.maven.org/search?q=g:org.graceframework)
+[![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.graceframework/views/grace-views-core.svg?label=Maven%20Central&logo=apache-maven&style=flat)](https://search.maven.org/search?q=g:org.graceframework.views)
 [![Grace Document](https://img.shields.io/badge/Grace_Document-latest-blue?style=flat&logo=asciidoctor&logoColor=E40046&labelColor=ffffff&color=f49b06)](https://graceframework.org/grace-views/latest/)
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
-[![Groovy Version](https://img.shields.io/badge/Groovy-4.0.26-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
-[![Grace Version](https://img.shields.io/badge/Grace-2023.3.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2023.3.0-RC2)
-[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.3.11-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.3.11)
+[![Groovy Version](https://img.shields.io/badge/Groovy-4.0-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
+[![Grace Version](https://img.shields.io/badge/Grace-2024.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.0.0)
+[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.3-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.3.13)
 
 # Grace Views
 
@@ -19,7 +19,7 @@ Grace Views provides additional view technologies to [Grace Framework](https://g
 
 ## Ducumentation
 
-* [6.3.x](https://graceframework.org/grace-views/6.3.x/)
+* [7.0.x](https://graceframework.org/grace-views/7.0.x/)
 
 ## Versions
 
@@ -27,6 +27,7 @@ To make it easier for users to use and upgrade, Plugin adopts a version policy c
 
 | Plugin Version | Grace Version |
 |----------------|---------------|
+| 7.0.x          | 2024.0.x      |
 | 6.3.x          | 2023.3.x      |
 | 6.2.x          | 2023.2.x      |
 | 6.1.x          | 2023.1.x      |
