@@ -8,7 +8,7 @@ buildscript {
                 url = 'https://central.sonatype.com/repository/maven-snapshots/'
 
                 content {
-                    includeGroup 'org.graceframework'
+                    includeGroupAndSubgroups 'org.graceframework'
                 }
                 mavenContent {
                     snapshotsOnly()
@@ -51,6 +51,7 @@ nexusPublishing {
 }
 
 subprojects { project->
+    group = "org.graceframework.views"
     version = project.projectVersion
 
     configurations.all {
@@ -72,7 +73,7 @@ subprojects { project->
                 url = 'https://central.sonatype.com/repository/maven-snapshots/'
 
                 content {
-                    includeGroup 'org.graceframework'
+                    includeGroupAndSubgroups 'org.graceframework'
                 }
                 mavenContent {
                     snapshotsOnly()
@@ -81,7 +82,7 @@ subprojects { project->
         }
     }
 
-    if (project.name.startsWith('examples') || project.name.endsWith('docs')) {
+    if (project.name.endsWith('docs')) {
         return
     }
 

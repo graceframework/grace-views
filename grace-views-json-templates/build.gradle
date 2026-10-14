@@ -1,5 +1,7 @@
 dependencies {
     api project(':grace-views-json')
+    api "org.apache.groovy:groovy"
+    compileOnly "org.apache.groovy:groovy-json"
     compileOnly "org.graceframework:grace-plugin-rest"
     compileOnly "jakarta.servlet:jakarta.servlet-api"
     compileOnly "org.graceframework:grace-datastore-gorm-mongodb"
@@ -8,9 +10,9 @@ dependencies {
 def compileViews = tasks.register("compileViews", JavaExec) {
     inputs.files 'src/templates'
     outputs.dir 'build/classes/groovy/main'
-    mainClass.set("grails.plugin.json.view.JsonViewCompiler")
+    mainClass.set("org.grails.views.json.JsonViewCompiler")
     classpath configurations.compileClasspath + configurations.runtimeClasspath
-    args("src/templates", "build/classes/groovy/main", "11", ' ', ' ', "none", "UTF-8")
+    args("src/templates", "build/classes/groovy/main", "17", ' ', ' ', "none", "UTF-8")
 }
 
 sourceSets {

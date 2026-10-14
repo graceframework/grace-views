@@ -1,25 +1,42 @@
+/*
+ * Copyright 2015-2026 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package grails.views
+
+import java.beans.PropertyDescriptor
 
 import groovy.text.markup.BaseTemplate
 import groovy.transform.CompileStatic
+import org.springframework.beans.BeanUtils
 
+import grails.artefact.ArtefactTypes
 import grails.config.ConfigMap
 import grails.core.GrailsApplication
 import grails.core.GrailsClass
 import grails.core.support.GrailsApplicationAware
 import grails.util.Environment
 import grails.util.Metadata
-import org.grails.config.CodeGenConfig
-import org.grails.core.artefact.DomainClassArtefactHandler
-import org.springframework.beans.BeanUtils
 
-import java.beans.PropertyDescriptor
+import org.grails.config.CodeGenConfig
 
 /**
  * Default configuration
  *
  * @author Graeme Rocher
- * @since 1.0
+ * @author Michael Yan
+ * @since 2024.0.0
  */
 @CompileStatic
 trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAware {
@@ -27,43 +44,53 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
     /**
      * The encoding to use
      */
-    String encoding = "UTF-8"
+    String encoding = 'UTF-8'
+
     /**
      * Whether to pretty print
      */
     boolean prettyPrint = false
+
     /**
      * Whether to use absolute links
      */
     boolean useAbsoluteLinks = false
+
     /**
      * Whether to enable reloading
      */
     boolean enableReloading = ViewsEnvironment.isDevelopmentMode()
+
     /**
      * The package name to use
      */
-    String packageName = Metadata.getCurrent().getApplicationName() ?: ""
+    String packageName = Metadata.getCurrent().getApplicationName() ?: ''
+
     /**
      * Whether to compile templates statically
      */
     boolean compileStatic = true
+
     /**
      * The file extension of the templates
      */
     String extension
+
     /**
      * The template base class
      */
     Class<? extends BaseTemplate> baseTemplateClass
+
     /**
      * Whether the cache templates
      */
     boolean cache = !Environment.isDevelopmentMode()
+
     /**
      * Whether resource expansion is allowed
      */
     boolean allowResourceExpansion = true
+
     /**
      * The path to the templates
      */
@@ -73,15 +100,18 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
      * The default package imports
      */
     String[] packageImports = ['groovy.transform'] as String[]
+
     /**
      * The default static imports
      */
-    String[] staticImports = ["org.springframework.http.HttpStatus", "org.springframework.http.HttpMethod", "grails.web.http.HttpHeaders"] as String[]
+    String[] staticImports = [
+            'org.springframework.http.HttpStatus', 'org.springframework.http.HttpMethod', 'grails.web.http.HttpHeaders'
+    ] as String[]
 
     @Override
     void setGrailsApplication(GrailsApplication grailsApplication) {
-        if(grailsApplication != null) {
-            def domainArtefacts = grailsApplication.getArtefacts(DomainClassArtefactHandler.TYPE)
+        if (grailsApplication != null) {
+            def domainArtefacts = grailsApplication.getArtefacts(ArtefactTypes.DOMAIN_CLASS)
             setPackageImports(
                     findUniquePackages(domainArtefacts)
             )
@@ -89,7 +119,7 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
     }
 
     void readConfiguration(File configFile) {
-        if(configFile?.exists()) {
+        if (configFile?.exists()) {
             def config = new CodeGenConfig()
             config.loadYml(configFile)
             readConfiguration(config)
@@ -98,9 +128,9 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
 
     void readConfiguration(ConfigMap config) {
         String moduleName = viewModuleName
-        GroovyObject configObject = (GroovyObject)this
+        GroovyObject configObject = (GroovyObject) this
         if (config != null) {
-            PropertyDescriptor[] descriptors =  BeanUtils.getPropertyDescriptors(GenericViewConfiguration)
+            PropertyDescriptor[] descriptors = BeanUtils.getPropertyDescriptors(GenericViewConfiguration)
             for (PropertyDescriptor desc in descriptors) {
                 if (desc.writeMethod != null) {
                     String propertyName = desc.name
@@ -113,7 +143,7 @@ trait GenericViewConfiguration implements ViewConfiguration, GrailsApplicationAw
                     } else {
                         value = config.getProperty("grails.views.${moduleName}.$propertyName", (Class) desc.propertyType)
                     }
-                    if(value != null) {
+                    if (value != null) {
                         configObject.setProperty(propertyName, value)
                     }
                 }

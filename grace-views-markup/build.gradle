@@ -1,7 +1,10 @@
 dependencies {
     api project(":grace-views-core")
     api "jakarta.annotation:jakarta.annotation-api"
-    api "org.graceframework:grace-core"
+    api "org.graceframework:grace-core", {
+        exclude group: 'org.graceframework', module: 'grace-datastore-core'
+    }
+    compileOnly "org.graceframework:grace-plugin-api"
     compileOnly "jakarta.servlet:jakarta.servlet-api"
 
     api "org.springframework.boot:spring-boot-autoconfigure"
@@ -9,4 +12,10 @@ dependencies {
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
     testImplementation "org.graceframework:grace-test-support"
+}
+
+jar {
+    enabled = true
+    archiveClassifier.set('')
+    includeEmptyDirs = false
 }

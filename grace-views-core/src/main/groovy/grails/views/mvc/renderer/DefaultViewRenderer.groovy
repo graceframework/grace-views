@@ -1,30 +1,49 @@
+/*
+ * Copyright 2015-2026 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package grails.views.mvc.renderer
 
+import groovy.transform.CompileStatic
+import groovy.transform.InheritConstructors
+import org.springframework.web.servlet.ModelAndView
+import org.springframework.web.servlet.view.AbstractUrlBasedView
+
 import grails.core.support.proxy.ProxyHandler
+import grails.rest.render.AbstractRenderer
 import grails.rest.render.RenderContext
 import grails.rest.render.Renderer
 import grails.rest.render.RendererRegistry
+import grails.util.GrailsNameUtils
 import grails.views.mvc.SmartViewResolver
 import grails.views.resolve.TemplateResolverUtils
 import grails.web.mime.MimeType
-import groovy.transform.CompileStatic
-import groovy.transform.InheritConstructors
-import org.grails.plugins.web.rest.render.ServletRenderContext
-import org.grails.plugins.web.rest.render.html.DefaultHtmlRenderer
+
+import org.grails.web.rest.render.ServletRenderContext
 import org.grails.web.util.GrailsApplicationAttributes
-import org.springframework.web.servlet.ModelAndView
-import org.springframework.web.servlet.View
-import org.springframework.web.servlet.view.AbstractUrlBasedView
 
 /**
  * A renderer implementation that looks up a view from the ViewResolver
  *
  * @author Graeme Rocher
- * @since 1.0
+ * @author Michael Yan
+ * @since 2024.0.0
  */
 @InheritConstructors
 @CompileStatic
-abstract class DefaultViewRenderer<T> extends DefaultHtmlRenderer<T> {
+abstract class DefaultViewRenderer<T> extends AbstractRenderer<T> {
+
     public static final String MODEL_OBJECT = 'object'
     final SmartViewResolver viewResolver
 
@@ -34,25 +53,25 @@ abstract class DefaultViewRenderer<T> extends DefaultHtmlRenderer<T> {
 
     final Renderer defaultRenderer
 
+    String suffix = ''
 
-    DefaultViewRenderer(Class<T> targetType, MimeType mimeType, SmartViewResolver viewResolver, ProxyHandler proxyHandler, RendererRegistry rendererRegistry, Renderer defaultRenderer) {
-        super(targetType,mimeType)
+    DefaultViewRenderer(Class<T> targetType, MimeType mimeType, SmartViewResolver viewResolver,
+                        ProxyHandler proxyHandler, RendererRegistry rendererRegistry, Renderer defaultRenderer) {
+        super(targetType, mimeType)
         this.viewResolver = viewResolver
         this.proxyHandler = proxyHandler
         this.rendererRegistry = rendererRegistry
         this.defaultRenderer = defaultRenderer
     }
 
-
     @Override
     void render(T object, RenderContext context) {
         def arguments = context.arguments
         def ct = arguments?.contentType
 
-        if(ct) {
+        if (ct) {
             context.setContentType(ct.toString())
-        }
-        else {
+        } else {
             final mimeType = context.acceptMimeType ?: mimeTypes[0]
             if (!mimeType.equals(MimeType.ALL)) {
                 context.setContentType(mimeType.name)
@@ -62,8 +81,7 @@ abstract class DefaultViewRenderer<T> extends DefaultHtmlRenderer<T> {
         String viewName
         if (arguments?.view) {
             viewName = arguments.view.toString()
-        }
-        else {
+        } else {
             viewName = context.actionName
         }
 
@@ -71,7 +89,7 @@ abstract class DefaultViewRenderer<T> extends DefaultHtmlRenderer<T> {
         if (viewName?.startsWith('/')) {
             viewUri = viewName
         } else {
-           viewUri = "/${context.controllerName}/${viewName}"
+            viewUri = "/${context.controllerName}/${viewName}"
         }
 
         def webRequest = ((ServletRenderContext) context).getWebRequest()
@@ -81,35 +99,35 @@ abstract class DefaultViewRenderer<T> extends DefaultHtmlRenderer<T> {
         AbstractUrlBasedView view
         String namespace = webRequest.controllerNamespace
         if (namespace) {
-            view = (AbstractUrlBasedView)viewResolver.resolveView("/${namespace}${viewUri}", request, response)
-        }
-        
-        if (view == null) {
-            view = (AbstractUrlBasedView)viewResolver.resolveView(viewUri, request, response)
+            view = (AbstractUrlBasedView) viewResolver.resolveView("/${namespace}${viewUri}", request, response)
         }
 
-        if(view == null) {
-            if(proxyHandler != null) {
-                object = (T)proxyHandler.unwrapIfProxy(object)
+        if (view == null) {
+            view = (AbstractUrlBasedView) viewResolver.resolveView(viewUri, request, response)
+        }
+
+        if (view == null) {
+            if (proxyHandler != null) {
+                object = (T) proxyHandler.unwrapIfProxy(object)
             }
 
             def cls = object.getClass()
             // Try resolve template. Example /book/_book
-            view = (AbstractUrlBasedView)viewResolver.resolveView(cls, request, response)
+            view = (AbstractUrlBasedView) viewResolver.resolveView(cls, request, response)
         }
 
-        if(view != null) {
+        if (view != null) {
             Map<String, ?> model
-            if(object instanceof Map) {
+            if (object instanceof Map) {
                 def map = (Map) object
                 model = map
-                if(view == viewResolver.objectView) {
+                if (view == viewResolver.objectView) {
                     // avoid stack overflow by making a copy of the map
                     model.put(MODEL_OBJECT, new LinkedHashMap(map))
                 }
             } else {
                 model = [(resolveModelVariableName(object)): object]
-                if(view == viewResolver.objectView) {
+                if (view == viewResolver.objectView) {
                     model.put(MODEL_OBJECT, object)
                 }
             }
@@ -119,13 +137,65 @@ abstract class DefaultViewRenderer<T> extends DefaultHtmlRenderer<T> {
             context.setModel(model)
             ModelAndView modelAndView = (ModelAndView) request.getAttribute(GrailsApplicationAttributes.MODEL_AND_VIEW)
             modelAndView.setView(view)
-        }
-        else {
+        } else {
             defaultRenderer.render(object, context)
         }
+    }
+
+    protected String resolveModelVariableName(Object object) {
+        if (object != null) {
+            if (proxyHandler != null) {
+                object = proxyHandler.unwrapIfProxy(object)
+            }
+
+            Class<?> type = object.getClass()
+            if (type.isArray()) {
+                return GrailsNameUtils.getPropertyName(type.getComponentType()) + suffix + 'Array'
+            }
+
+            if (object instanceof Collection) {
+                Collection coll = (Collection) object
+                if (coll.isEmpty()) {
+                    return 'emptyCollection'
+                }
+
+                Object first = coll.iterator().next()
+                if (proxyHandler != null) {
+                    first = proxyHandler.unwrapIfProxy(first)
+                }
+                if (coll instanceof List) {
+                    return GrailsNameUtils.getPropertyName(first.getClass()) + suffix + 'List'
+                }
+                if (coll instanceof Set) {
+                    return GrailsNameUtils.getPropertyName(first.getClass()) + suffix + 'Set'
+                }
+                return GrailsNameUtils.getPropertyName(first.getClass()) + suffix + 'Collection'
+            }
+
+            if (object instanceof Map) {
+                Map map = (Map) object
+
+                if (map.isEmpty()) {
+                    return 'emptyMap'
+                }
+
+                Object entry = map.values().iterator().next()
+                if (entry != null) {
+                    if (proxyHandler != null) {
+                        entry = proxyHandler.unwrapIfProxy(entry)
+                    }
+                    return GrailsNameUtils.getPropertyName(entry.getClass()) + suffix + 'Map'
+                }
+            }
+            else {
+                return GrailsNameUtils.getPropertyName(object.getClass()) + suffix
+            }
+        }
+        null
     }
 
     static String templateNameForClass(Class<?> cls) {
         TemplateResolverUtils.shortTemplateNameForClass(cls)
     }
+
 }

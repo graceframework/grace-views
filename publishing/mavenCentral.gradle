@@ -29,9 +29,8 @@ publishing {
         pluginMaven(MavenPublication) {
             def projectName = project.name.split('-')*.capitalize().join(' ')
             artifactId = project.name
-            if (project.name != "grace-views-gradle") {
-                from components.java
-            }
+            
+            from components.java
 
             versionMapping {
                 usage('java-api') {

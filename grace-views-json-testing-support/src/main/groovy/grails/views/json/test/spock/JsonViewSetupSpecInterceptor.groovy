@@ -1,22 +1,23 @@
 package grails.views.json.test.spock
 
-import grails.core.GrailsApplication
-import grails.plugin.json.view.JsonViewConfiguration
-import grails.plugin.json.view.JsonViewTemplateEngine
-import grails.plugin.json.view.api.jsonapi.DefaultJsonApiIdRenderer
-import grails.plugin.json.view.mvc.JsonViewResolver
-import grails.views.json.test.JsonViewUnitTest
 import groovy.transform.CompileStatic
 import groovy.transform.TypeCheckingMode
-
-import grails.views.mvc.GenericGroovyTemplateViewResolver
-import grails.views.resolve.PluginAwareTemplateResolver
-import org.grails.datastore.mapping.keyvalue.mapping.config.KeyValueMappingContext
-import org.grails.web.mapping.DefaultLinkGenerator
-import org.grails.web.mapping.UrlMappingsHolderFactoryBean
 import org.spockframework.runtime.extension.IMethodInterceptor
 import org.spockframework.runtime.extension.IMethodInvocation
 import org.springframework.web.servlet.i18n.SessionLocaleResolver
+
+import grails.core.GrailsApplication
+import grails.views.json.test.JsonViewUnitTest
+import grails.views.mvc.GenericGroovyTemplateViewResolver
+import grails.views.resolve.PluginAwareTemplateResolver
+
+import org.grails.datastore.mapping.keyvalue.mapping.config.KeyValueMappingContext
+import org.grails.views.json.JsonViewConfiguration
+import org.grails.views.json.JsonViewTemplateEngine
+import org.grails.views.json.api.jsonapi.DefaultJsonApiIdRenderer
+import org.grails.views.json.mvc.JsonViewResolver
+import org.grails.web.mapping.DefaultLinkGenerator
+import org.grails.web.mapping.UrlMappingsHolderFactoryBean
 
 @CompileStatic
 class JsonViewSetupSpecInterceptor implements IMethodInterceptor {
