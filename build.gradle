@@ -29,8 +29,6 @@ ext {
     userOrg = "graceframework"
 }
 
-ext['grace-gorm.version'] = project.gormVersion
-
 group = "org.graceframework.views"
 version = project.projectVersion
 
