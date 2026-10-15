@@ -1,6 +1,6 @@
 [![Main branch build status](https://github.com/graceframework/grace-views/workflows/Grace%20CI/badge.svg?style=flat)](https://github.com/graceframework/grace-views/actions?query=workflow%3A%Grace+CI%22)
 [![Apache 2.0 license](https://img.shields.io/badge/License-APACHE%202.0-green.svg?logo=APACHE&style=flat)](https://opensource.org/licenses/Apache-2.0)
-[![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.graceframework/views/grace-views-core.svg?label=Maven%20Central&logo=apache-maven&style=flat)](https://search.maven.org/search?q=g:org.graceframework.views)
+[![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.graceframework.views/grace-views-core.svg?label=Maven%20Central&logo=apache-maven&style=flat)](https://search.maven.org/search?q=g:org.graceframework.views)
 [![Grace Document](https://img.shields.io/badge/Grace_Document-latest-blue?style=flat&logo=asciidoctor&logoColor=E40046&labelColor=ffffff&color=f49b06)](https://graceframework.org/grace-views/latest/)
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
