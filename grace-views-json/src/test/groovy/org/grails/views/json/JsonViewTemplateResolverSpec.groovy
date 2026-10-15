@@ -6,6 +6,7 @@ import org.springframework.mock.web.MockHttpServletRequest
 import org.springframework.web.context.request.RequestContextHolder
 import spock.lang.Issue
 import spock.lang.Specification
+import spock.mock.MockMakers
 
 import grails.views.ResolvableGroovyTemplateEngine
 import grails.views.TemplateResolver
@@ -51,11 +52,11 @@ class JsonViewTemplateResolverSpec extends Specification {
         def applicationAttributes = Mock(GrailsApplicationAttributes)
         applicationAttributes.getControllerUri(_) >> '/test'
 
-        def webRequest = Mock(GrailsWebRequest)
+        def webRequest = Mock(mockMaker: MockMakers.mockito, GrailsWebRequest)
         webRequest.getAttributes() >> applicationAttributes
         RequestContextHolder.setRequestAttributes(webRequest)
-        def request = Mock(HttpServletRequest)
-        def response = Mock(HttpServletResponse)
+        def request = Mock(mockMaker: MockMakers.mockito, HttpServletRequest)
+        def response = Mock(mockMaker: MockMakers.mockito, HttpServletResponse)
         request.getHeader(HttpHeaders.ACCEPT_VERSION) >> '1.1'
         request.getLocale() >> Locale.ENGLISH
         webRequest.getCurrentRequest() >> request

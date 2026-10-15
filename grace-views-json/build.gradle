@@ -13,6 +13,7 @@ dependencies {
     testImplementation "org.graceframework:grace-test-support"
     testImplementation project(":grace-views-json-testing-support")
     testImplementation "net.bytebuddy:byte-buddy"
+    testImplementation "org.mockito:mockito-core"
 }
 
 jar {
