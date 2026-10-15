@@ -24,7 +24,7 @@ import grails.views.api.internal.EmptyParameters
  * A view that is rendered in the context of an HTTP request
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 trait HttpView extends View {
 

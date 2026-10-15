@@ -29,7 +29,7 @@ import org.grails.plugins.BinaryGrailsPlugin
  * A template resolver capable of looking through the installed Grails plugins and finding a template within the scope of the plugin
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class PluginAwareTemplateResolver extends GenericGroovyTemplateResolver implements PluginManagerAware {

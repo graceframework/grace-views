@@ -33,7 +33,7 @@ import org.grails.views.json.JsonViewWritableScript
 
 /**
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class JsonViewResolver extends SmartViewResolver {

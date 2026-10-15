@@ -25,7 +25,7 @@ import org.grails.views.json.api.GrailsJsonViewHelper
  * Handles the template namespace
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class TemplateRenderer {

@@ -42,7 +42,7 @@ import org.grails.web.util.GrailsApplicationAttributes
  *
  * @author Graeme Rocher
  * @author Michael Yan
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class GenericGroovyTemplateView extends AbstractUrlBasedView {

@@ -66,7 +66,7 @@ import org.grails.views.json.template.JsonViewTemplate
  *
  * @author Graeme Rocher
  * @author Michael Yan
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 @Slf4j

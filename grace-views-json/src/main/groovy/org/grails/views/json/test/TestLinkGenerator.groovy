@@ -28,7 +28,7 @@ import org.grails.web.util.WebUtils
  * A test link generator
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class TestLinkGenerator implements LinkGenerator {

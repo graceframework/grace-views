@@ -33,7 +33,7 @@ import org.grails.views.json.mvc.JsonViewResolver;
  * {@link EnableAutoConfiguration Auto-Configure} for Json View
  *
  * @author Michael Yan
- * @since 6.0
+ * @since 7.0.0
  */
 @AutoConfiguration
 @EnableConfigurationProperties(JsonViewConfiguration.class)

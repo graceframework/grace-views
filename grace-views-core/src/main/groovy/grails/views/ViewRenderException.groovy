@@ -23,7 +23,7 @@ import org.grails.exceptions.reporting.SourceCodeAware
  * Thrown when a view rendering exception occurs
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class ViewRenderException extends ViewException implements SourceCodeAware {

@@ -28,7 +28,7 @@ import grails.web.mime.MimeType
  * A renderer that will lookup a JSON view if it exists and render it, otherwise fallback to default
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class JsonViewJsonRenderer<T> extends DefaultViewRenderer<T> {

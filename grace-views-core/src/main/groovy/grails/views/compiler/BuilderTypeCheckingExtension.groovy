@@ -23,7 +23,7 @@ import static org.codehaus.groovy.ast.ClassHelper.OBJECT_TYPE
  * An abstract type checking extension for view DSLs to implement
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 abstract class BuilderTypeCheckingExtension extends GroovyTypeCheckingExtensionSupport.TypeCheckingDSL {
 

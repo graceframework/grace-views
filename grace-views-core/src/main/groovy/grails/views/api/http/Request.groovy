@@ -18,7 +18,7 @@ package grails.views.api.http
 /**
  * Allows access to request properties
  *
- * @since 2024.0.0
+ * @since 7.0.0
  */
 interface Request {
 

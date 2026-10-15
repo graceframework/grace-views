@@ -24,7 +24,7 @@ import org.grails.buffer.FastStringWriter
  * Generic implementation for resolving views
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class GenericViewUriResolver implements ViewUriResolver {

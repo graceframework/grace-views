@@ -32,7 +32,7 @@ import org.grails.datastore.mapping.model.MappingContext
  * A trait for all view types to extend to add methods to generate links, render other templates and so on
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 trait GrailsView extends HttpView implements WriterProvider, WritableScript {

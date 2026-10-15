@@ -20,7 +20,7 @@ import groovy.transform.CompileStatic
 /**
  * Utility methods for the views project
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class ViewUtils {

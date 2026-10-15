@@ -26,7 +26,7 @@ ext.pomInfo = {
 
 publishing {
     publications {
-        pluginMaven(MavenPublication) {
+        mavenJava(MavenPublication) {
             def projectName = project.name.split('-')*.capitalize().join(' ')
             artifactId = project.name
             
@@ -39,10 +39,6 @@ publishing {
                 usage('java-runtime') {
                     fromResolutionResult()
                 }
-            }
-
-            if (isPlugin) {
-                artifact source: "${project.sourceSets.main.groovy.classesDirectory.get()}/META-INF/grails-plugin.xml", classifier: "plugin", extension: 'xml'
             }
 
             pom {

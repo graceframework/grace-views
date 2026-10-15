@@ -30,7 +30,7 @@ import org.grails.views.json.api.JsonView
 import org.grails.views.json.api.internal.DefaultGrailsJsonViewHelper
 
 /**
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 abstract class JsonViewWritableScript extends AbstractWritableScript implements JsonView {

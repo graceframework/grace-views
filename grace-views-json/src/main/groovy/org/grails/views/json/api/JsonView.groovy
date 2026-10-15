@@ -34,7 +34,7 @@ import org.grails.views.json.api.jsonapi.JsonApiIdRenderStrategy
  * Extends default view API with additional methods
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 trait JsonView extends GrailsView {

@@ -20,7 +20,7 @@ import org.springframework.http.HttpStatus
 /**
  * Allows control over the page response (headers, content type, status)
  *
- * @since 2024.0.0
+ * @since 7.0.0
  */
 interface Response {
 

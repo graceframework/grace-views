@@ -31,7 +31,7 @@ import org.grails.views.markup.mvc.MarkupViewResolver;
  * {@link EnableAutoConfiguration Auto-Configure} for Markup View
  *
  * @author Michael Yan
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @AutoConfiguration
 @EnableConfigurationProperties(MarkupViewConfiguration.class)

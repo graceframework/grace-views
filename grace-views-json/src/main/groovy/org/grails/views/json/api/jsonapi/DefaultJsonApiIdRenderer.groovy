@@ -21,7 +21,7 @@ import org.grails.datastore.mapping.model.PersistentProperty
 
 /**
  * @author James Kleeh
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class DefaultJsonApiIdRenderer implements JsonApiIdRenderStrategy {

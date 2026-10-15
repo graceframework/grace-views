@@ -46,7 +46,7 @@ import org.grails.views.json.template.JsonViewTemplate
  * A template engine for parsing JSON views
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class JsonViewTemplateEngine extends ResolvableGroovyTemplateEngine {

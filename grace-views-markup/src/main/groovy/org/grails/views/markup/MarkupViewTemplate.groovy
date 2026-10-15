@@ -27,7 +27,7 @@ import org.grails.views.markup.api.MarkupView
  * Base class for markup engine templates
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 abstract class MarkupViewTemplate extends BaseTemplate implements WritableScript, MarkupView {
 

@@ -58,7 +58,7 @@ import org.grails.views.json.util.JsonToken
  *
  * @author Graeme Rocher
  * @author Michael Yan
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class DefaultHalViewHelper extends DefaultJsonViewHelper implements HalViewHelper {

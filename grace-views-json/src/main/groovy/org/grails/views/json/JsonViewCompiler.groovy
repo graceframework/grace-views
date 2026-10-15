@@ -29,7 +29,7 @@ import org.grails.views.json.compiler.JsonViewsTransform
  * A compiler for JSON views
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 @InheritConstructors

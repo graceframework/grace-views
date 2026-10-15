@@ -44,7 +44,7 @@ import org.grails.views.json.util.JsonToken
 /**
  * @author Colin Harrington
  * @author Michael Yan
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class DefaultJsonApiViewHelper extends DefaultJsonViewHelper implements JsonApiViewHelper {

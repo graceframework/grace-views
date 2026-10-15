@@ -25,7 +25,7 @@ import grails.views.api.GrailsView
  * A script that is writable
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 abstract class AbstractWritableScript extends Script implements WritableScript, GrailsView {

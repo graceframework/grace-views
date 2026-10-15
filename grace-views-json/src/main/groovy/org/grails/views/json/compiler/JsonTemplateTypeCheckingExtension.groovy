@@ -33,7 +33,7 @@ import org.grails.views.json.api.internal.TemplateRenderer
  * A type checking extension for JSON builder
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 class JsonTemplateTypeCheckingExtension extends BuilderTypeCheckingExtension {
 

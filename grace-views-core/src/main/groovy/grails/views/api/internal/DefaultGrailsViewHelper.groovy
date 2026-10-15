@@ -27,7 +27,7 @@ import grails.web.mapping.LinkGenerator
  * Default methods for views, additional methods can be added via traits
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class DefaultGrailsViewHelper implements GrailsViewHelper {

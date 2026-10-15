@@ -19,7 +19,7 @@ package org.grails.views.json.util;
  * Json Constants
  *
  * @author Michael Yan
- * @since 2024.0.0
+ * @since 7.0.0
  */
 public class JsonToken {
 

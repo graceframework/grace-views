@@ -25,7 +25,7 @@ import groovy.transform.CompileStatic
  * A class to render a {@link ZonedDateTime} as json
  *
  * @author James Kleeh
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class ZonedDateTimeJsonConverter implements JsonGenerator.Converter {

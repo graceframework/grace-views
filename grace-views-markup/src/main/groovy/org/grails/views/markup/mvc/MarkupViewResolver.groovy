@@ -31,7 +31,7 @@ import org.grails.views.markup.renderer.MarkupViewXmlRenderer
 
 /**
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class MarkupViewResolver extends SmartViewResolver {

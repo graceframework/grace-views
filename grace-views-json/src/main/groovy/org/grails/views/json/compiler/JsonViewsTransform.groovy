@@ -27,7 +27,7 @@ import org.grails.views.json.JsonViewWritableScript
 
 /**
  * @author Graeme ROcher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @GroovyASTTransformation(phase = CompilePhase.SEMANTIC_ANALYSIS)
 @CompileStatic

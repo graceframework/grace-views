@@ -55,7 +55,7 @@ import org.grails.io.support.GrailsFactoriesLoader
  * Enhances view scripts with Trait behavior
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @GroovyASTTransformation(phase = CompilePhase.SEMANTIC_ANALYSIS)
 @CompileStatic

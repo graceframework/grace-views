@@ -24,7 +24,7 @@ import grails.views.api.http.Parameters
  * Delegate to a GrailsParameterMap implementation
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class DelegatingParameters implements Parameters {

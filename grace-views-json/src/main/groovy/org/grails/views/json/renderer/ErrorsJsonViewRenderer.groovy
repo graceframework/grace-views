@@ -23,7 +23,7 @@ import org.springframework.validation.Errors
  * Renderer for the errors view
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @InheritConstructors
 @CompileStatic

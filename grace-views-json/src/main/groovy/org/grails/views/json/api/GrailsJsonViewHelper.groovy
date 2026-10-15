@@ -23,7 +23,7 @@ import grails.views.api.GrailsViewHelper
  * Additional methods specific to JSON views
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 interface GrailsJsonViewHelper extends GrailsViewHelper {
 

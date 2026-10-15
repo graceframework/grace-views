@@ -19,7 +19,7 @@ package grails.views
  * A ViewUriResolver is response for response template and view URIs using Grails' conventions.
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 interface ViewUriResolver {
 

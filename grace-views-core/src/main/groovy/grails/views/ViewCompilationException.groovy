@@ -26,7 +26,7 @@ import org.grails.exceptions.reporting.SourceCodeAware
  * Exception when views fail to compile
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 class ViewCompilationException extends ViewException implements SourceCodeAware {
 

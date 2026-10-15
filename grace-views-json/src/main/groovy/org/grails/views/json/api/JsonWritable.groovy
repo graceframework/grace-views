@@ -25,7 +25,7 @@ import org.grails.views.json.util.JsonToken
  * Json Writeable
  *
  * @author Michael Yan
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 abstract class JsonWritable implements Writable, CharSequence {

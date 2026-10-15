@@ -1,10 +1,10 @@
 rootProject.name = 'Grace.Views'
 
 include(
+    "docs",
     "grace-views-core",
     "grace-views-json",
     "grace-views-markup",
     "grace-views-json-templates",
-    "grace-views-json-testing-support",
-    "docs"
+    "grace-views-json-testing-support"
 )

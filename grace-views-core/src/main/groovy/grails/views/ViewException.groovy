@@ -21,7 +21,7 @@ import groovy.transform.InheritConstructors
  * Thrown when an exception occurs rendering a view
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @InheritConstructors
 class ViewException extends RuntimeException {

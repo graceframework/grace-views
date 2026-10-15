@@ -41,7 +41,7 @@ import org.grails.views.json.api.jsonapi.JsonApiIdRenderStrategy
  * A trait that test classes can implement to add support for easily testing JSON views
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 trait JsonViewTest {

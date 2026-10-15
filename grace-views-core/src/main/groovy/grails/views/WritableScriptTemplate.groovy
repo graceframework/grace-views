@@ -29,7 +29,7 @@ import grails.views.api.GrailsView
  * A base template class that all Grails view templates should extend from
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class WritableScriptTemplate implements Template {

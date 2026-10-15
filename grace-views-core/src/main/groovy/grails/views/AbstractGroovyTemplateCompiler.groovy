@@ -38,7 +38,7 @@ import grails.views.resolve.GenericGroovyTemplateResolver
  * A generic compiler for Groovy templates that are compiled into classes in production
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 abstract class AbstractGroovyTemplateCompiler {
 

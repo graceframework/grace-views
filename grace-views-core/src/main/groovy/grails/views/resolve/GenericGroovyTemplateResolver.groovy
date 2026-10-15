@@ -26,7 +26,7 @@ import grails.views.TemplateResolver
  * A generic TemplateResolver for resolving Groovy templates that are compiled into classes
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 @Slf4j

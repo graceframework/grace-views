@@ -23,7 +23,7 @@ import grails.views.api.http.Parameters
  * An empty parameters implementation
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 class EmptyParameters implements Parameters {

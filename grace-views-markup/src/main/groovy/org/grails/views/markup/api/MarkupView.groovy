@@ -23,7 +23,7 @@ import grails.views.api.internal.DefaultGrailsViewHelper
  * Extra methods added to markup views
  *
  * @author Graeme Rocher
- * @since 2024.0.0
+ * @since 7.0.0
  */
 trait MarkupView extends GrailsView {
 

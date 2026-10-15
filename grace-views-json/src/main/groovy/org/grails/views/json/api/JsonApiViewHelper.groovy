@@ -19,7 +19,7 @@ import groovy.transform.CompileStatic
 
 /**
  * @author Colin Harrington
- * @since 2024.0.0
+ * @since 7.0.0
  */
 @CompileStatic
 interface JsonApiViewHelper {
