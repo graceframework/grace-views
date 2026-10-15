@@ -1,10 +1,25 @@
+=== 7.2.0-M1
+
+link:{github}/releases/tag/v7.2.0-M1[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.2.0-M1
+* Update README
+* Use Spock with mockito to mock final methods
+
+🚀 Dependency Upgrades
+
+* Upgrade to Grace 2024.2.0-M1
+* Upgrade to Groovy 4.0.33
+
 === 7.1.0
 
 link:{github}/releases/tag/v7.1.0[release notes]
 
 🛠 Improvements
 
-* Add release notes for 7.1.0 
+* Add release notes for 7.1.0
 * Update README
 
 🚀 Dependency Upgrades
@@ -23,7 +38,7 @@ link:{github}/releases/tag/v7.0.0[release notes]
 
 🛠 Improvements
 
-* Add release notes for 7.0.0 
+* Add release notes for 7.0.0
 * Update README
 
 🚀 Dependency Upgrades
