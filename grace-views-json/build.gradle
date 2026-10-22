@@ -1,7 +1,7 @@
 dependencies {
     api project(":grace-views-core")
     api "org.graceframework:grace-core", {
-        exclude group: 'org.graceframework', module: 'grace-datastore-core'
+        exclude group: 'org.graceframework.data', module: 'grace-datastore-core'
     }
     compileOnly "org.graceframework:grace-plugin-api"
     compileOnly "org.graceframework:grace-plugin-validation"

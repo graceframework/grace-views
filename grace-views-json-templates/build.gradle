@@ -4,7 +4,7 @@ dependencies {
     compileOnly "org.apache.groovy:groovy-json"
     compileOnly "org.graceframework:grace-plugin-rest"
     compileOnly "jakarta.servlet:jakarta.servlet-api"
-    compileOnly "org.graceframework:grace-datastore-gorm-mongodb"
+    compileOnly "org.graceframework.data:grace-datastore-gorm-mongodb"
 }
 
 def compileViews = tasks.register("compileViews", JavaExec) {

@@ -1,6 +1,6 @@
 dependencies {
     api "org.graceframework:grace-core", {
-        exclude group: 'org.graceframework', module: 'grace-datastore-core'
+        exclude group: 'org.graceframework.data', module: 'grace-datastore-core'
     }
     api "org.graceframework:grace-encoder"
     compileOnly "org.graceframework:grace-plugin-api"
@@ -8,7 +8,7 @@ dependencies {
     api "org.graceframework:grace-web"
     api "org.graceframework:grace-web-rest"
     api "org.graceframework:grace-web-url-mappings"
-    api "org.graceframework:grace-datastore-gorm-support"
+    api "org.graceframework.data:grace-datastore-gorm-support"
     api "org.apache.groovy:groovy"
     api "com.github.ben-manes.caffeine:caffeine"
     compileOnly "jakarta.servlet:jakarta.servlet-api"
