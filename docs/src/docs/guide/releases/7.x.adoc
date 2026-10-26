@@ -1,3 +1,17 @@
+=== 7.2.0-RC2
+
+link:{github}/releases/tag/v7.2.0-RC2[release notes]
+
+🛠 Improvements
+
+* Add release notes for 7.2.0-RC2
+* Update README Fixes the artifact version of Maven badge
+* Cleanup build.gradle
+* Rename grace-views-json-templates to grace-views-templates link:{github}/issues/134[#134]
+* Add Test Support for Markup View link:{github}/issues/133[#133]
+* Relocate classes in package 'org/grails/views/json/test' from grace-views-json to grace-views-test link:{github}/issues/132[#132]
+* Rename grace-views-json-testing-support to grace-views-test link:{github}/issues/131[#131]
+
 === 7.2.0-RC1
 
 link:{github}/releases/tag/v7.2.0-RC1[release notes]
