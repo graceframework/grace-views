@@ -6,5 +6,5 @@ include(
     "grace-views-json",
     "grace-views-markup",
     "grace-views-json-templates",
-    "grace-views-json-testing-support"
+    "grace-views-test"
 )

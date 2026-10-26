@@ -10,8 +10,8 @@ dependencies {
     annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
+    testImplementation project(":grace-views-test")
     testImplementation "org.graceframework:grace-test-support"
-    testImplementation project(":grace-views-json-testing-support")
     testImplementation "net.bytebuddy:byte-buddy"
     testImplementation "org.mockito:mockito-core"
 }
