@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2025 the original author or authors.
+ * Copyright 2018-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ import org.grails.views.json.api.jsonapi.JsonApiIdRenderStrategy
  * A trait that test classes can implement to add support for easily testing JSON views
  *
  * @author Graeme Rocher
- * @since 7.0.0
+ * @since 7.2.0
  */
 @CompileStatic
 trait JsonViewTest {
