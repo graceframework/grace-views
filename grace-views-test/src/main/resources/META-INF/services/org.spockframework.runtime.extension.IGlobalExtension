@@ -1,1 +1,2 @@
 grails.views.json.test.spock.JsonViewSpockExtension
+grails.views.markup.test.spock.MarkupViewSpockExtension

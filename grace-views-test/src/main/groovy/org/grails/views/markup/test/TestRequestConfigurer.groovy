@@ -1,0 +1,149 @@
+/*
+ * Copyright 2018-2026 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.grails.views.markup.test
+
+import groovy.transform.CompileStatic
+import org.springframework.http.HttpMethod
+
+import grails.config.Config
+import grails.util.TypeConvertingMap
+import grails.views.api.HttpView
+import grails.views.api.http.Request
+import grails.views.mvc.http.DelegatingParameters
+
+import org.grails.views.markup.api.MarkupView
+
+/**
+ * Allows configuring the JSON view rendering for request state
+ *
+ * @author Graeme Rocher
+ * @since 7.2.0
+ */
+@CompileStatic
+class TestRequestConfigurer implements Request {
+
+    final MarkupView markupView
+
+    String contextPath
+    String method = 'GET'
+    String uri
+    String contentType = 'application/json'
+    String characterEncoding = 'UTF-8'
+
+    Map<String, List<String>> headers = new LinkedHashMap<String, List<String>>().withDefault { String name ->
+        return [] as List<String>
+    }
+
+    Map<String, Object> attributes = new LinkedHashMap<String, Object>()
+
+    TestRequestConfigurer(MarkupView markupView) {
+        this.markupView = markupView
+        if (markupView instanceof HttpView) {
+            ((HttpView) markupView).setRequest(this)
+        }
+    }
+
+    void setActionName(String actionName) {
+        markupView.setActionName(actionName)
+    }
+
+    void setControllerName(String controllerName) {
+        markupView.setControllerName(controllerName)
+    }
+
+    void setControllerNamespace(String controllerNamespace) {
+        markupView.setControllerNamespace(controllerNamespace)
+    }
+
+    void setConfig(Config config) {
+        markupView.setConfig(config)
+    }
+
+    TestRequestConfigurer actionName(String actionName) {
+        this.actionName = actionName
+        return this
+    }
+
+    TestRequestConfigurer controllerName(String controllerName) {
+        this.controllerName = controllerName
+        return this
+    }
+
+    TestRequestConfigurer controllerNamespace(String controllerNamespace) {
+        this.controllerNamespace = controllerNamespace
+        return this
+    }
+
+    TestRequestConfigurer config(Config config) {
+        this.config = config
+        return this
+    }
+
+    TestRequestConfigurer method(String method) {
+        this.method = method
+        return this
+    }
+
+    TestRequestConfigurer header(String name, String value) {
+        this.headers.get(name).add(value)
+        return this
+    }
+
+    TestRequestConfigurer attribute(String name, Object value) {
+        this.attributes.put(name, value)
+        return this
+    }
+
+    TestRequestConfigurer params(Map parameters) {
+        this.markupView.setParams(new DelegatingParameters(new TypeConvertingMap(parameters)))
+        return this
+    }
+
+    TestRequestConfigurer method(HttpMethod method) {
+        this.method = method.toString()
+        return this
+    }
+
+    @Override
+    Collection<String> getHeaderNames() {
+        return headers.keySet()
+    }
+
+    @Override
+    String getHeader(String name) {
+        def headerValues = headers.get(name)
+        if (headerValues) {
+            return headerValues.get(0)
+        }
+        return null
+    }
+
+    @Override
+    Collection<String> getHeaders(String name) {
+        headers.get(name)
+    }
+
+    @Override
+    Object getAttribute(String name) {
+        attributes.get(name)
+    }
+
+    @Override
+    Collection<String> getAttributeNames() {
+        attributes.keySet()
+    }
+
+}
