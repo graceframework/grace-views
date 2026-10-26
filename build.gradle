@@ -113,7 +113,7 @@ subprojects { project->
 
     apply from: '../publishing/mavenCentral.gradle'
 
-    if (project.name in ["grace-views-core", "grace-views-json", "grace-views-json-testing-support", "grace-views-markup"]) {
+    if (project.name in ["grace-views-core", "grace-views-json", "grace-views-markup", "grace-views-test"]) {
 
         dependencies {
             testImplementation "org.spockframework:spock-core", {
