@@ -5,6 +5,8 @@ grails.views.api.internal
 grails.views.compiler
 grails.views.json.test
 grails.views.json.test.spock
+grails.views.markup.test
+grails.views.markup.test.spock
 grails.views.mvc
 grails.views.mvc.http
 grails.views.mvc.renderer
@@ -26,3 +28,4 @@ org.grails.views.markup.api
 org.grails.views.markup.compiler
 org.grails.views.markup.mvc
 org.grails.views.markup.renderer
+org.grails.views.markup.test
