@@ -1,5 +1,6 @@
 dependencies {
-    api project(":grace-views-json")
+    compileOnly project(":grace-views-markup")
+    compileOnly project(":grace-views-json")
     api "org.graceframework:grace-core", {
         exclude group: 'org.graceframework', module: 'grace-datastore-core'
     }

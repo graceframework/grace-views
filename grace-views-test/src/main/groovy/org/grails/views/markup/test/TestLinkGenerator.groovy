@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2025 the original author or authors.
+ * Copyright 2018-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.grails.views.json.test
+package org.grails.views.markup.test
 
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
@@ -28,7 +28,7 @@ import org.grails.web.util.WebUtils
  * A test link generator
  *
  * @author Graeme Rocher
- * @since 7.0.0
+ * @since 7.2.0
  */
 @CompileStatic
 class TestLinkGenerator implements LinkGenerator {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2025 the original author or authors.
+ * Copyright 2018-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,82 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.grails.views.json.test
+package grails.views.markup.test
 
 import groovy.json.JsonSlurper
 import groovy.text.Template
-import groovy.transform.CompileStatic
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.MessageSource
-import org.springframework.context.support.StaticMessageSource
 import org.springframework.http.HttpStatus
 
-import grails.core.GrailsApplication
 import grails.views.api.HttpView
 import grails.views.api.http.Response
-import grails.web.mapping.LinkGenerator
-import grails.web.mime.MimeUtility
 
-import org.grails.datastore.mapping.keyvalue.mapping.config.KeyValueMappingContext
 import org.grails.datastore.mapping.model.MappingContext
-import org.grails.views.json.JsonViewConfiguration
-import org.grails.views.json.JsonViewTemplateEngine
-import org.grails.views.json.api.JsonView
-import org.grails.views.json.api.jsonapi.DefaultJsonApiIdRenderer
-import org.grails.views.json.api.jsonapi.JsonApiIdRenderStrategy
+import org.grails.testing.GrailsUnitTest
 
-/**
- * A trait that test classes can implement to add support for easily testing JSON views
- *
- * @author Graeme Rocher
- * @since 7.0.0
- */
-@CompileStatic
-trait JsonViewTest {
+import org.grails.views.markup.MarkupViewTemplateEngine
+import org.grails.views.markup.api.MarkupView
+import org.grails.views.markup.test.MarkupRenderResult
+import org.grails.views.markup.test.TestRequestConfigurer
 
-    @Autowired(required = false)
-    MessageSource messageSource = new StaticMessageSource()
+trait MarkupViewUnitTest extends GrailsUnitTest {
 
-    @Autowired(required = false)
-    MappingContext mappingContext = {
-        def ctx = new KeyValueMappingContext('test')
-        ctx.setCanInitializeEntities(true)
-        return ctx
-    }()
+    private static MarkupViewTemplateEngine _templateEngine
+    private static MappingContext _mappingContext
 
-    @Autowired(required = false)
-    MimeUtility mimeUtility
-
-    @Autowired(required = false)
-    LinkGenerator linkGenerator = new TestLinkGenerator(mappingContext)
-
-    @Autowired(required = false)
-    JsonViewConfiguration viewConfiguration = new JsonViewConfiguration()
-
-    @Autowired(required = false)
-    void setGrailsApplication(GrailsApplication grailsApplication) {
-        viewConfiguration.setGrailsApplication(grailsApplication)
+    MarkupViewTemplateEngine getTemplateEngine() {
+        if (_templateEngine == null) {
+            _templateEngine = applicationContext.getBean('markupTemplateEngine', MarkupViewTemplateEngine)
+        }
+        _templateEngine
     }
 
-    @Autowired(required = false)
-    JsonApiIdRenderStrategy jsonApiIdRenderStrategy = new DefaultJsonApiIdRenderer()
-
-    @Lazy
-    JsonViewTemplateEngine templateEngine = {
-        def templateEngine = new JsonViewTemplateEngine(viewConfiguration, Thread.currentThread().contextClassLoader)
-        if (messageSource != null) {
-            templateEngine.setMessageSource(messageSource)
+    MappingContext getMappingContext() {
+        if (_mappingContext == null) {
+            _mappingContext = applicationContext.getBean('grailsDomainClassMappingContext', MappingContext)
         }
-        templateEngine.setLinkGenerator(linkGenerator)
-        if (mimeUtility != null) {
-            templateEngine.setMimeUtility(mimeUtility)
-        }
-        if (mappingContext != null) {
-            templateEngine.setMappingContext(mappingContext)
-        }
-        templateEngine.setJsonApiIdRenderStrategy(jsonApiIdRenderStrategy)
-        return templateEngine
-    }()
+        _mappingContext
+    }
 
     /**
      * Render a template for the given source
@@ -98,7 +57,7 @@ trait JsonViewTest {
      *
      * @return The result
      */
-    JsonRenderResult render(String source) {
+    MarkupRenderResult render(String source) {
         render(source, Collections.emptyMap(), null)
     }
 
@@ -110,7 +69,7 @@ trait JsonViewTest {
      *
      * @return The result
      */
-    JsonRenderResult render(String source, Map model) {
+    MarkupRenderResult render(String source, Map model) {
         render(source, model, null)
     }
 
@@ -123,7 +82,7 @@ trait JsonViewTest {
      *
      * @return The result
      */
-    JsonRenderResult render(String source, Map model, @DelegatesTo(TestRequestConfigurer) Closure configurer) {
+    MarkupRenderResult render(String source, Map model, @DelegatesTo(TestRequestConfigurer) Closure configurer) {
         def template = templateEngine.createTemplate(source)
         return produceResult(template, model, configurer)
     }
@@ -137,11 +96,10 @@ trait JsonViewTest {
      *
      * @return The result
      */
-    JsonRenderResult render(String source, @DelegatesTo(TestRequestConfigurer) Closure configurer) {
+    MarkupRenderResult render(String source, @DelegatesTo(TestRequestConfigurer) Closure configurer) {
         def template = templateEngine.createTemplate(source)
         return produceResult(template, Collections.emptyMap(), configurer)
     }
-
     /**
      * Render one of the GSON views in the grails-app/views directory for the given arguments
      *
@@ -149,7 +107,7 @@ trait JsonViewTest {
      *
      * @return The render result
      */
-    JsonRenderResult render(Map arguments) {
+    MarkupRenderResult render(Map arguments) {
         render arguments, null
     }
 
@@ -161,34 +119,41 @@ trait JsonViewTest {
      *
      * @return The render result
      */
-    JsonRenderResult render(Map arguments, @DelegatesTo(TestRequestConfigurer) Closure configurer) {
+    MarkupRenderResult render(Map arguments, @DelegatesTo(TestRequestConfigurer) Closure configurer) {
+
         String viewUri
-        if (arguments.template) {
-            viewUri = templateEngine.viewUriResolver.resolveTemplateUri(null, arguments.template.toString())
-        } else if (arguments.view) {
+        if( arguments.template ) {
+            viewUri = templateEngine
+                    .viewUriResolver
+                    .resolveTemplateUri(null, arguments.template.toString())
+
+        }
+        else if( arguments.view ) {
             viewUri = arguments.view.toString()
-        } else {
+        }
+        else {
             throw new IllegalArgumentException("Either a 'view' or 'template' argument is required!")
+
         }
         def template = templateEngine.resolveTemplate(viewUri)
 
-        if (template == null) {
+        if(template == null) {
             throw new IllegalArgumentException("No view or template found for URI $viewUri")
         }
 
-        def model = arguments.model instanceof Map ? (Map) arguments.model : [:]
+        def model = arguments.model instanceof Map ? (Map)arguments.model : [:]
         return produceResult(template, model, configurer)
     }
 
-    private JsonRenderResult produceResult(Template template, Map model, Closure configurer) {
-        JsonView writable = (JsonView) template.make(model)
+    private MarkupRenderResult produceResult(Template template, Map model, Closure configurer) {
+        MarkupView writable = (MarkupView) template.make(model)
         if (configurer != null) {
             def rc = new TestRequestConfigurer(writable)
             configurer.delegate = rc
             configurer.call()
         }
 
-        def result = new JsonRenderResult()
+        def result = new MarkupRenderResult()
         if (writable instanceof HttpView) {
             def httpView = (HttpView) writable
             httpView.setResponse(new TestHttpResponse(result))
@@ -203,10 +168,9 @@ trait JsonViewTest {
     }
 
     static class TestHttpResponse implements Response {
+        final MarkupRenderResult result
 
-        final JsonRenderResult result
-
-        TestHttpResponse(JsonRenderResult result) {
+        TestHttpResponse(MarkupRenderResult result) {
             this.result = result
         }
 
@@ -257,7 +221,5 @@ trait JsonViewTest {
             result.status = status
             result.message = message
         }
-
     }
-
 }
