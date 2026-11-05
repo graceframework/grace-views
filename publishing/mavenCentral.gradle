@@ -70,10 +70,6 @@ afterEvaluate {
         project.publishing.publications.findAll().toArray(publications)
         sign(publications)
     }
-
-    tasks.withType(Sign) {
-        onlyIf { isReleaseVersion }
-    }
 }
 
 task install(dependsOn: project.tasks.withType(PublishToMavenLocal))
