@@ -19,7 +19,7 @@ import groovy.transform.CompileStatic
 import org.spockframework.runtime.extension.IGlobalExtension
 import org.spockframework.runtime.model.SpecInfo
 
-import grails.testing.views.json.JsonViewUnitTest
+import grails.views.markup.test.MarkupViewUnitTest
 
 @CompileStatic
 class MarkupViewSpockExtension implements IGlobalExtension {
@@ -28,7 +28,7 @@ class MarkupViewSpockExtension implements IGlobalExtension {
 
     @Override
     void visitSpec(SpecInfo spec) {
-        if (JsonViewUnitTest.isAssignableFrom(spec.reflection)) {
+        if (MarkupViewUnitTest.isAssignableFrom(spec.reflection)) {
             spec.addSetupSpecInterceptor(markupViewSetupSpecInterceptor)
         }
     }
