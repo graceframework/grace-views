@@ -53,17 +53,6 @@ subprojects { project->
     group = "org.graceframework.views"
     version = project.projectVersion
 
-    configurations.all {
-        resolutionStrategy.dependencySubstitution.all { DependencySubstitution dependency ->
-            if (dependency.requested instanceof ModuleComponentSelector && dependency.requested.group == "org.graceframework") {
-                def targetProject = findProject(":${dependency.requested.module}")
-                if (targetProject != null) {
-                    dependency.useTarget targetProject
-                }
-            }
-        }
-    }
-
     repositories {
         mavenCentral()
         if (project.projectVersion.endsWith('-SNAPSHOT')) {
@@ -96,12 +85,22 @@ subprojects { project->
     apply from: '../publishing/mavenCentral.gradle'
 
     configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            if (details.requested.group == 'org.junit.jupiter') {
-                details.useVersion junitJupiterVersion
+        resolutionStrategy {
+            dependencySubstitution.all { DependencySubstitution dependency ->
+                if (dependency.requested instanceof ModuleComponentSelector && dependency.requested.group == "org.graceframework") {
+                    def targetProject = findProject(":${dependency.requested.module}")
+                    if (targetProject != null) {
+                        dependency.useTarget targetProject
+                    }
+                }
             }
-            if (details.requested.group == 'org.junit.platform') {
-                details.useVersion junitPlatformVersion
+            eachDependency { DependencyResolveDetails details ->
+                if (details.requested.group == 'org.junit.jupiter') {
+                    details.useVersion junitJupiterVersion
+                }
+                if (details.requested.group == 'org.junit.platform') {
+                    details.useVersion junitPlatformVersion
+                }
             }
         }
     }
