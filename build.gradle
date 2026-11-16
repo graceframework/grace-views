@@ -51,17 +51,6 @@ subprojects { project->
     group = "org.graceframework.views"
     version = project.projectVersion
 
-    configurations.all {
-        resolutionStrategy.dependencySubstitution.all { DependencySubstitution dependency ->
-            if (dependency.requested instanceof ModuleComponentSelector && dependency.requested.group == "org.graceframework") {
-                def targetProject = findProject(":${dependency.requested.module}")
-                if (targetProject != null) {
-                    dependency.useTarget targetProject
-                }
-            }
-        }
-    }
-
     repositories {
         mavenCentral()
         if (project.projectVersion.endsWith('-SNAPSHOT')) {
@@ -92,6 +81,19 @@ subprojects { project->
     apply plugin: "org.gradle.test-retry"
     apply plugin: "io.spring.dependency-management"
     apply from: '../publishing/mavenCentral.gradle'
+
+    configurations.all {
+        resolutionStrategy {
+            dependencySubstitution.all { DependencySubstitution dependency ->
+                if (dependency.requested instanceof ModuleComponentSelector && dependency.requested.group == "org.graceframework") {
+                    def targetProject = findProject(":${dependency.requested.module}")
+                    if (targetProject != null) {
+                        dependency.useTarget targetProject
+                    }
+                }
+            }
+        }
+    }
 
     dependencyManagement {
         imports {
