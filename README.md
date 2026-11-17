@@ -16,6 +16,20 @@ Grace Views provides additional view technologies to [Grace Framework](https://g
 
 * Markup views allow rendering of XML responses using Groovy's [MarkupTemplateEngine](https://docs.groovy-lang.org/latest/html/documentation/#_the_markuptemplateengine).
 
+Spring Boot includes auto-configuration support for the following [templating engines](https://docs.spring.io/spring-boot/3.5/reference/web/servlet.html#web.servlet.spring-mvc.template-engines):
+
+* [FreeMarker](https://freemarker.apache.org/)
+
+* [Groovy Markup](https://groovy-lang.org/templating.html#_the_markuptemplateengine)
+
+* [Thymeleaf](https://www.thymeleaf.org/)
+
+* [Mustache](https://mustache.github.io/)
+
+Grace Views also provides support for these template engines, but easy to use them in Grace applications in development,
+
+When you use one of these templating engines with the default configuration, your templates are picked up automatically from `app/views`.
+
 
 ## Ducumentation
 
