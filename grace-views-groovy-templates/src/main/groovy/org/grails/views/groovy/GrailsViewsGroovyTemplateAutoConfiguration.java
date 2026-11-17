@@ -20,8 +20,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
-import org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration;
-import org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateProperties;
+import org.springframework.boot.groovy.template.autoconfigure.GroovyTemplateAutoConfiguration;
+import org.springframework.boot.groovy.template.autoconfigure.GroovyTemplateProperties;
 import org.springframework.context.annotation.Bean;
 
 /**

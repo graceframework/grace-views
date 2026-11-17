@@ -19,7 +19,7 @@ import java.io.File;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateProperties;
+import org.springframework.boot.groovy.template.autoconfigure.GroovyTemplateProperties;
 
 import grails.util.BuildSettings;
 import grails.util.Environment;
