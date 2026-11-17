@@ -4,6 +4,7 @@ include(
     "docs",
     "grace-views-core",
     "grace-views-freemarker",
+    "grace-views-groovy-templates",
     "grace-views-json",
     "grace-views-markup",
     "grace-views-templates",
