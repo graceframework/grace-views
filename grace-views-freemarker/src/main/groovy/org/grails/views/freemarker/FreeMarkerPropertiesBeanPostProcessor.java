@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.autoconfigure.freemarker.FreeMarkerProperties;
+import org.springframework.boot.freemarker.autoconfigure.FreeMarkerProperties;
 
 import grails.util.BuildSettings;
 import grails.util.Environment;

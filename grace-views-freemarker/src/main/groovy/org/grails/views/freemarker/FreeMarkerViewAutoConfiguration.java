@@ -22,8 +22,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProp
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
-import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
-import org.springframework.boot.autoconfigure.freemarker.FreeMarkerProperties;
+import org.springframework.boot.freemarker.autoconfigure.FreeMarkerAutoConfiguration;
+import org.springframework.boot.freemarker.autoconfigure.FreeMarkerProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
 
