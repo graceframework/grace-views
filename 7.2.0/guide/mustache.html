@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>7 Mustache 7.2.0</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <div class="navHeader">
+        
+        <span id="logo">
+            <a href="https://graceframework.org" title="Grace Framework Website">
+                <img src="../img/grace.svg" alt="Grace Framework" />
+            </a>
+        </span>
+        
+        <div class="docHeader">
+            <h1 class="docTitle">Grace Views</h1>
+            <h3 class="docSubTitle">Provides JSON and Markup views technologies to the Grace framework</h3>
+        </div>
+    </div>
+    <div class="navLinks">
+        <ul>
+            <li>
+                <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                    <a href="../guide/index.html" class="button">Table of contents</a>
+
+                    <div id="nav-summary-childs" style="display:none;">
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/releases.html"><strong>2</strong><span>Release History</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/json.html"><strong>3</strong><span>JSON Views</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/markup.html"><strong>4</strong><span>Markup Views</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/freemarker.html"><strong>5</strong><span>FreeMarker</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/groovy.html"><strong>6</strong><span>Groovy Template</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/mustache.html"><strong>7</strong><span>Mustache</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/thymeleaf.html"><strong>8</strong><span>Thymeleaf</span></a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+            </li>
+            <li class="separator selected">
+                <a id="ref-button" href="../api/index.html">API Docs</a>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../guide/groovy.html">&lt;&lt; <strong>6</strong><span>Groovy Template</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../guide/thymeleaf.html"><strong>8</strong><span>Thymeleaf</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>7 Mustache</h1>
+
+                    <p><strong>Version:</strong> 7.2.0</p>
+                </div>
+
+                
+                <div id="table-of-content">
+                    <h2>Table of Contents</h2>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#mustacheIntroduction"><strong>7.1</strong><span>Introduction</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#mustacheInstallation"><strong>7.2</strong><span>Installation</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#mustacheConfiguration"><strong>7.3</strong><span>Configuration</span></a>
+                    </div>
+                    
+                </div>
+                
+
+                
+
+<h1 id="mustache"><a class="anchor" href="#mustache"></a>7 Mustache</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+
+
+
+<h2 id="mustacheIntroduction"><a class="anchor" href="#mustacheIntroduction"></a>7.1 Introduction</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache/mustacheIntroduction.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Grace Views Mustache includes <code>spring-boot-starter-mustache</code> which uses the Mustache template engine.</p>
+</div>
+<div class="paragraph">
+<p>Mustache Templates are written in Mustache template language, end with the file extension <code>.mustache</code> and reside in the <code>app/views</code> directory.</p>
+</div>
+
+
+<h2 id="mustacheInstallation"><a class="anchor" href="#mustacheInstallation"></a>7.2 Installation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache/mustacheInstallation.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Add the <code>grace-views-mustache</code> dependency to your <code>build.gradle</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-mustache:7.2.0"</code></pre>
+</div>
+</div>
+
+
+<h2 id="mustacheConfiguration"><a class="anchor" href="#mustacheConfiguration"></a>7.3 Configuration</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache/mustacheConfiguration.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Mustache template configuration can be altered with <code>app/conf/application.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails</span>:
+    <span class="key">views</span>:
+        <span class="key">mustache</span>:
+            <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">spring</span>:
+    <span class="key">mustache</span>:
+        <span class="error">...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a number of <code>spring.mustache</code> properties that can be set if you want to customize the Mustache template engine.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.spring.io/spring-boot/3.5/appendix/application-properties/index.html#application-properties.templating.spring.mustache.charset">Mustache Templating Properties</a> section of the Spring Boot Appendix.</p>
+</div>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../guide/groovy.html">&lt;&lt; <strong>6</strong><span>Groovy Template</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../guide/thymeleaf.html"><strong>8</strong><span>Thymeleaf</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    Copyright &copy; 2022-2026 Michael Yan and the original authors. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>
