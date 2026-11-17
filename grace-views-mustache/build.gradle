@@ -1,0 +1,12 @@
+dependencies {
+    api project(":grace-views-core")
+    api "org.graceframework:grace-core", {
+        exclude group: 'org.graceframework.data', module: 'grace-datastore-core'
+    }
+
+    api "org.springframework.boot:spring-boot-autoconfigure"
+    api "org.springframework.boot:spring-boot-starter-mustache"
+    api "org.springframework.boot:spring-boot-starter-web"
+    annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}
