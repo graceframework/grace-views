@@ -23,9 +23,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProp
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
-import org.springframework.boot.autoconfigure.mustache.MustacheAutoConfiguration;
-import org.springframework.boot.autoconfigure.mustache.MustacheProperties;
-import org.springframework.boot.web.servlet.view.MustacheViewResolver;
+import org.springframework.boot.mustache.autoconfigure.MustacheAutoConfiguration;
+import org.springframework.boot.mustache.autoconfigure.MustacheProperties;
+import org.springframework.boot.mustache.servlet.view.MustacheViewResolver;
 import org.springframework.context.annotation.Bean;
 
 /**

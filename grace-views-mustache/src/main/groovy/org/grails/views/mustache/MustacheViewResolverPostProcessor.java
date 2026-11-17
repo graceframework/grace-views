@@ -20,7 +20,7 @@ import java.io.File;
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.web.servlet.view.MustacheViewResolver;
+import org.springframework.boot.mustache.servlet.view.MustacheViewResolver;
 
 import grails.util.BuildSettings;
 import grails.util.Environment;

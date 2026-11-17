@@ -20,7 +20,7 @@ import java.io.File;
 import org.jspecify.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.autoconfigure.mustache.MustacheProperties;
+import org.springframework.boot.mustache.autoconfigure.MustacheProperties;
 
 import grails.util.BuildSettings;
 import grails.util.Environment;
