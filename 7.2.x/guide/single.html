@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
-        <title>Grace Views 7.2.0-RC2</title>
+        <title>Grace Views 7.2.0-SNAPSHOT</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
         <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
@@ -28,7 +28,7 @@ function addJsClass(el) {
                 <div class="docHeader">
                     <h1 class="docTitle">Grace Views</h1>
                     <h3 class="docSubTitle">Provides JSON and Markup views technologies to the Grace framework</h3>
-                    <span class="docVersion">7.2.0-RC2</span>
+                    <span class="docVersion">7.2.0-SNAPSHOT</span>
                 </div>
             </div>
             <div class="navLinks">
@@ -45,6 +45,14 @@ function addJsClass(el) {
                                 <div class="toc-item" style="margin-left:0"><a href="#json"><strong>3</strong><span>JSON Views</span></a></div>
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#markup"><strong>4</strong><span>Markup Views</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#freemarker"><strong>5</strong><span>FreeMarker</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#groovy"><strong>6</strong><span>Groovy Template</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#mustache"><strong>7</strong><span>Mustache</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#thymeleaf"><strong>8</strong><span>Thymeleaf</span></a></div>
                                 
                             </div>
                         </div>
@@ -70,7 +78,7 @@ function addJsClass(el) {
                         <div class="project">
                             <h1>Grace Views</h1>
                             <p><strong>Authors:</strong> Michael Yan</p>
-                            <p><strong>Version:</strong> 7.2.0-RC2</p>
+                            <p><strong>Version:</strong> 7.2.0-SNAPSHOT</p>
                             
                         </div>
 
@@ -132,6 +140,38 @@ function addJsClass(el) {
                             
                             <div class="toc-item" style="margin-left:10px"><a href="#markupConfiguration"><strong>4.4</strong><span>Configuration</span></a></div>
                             
+                            <div class="toc-item" style="margin-left:0px"><a href="#freemarker"><strong>5</strong><span>FreeMarker</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#freemarkerIntroduction"><strong>5.1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#freemarkerInstallation"><strong>5.2</strong><span>Installation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#freemarkerConfiguration"><strong>5.3</strong><span>Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#groovy"><strong>6</strong><span>Groovy Template</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#groovyIntroduction"><strong>6.1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#groovyInstallation"><strong>6.2</strong><span>Installation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#groovyConfiguration"><strong>6.3</strong><span>Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#mustache"><strong>7</strong><span>Mustache</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#mustacheIntroduction"><strong>7.1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#mustacheInstallation"><strong>7.2</strong><span>Installation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#mustacheConfiguration"><strong>7.3</strong><span>Configuration</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#thymeleaf"><strong>8</strong><span>Thymeleaf</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#thymeleafIntroduction"><strong>8.1</strong><span>Introduction</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#thymeleafInstallation"><strong>8.2</strong><span>Installation</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:10px"><a href="#thymeleafConfiguration"><strong>8.3</strong><span>Configuration</span></a></div>
+                            
                             <div style="clear:both" ></div>
                         </div>
                         
@@ -140,30 +180,56 @@ function addJsClass(el) {
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
 
 
 <div class="paragraph">
-<p>The Grace Views project provides additional view technologies to the Grace framework, including JSON and Markup views.</p>
+<p>The Grace Views project provides additional view technologies to the Grace framework, including JSON and Markup views, and Spring Boot&#8217;s template engines.</p>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>JSON views allow rendering of JSON responses using Groovy&#8217;s <a href="https://docs.groovy-lang.org/4.0.33/html/api/groovy/json/StreamingJsonBuilder.html">StreamingJsonBuilder</a>.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Markup views allow rendering of XML responses using Groovy&#8217;s <a href="https://docs.groovy-lang.org/4.0.33/html/api/groovy/text/markup/MarkupTemplateEngine.html">MarkupTemplateEngine</a>.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>However, the core of the project is extensible for potentially any kind of view implementation that is based on a Groovy DSL. The following sections cover usage of Groovy JSON views.</p>
+<p>Spring Boot includes auto-configuration support for the following <a href="https://docs.spring.io/spring-boot/3.5/reference/web/servlet.html#web.servlet.spring-mvc.template-engines">templating engines</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://freemarker.apache.org/docs/">FreeMarker</a></p>
+</li>
+<li>
+<p><a href="g{roovydoc}/template-engines.html#_the_markuptemplateengine">Groovy Markup Template</a></p>
+</li>
+<li>
+<p><a href="https://www.thymeleaf.org/">Thymeleaf</a></p>
+</li>
+<li>
+<p><a href="https://mustache.github.io/">Mustache</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Grace Views also provides support for these template engines, but easy to use them in Grace applications in development,</p>
+</div>
+<div class="paragraph">
+<p>When you use one of these templating engines with the default configuration, your templates are picked up automatically from <code>app/views</code>.</p>
 </div>
 
 
 <h1 id="releases"><a class="anchor" href="#releases"></a>2 Release History</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/releases.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/releases.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -234,7 +300,7 @@ function addJsClass(el) {
 <h2 id="7.x"><a class="anchor" href="#7.x"></a>2.1 What's new in 7.x</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/releases/7.x.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/releases/7.x.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -426,7 +492,7 @@ function addJsClass(el) {
 <h2 id="6.x"><a class="anchor" href="#6.x"></a>2.2 What's new in 6.x</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/releases/6.x.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/releases/6.x.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1427,7 +1493,7 @@ function addJsClass(el) {
 <h1 id="json"><a class="anchor" href="#json"></a>3 JSON Views</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1439,7 +1505,7 @@ function addJsClass(el) {
 <h2 id="jsonIntroduction"><a class="anchor" href="#jsonIntroduction"></a>3.1 Introduction</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonIntroduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonIntroduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1510,7 +1576,7 @@ json.message {
 <h2 id="jsonInstallation"><a class="anchor" href="#jsonInstallation"></a>3.2 Installation</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonInstallation.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonInstallation.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1521,7 +1587,7 @@ json.message {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-json:7.2.0-RC2"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-json:7.2.0-SNAPSHOT"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1529,7 +1595,7 @@ json.message {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-json-templates:7.2.0-RC2"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-json-templates:7.2.0-SNAPSHOT"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1564,7 +1630,7 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 <h2 id="templates"><a class="anchor" href="#templates"></a>3.3 Templates</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/templates.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/templates.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1842,7 +1908,7 @@ json {
 <h2 id="rendering"><a class="anchor" href="#rendering"></a>3.4 Rendering Domain Classes</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/rendering.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/rendering.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2027,7 +2093,7 @@ request parameters can also be used to expand associations (eg. <code>?expand=au
 <h2 id="jsonViewApi"><a class="anchor" href="#jsonViewApi"></a>3.5 JSON View API</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonViewApi.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonViewApi.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2241,7 +2307,7 @@ For more complex message lookups the <code>messageSource</code> property is an i
 <h2 id="modelNaming"><a class="anchor" href="#modelNaming"></a>3.6 Model Naming</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/modelNaming.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/modelNaming.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2494,7 +2560,7 @@ json {
 <h2 id="jsonContentNegotiation"><a class="anchor" href="#jsonContentNegotiation"></a>3.7 Content Negotiation</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonContentNegotiation.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonContentNegotiation.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2679,7 +2745,7 @@ json g.render(object)</code></pre>
 <h2 id="jsonHal"><a class="anchor" href="#jsonHal"></a>3.8 HAL Support</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonHal.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonHal.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3120,7 +3186,7 @@ json {
 <h2 id="jsonapi"><a class="anchor" href="#jsonapi"></a>3.9 JSON API Support</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonapi.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonapi.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3435,7 +3501,7 @@ json jsonapi.render(book, [<span class="key">expand</span>: <span class="string"
 <h2 id="templateEngine"><a class="anchor" href="#templateEngine"></a>3.10 The JsonTemplateEngine</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/templateEngine.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/templateEngine.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3473,7 +3539,7 @@ JsonViewTemplateEngine templateEngine
 <h2 id="staticCompilation"><a class="anchor" href="#staticCompilation"></a>3.11 Static Compilation</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/staticCompilation.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/staticCompilation.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3521,7 +3587,7 @@ json {
 <h2 id="jsonTesting"><a class="anchor" href="#jsonTesting"></a>3.12 Testing</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonTesting.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonTesting.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3629,7 +3695,7 @@ Links generated by json views in a unit test may not match what they would norma
 <p>The new trait works exactly the same way as the old one, however since the new trait is designed to work with the new framework, there are several benefits you can take advantage of. The first is configuration. In the old trait the application configuration was not included in the template engine, which had the potential to produce incorrect results. Other benefits include extensibility and features like <code>@OnceBefore</code>.</p>
 </div>
 <div class="paragraph">
-<p>To get started, add the <code>org.graceframework:views-json-testing-support:7.2.0-RC2</code> dependency to your project and implement the <a href="../api/grails/views/json/test/JsonViewUnitTest.html">JsonViewUnitTest</a> trait in your test instead of <code>JsonViewTest</code>.</p>
+<p>To get started, add the <code>org.graceframework:views-json-testing-support:7.2.0-SNAPSHOT</code> dependency to your project and implement the <a href="../api/grails/views/json/test/JsonViewUnitTest.html">JsonViewUnitTest</a> trait in your test instead of <code>JsonViewTest</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3650,7 +3716,7 @@ The new testing trait, like the testing framework, requires Spock.
 <h2 id="pluginSupport"><a class="anchor" href="#pluginSupport"></a>3.13 Plugin Support</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/pluginSupport.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/pluginSupport.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3690,7 +3756,7 @@ The new testing trait, like the testing framework, requires Spock.
         mavenCentral()
     }
     dependencies {
-        classpath "org.graceframework.plugins:views-gradle:7.2.0-RC2"
+        classpath "org.graceframework.plugins:views-gradle:7.2.0-SNAPSHOT"
     }
 }
 
@@ -3703,7 +3769,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.graceframework.plugins:views-json:7.2.0-RC2"
+    implementation "org.graceframework.plugins:views-json:7.2.0-SNAPSHOT"
 }
 
 task(compileViews, type: JsonViewCompilerTask) {
@@ -3768,7 +3834,7 @@ See the <a href="https://github.com/graceframework/grace-views/tree/6.3.x/views-
 <h2 id="jsonConfiguration"><a class="anchor" href="#jsonConfiguration"></a>3.14 Configuration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/jsonConfiguration.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/jsonConfiguration.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3968,7 +4034,7 @@ The trait cannot be defined in the same project as you are compilation as it nee
 <h2 id="converters"><a class="anchor" href="#converters"></a>3.15 Custom Converters</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/converters.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/converters.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4026,7 +4092,7 @@ If you have multiple classes to register, put each one on it&#8217;s own line
 <h2 id="intellij"><a class="anchor" href="#intellij"></a>3.16 IntelliJ Support</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/intellij.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/intellij.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4049,7 +4115,7 @@ If you have multiple classes to register, put each one on it&#8217;s own line
 <h2 id="debugging"><a class="anchor" href="#debugging"></a>3.17 Debugging Views</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/json/debugging.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/json/debugging.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4110,7 +4176,7 @@ If you using the <code>log</code> variable then you will need to enabling loggin
 <h1 id="markup"><a class="anchor" href="#markup"></a>4 Markup Views</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/markup.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/markup.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4122,7 +4188,7 @@ If you using the <code>log</code> variable then you will need to enabling loggin
 <h2 id="markupIntroduction"><a class="anchor" href="#markupIntroduction"></a>4.1 Introduction</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/markup/markupIntroduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/markup/markupIntroduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4173,7 +4239,7 @@ cars {
 <h2 id="markupInstallation"><a class="anchor" href="#markupInstallation"></a>4.2 Installation</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/markup/markupInstallation.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/markup/markupInstallation.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4184,7 +4250,7 @@ cars {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-markup:7.2.0-RC2"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-markup:7.2.0-SNAPSHOT"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4219,7 +4285,7 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 <h2 id="markupViewApi"><a class="anchor" href="#markupViewApi"></a>4.3 Markup View API</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/markup/markupViewApi.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/markup/markupViewApi.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4263,7 +4329,7 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 <h2 id="markupConfiguration"><a class="anchor" href="#markupConfiguration"></a>4.4 Configuration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/markup/markupConfiguration.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/markup/markupConfiguration.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -4288,6 +4354,342 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 </div>
 <div class="paragraph">
 <p>Alternatively you can register a new <code>MarkupViewConfiguration</code> bean using the bean name <code>markupViewConfiguration</code> in <code>app/conf/spring/resources.groovy</code>.</p>
+</div>
+
+
+<h1 id="freemarker"><a class="anchor" href="#freemarker"></a>5 FreeMarker</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/freemarker.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+
+
+
+<h2 id="freemarkerIntroduction"><a class="anchor" href="#freemarkerIntroduction"></a>5.1 Introduction</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/freemarker/freemarkerIntroduction.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p><a href="https://freemarker.apache.org/">Apache FreeMarker</a> is a template engine for generating any kind of text output from HTML to email and others.</p>
+</div>
+<div class="paragraph">
+<p>The Spring Framework has built-in integration for using Spring MVC with FreeMarker templates. Spring Boot provides auto-configuration support for Apache FreeMarker.</p>
+</div>
+
+
+<h2 id="freemarkerInstallation"><a class="anchor" href="#freemarkerInstallation"></a>5.2 Installation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/freemarker/freemarkerInstallation.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Add the <code>grace-views-freemarker</code> dependency to your <code>build.gradle</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-freemarker:7.2.0-SNAPSHOT"</code></pre>
+</div>
+</div>
+
+
+<h2 id="freemarkerConfiguration"><a class="anchor" href="#freemarkerConfiguration"></a>5.3 Configuration</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/freemarker/freemarkerConfiguration.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>FreeMarker template configuration can be altered with <code>app/conf/application.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails</span>:
+    <span class="key">views</span>:
+        <span class="key">freemarker</span>:
+            <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">spring</span>:
+    <span class="key">freemarker</span>:
+        <span class="error">...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a number of <code>spring.freemarker</code> properties that can be set if you want to customize the Freemarker template engine.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.spring.io/spring-boot/3.5/appendix/application-properties/index.html#application-properties.templating.spring.freemarker.allow-request-override">FreeMarker Templating Properties</a> section of the Spring Boot Appendix.</p>
+</div>
+
+
+<h1 id="groovy"><a class="anchor" href="#groovy"></a>6 Groovy Template</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/groovy.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+
+
+
+<h2 id="groovyIntroduction"><a class="anchor" href="#groovyIntroduction"></a>6.1 Introduction</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/groovy/groovyIntroduction.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The <a href="https://groovy-lang.org/templating.html#_the_markuptemplateengine">Groovy Markup Template Engine</a> is primarily aimed at generating XML-like markup (XML, XHTML, HTML5, and others),
+but you can use it to generate any text-based content. The Spring Framework has a built-in integration for using Spring MVC with Groovy Markup.</p>
+</div>
+<div class="paragraph">
+<p>Spring Boot provides auto-configuration support for Apache FreeMarker. Grace Views Groovy Templates includes <code>spring-boot-starter-groovy-templates</code> which uses the Groovy template engine.</p>
+</div>
+<div class="paragraph">
+<p>Groovy Templates are written in Groovy, end with the file extension <code>.tpl</code> and reside in the <code>app/views</code> directory.</p>
+</div>
+
+
+<h2 id="groovyInstallation"><a class="anchor" href="#groovyInstallation"></a>6.2 Installation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/groovy/groovyInstallation.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Add the <code>grace-views-groovy-templates</code> dependency to your <code>build.gradle</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-groovy-templates:7.2.0-SNAPSHOT"</code></pre>
+</div>
+</div>
+
+
+<h2 id="groovyConfiguration"><a class="anchor" href="#groovyConfiguration"></a>6.3 Configuration</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/groovy/groovyConfiguration.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Groovy Templates configuration can be altered with <code>app/conf/application.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails</span>:
+    <span class="key">views</span>:
+        <span class="key">groovy</span>:
+            <span class="key">template</span>:
+                <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">spring</span>:
+    <span class="key">groovy</span>:
+        <span class="key">template</span>:
+            <span class="error">...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a number of <code>spring.groovy.template</code> properties that can be set if you want to customize the Groovy template engine.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.spring.io/spring-boot/3.5/appendix/application-properties/index.html#application-properties.templating.spring.groovy.template.allow-request-override">Groovy Templating Properties</a> section of the Spring Boot Appendix.</p>
+</div>
+
+
+<h1 id="mustache"><a class="anchor" href="#mustache"></a>7 Mustache</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+
+
+
+<h2 id="mustacheIntroduction"><a class="anchor" href="#mustacheIntroduction"></a>7.1 Introduction</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache/mustacheIntroduction.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Grace Views Mustache includes <code>spring-boot-starter-mustache</code> which uses the Mustache template engine.</p>
+</div>
+<div class="paragraph">
+<p>Mustache Templates are written in Mustache template language, end with the file extension <code>.mustache</code> and reside in the <code>app/views</code> directory.</p>
+</div>
+
+
+<h2 id="mustacheInstallation"><a class="anchor" href="#mustacheInstallation"></a>7.2 Installation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache/mustacheInstallation.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Add the <code>grace-views-mustache</code> dependency to your <code>build.gradle</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-mustache:7.2.0-SNAPSHOT"</code></pre>
+</div>
+</div>
+
+
+<h2 id="mustacheConfiguration"><a class="anchor" href="#mustacheConfiguration"></a>7.3 Configuration</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/mustache/mustacheConfiguration.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Mustache template configuration can be altered with <code>app/conf/application.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails</span>:
+    <span class="key">views</span>:
+        <span class="key">mustache</span>:
+            <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">spring</span>:
+    <span class="key">mustache</span>:
+        <span class="error">...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a number of <code>spring.mustache</code> properties that can be set if you want to customize the Mustache template engine.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.spring.io/spring-boot/3.5/appendix/application-properties/index.html#application-properties.templating.spring.mustache.charset">Mustache Templating Properties</a> section of the Spring Boot Appendix.</p>
+</div>
+
+
+<h1 id="thymeleaf"><a class="anchor" href="#thymeleaf"></a>8 Thymeleaf</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/thymeleaf.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+
+
+
+<h2 id="thymeleafIntroduction"><a class="anchor" href="#thymeleafIntroduction"></a>8.1 Introduction</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/thymeleaf/thymeleafIntroduction.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Thymeleaf is a modern server-side Java template engine that emphasizes natural HTML templates that can be previewed in a browser by double-clicking,
+which is very helpful for independent work on UI templates (for example, by a designer) without the need for a running server.
+If you want to replace JSPs, Thymeleaf offers one of the most extensive sets of features to make such a transition easier.</p>
+</div>
+<div class="paragraph">
+<p>HTML templates written in Thymeleaf still look and work like HTML, end with the file extension <code>.html</code> and reside in the <code>app/views</code> directory.</p>
+</div>
+
+
+<h2 id="thymeleafInstallation"><a class="anchor" href="#thymeleafInstallation"></a>8.2 Installation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/thymeleaf/thymeleafInstallation.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Add the <code>grace-views-thymeleaf</code> dependency to your <code>build.gradle</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">implementation "org.graceframework.views:grace-views-thymeleaf:7.2.0-SNAPSHOT"</code></pre>
+</div>
+</div>
+
+
+<h2 id="thymeleafConfiguration"><a class="anchor" href="#thymeleafConfiguration"></a>8.3 Configuration</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/thymeleaf/thymeleafConfiguration.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Thymeleaf template configuration can be altered with <code>app/conf/application.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">grails</span>:
+    <span class="key">views</span>:
+        <span class="key">thymeleaf</span>:
+            <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">spring</span>:
+    <span class="key">thymeleaf</span>:
+        <span class="error">...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are a number of <code>spring.thymeleaf</code> properties that can be set if you want to customize the Thymeleaf template engine.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.spring.io/spring-boot/3.5/appendix/application-properties/index.html#application-properties.templating.spring.thymeleaf.cache">Thymeleaf Templating Properties</a> section of the Spring Boot Appendix.</p>
 </div>
 
                     </div>

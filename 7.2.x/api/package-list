@@ -12,6 +12,8 @@ grails.views.mvc.http
 grails.views.mvc.renderer
 grails.views.resolve
 grails.views.utils
+org.grails.views.freemarker
+org.grails.views.groovy
 org.grails.views.json
 org.grails.views.json.api
 org.grails.views.json.api.internal
@@ -29,3 +31,5 @@ org.grails.views.markup.compiler
 org.grails.views.markup.mvc
 org.grails.views.markup.renderer
 org.grails.views.markup.test
+org.grails.views.mustache
+org.grails.views.thymeleaf

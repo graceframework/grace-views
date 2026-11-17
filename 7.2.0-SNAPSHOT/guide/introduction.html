@@ -50,6 +50,18 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../guide/markup.html"><strong>4</strong><span>Markup Views</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/freemarker.html"><strong>5</strong><span>FreeMarker</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/groovy.html"><strong>6</strong><span>Groovy Template</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/mustache.html"><strong>7</strong><span>Mustache</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/thymeleaf.html"><strong>8</strong><span>Thymeleaf</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -92,23 +104,49 @@ function addJsClass() {
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.1.x/docs/src/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/graceframework/grace-views/edit/7.2.x/docs/src/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
 
 
 <div class="paragraph">
-<p>The Grace Views project provides additional view technologies to the Grace framework, including JSON and Markup views.</p>
+<p>The Grace Views project provides additional view technologies to the Grace framework, including JSON and Markup views, and Spring Boot&#8217;s template engines.</p>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>JSON views allow rendering of JSON responses using Groovy&#8217;s <a href="https://docs.groovy-lang.org/4.0.33/html/api/groovy/json/StreamingJsonBuilder.html">StreamingJsonBuilder</a>.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Markup views allow rendering of XML responses using Groovy&#8217;s <a href="https://docs.groovy-lang.org/4.0.33/html/api/groovy/text/markup/MarkupTemplateEngine.html">MarkupTemplateEngine</a>.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>However, the core of the project is extensible for potentially any kind of view implementation that is based on a Groovy DSL. The following sections cover usage of Groovy JSON views.</p>
+<p>Spring Boot includes auto-configuration support for the following <a href="https://docs.spring.io/spring-boot/3.5/reference/web/servlet.html#web.servlet.spring-mvc.template-engines">templating engines</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://freemarker.apache.org/docs/">FreeMarker</a></p>
+</li>
+<li>
+<p><a href="g{roovydoc}/template-engines.html#_the_markuptemplateengine">Groovy Markup Template</a></p>
+</li>
+<li>
+<p><a href="https://www.thymeleaf.org/">Thymeleaf</a></p>
+</li>
+<li>
+<p><a href="https://mustache.github.io/">Mustache</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Grace Views also provides support for these template engines, but easy to use them in Grace applications in development,</p>
+</div>
+<div class="paragraph">
+<p>When you use one of these templating engines with the default configuration, your templates are picked up automatically from <code>app/views</code>.</p>
 </div>
 
 
