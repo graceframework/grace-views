@@ -1,3 +1,35 @@
+=== 7.2.0
+
+link:{github}/releases/tag/v7.2.0[release notes]
+
+⭐️ New Features
+
+* Create grace-views-thymeleaf module link:{github}/issues/150[#150]
+* Create grace-views-mustache module link:{github}/issues/149[#149]
+* Create grace-views-groovy-templates module link:{github}/issues/148[#148]
+* Create grace-views-freemarker module link:{github}/issues/147[#147]
+* Include LICENSE and NOTICE files into the JAR file link:{github}/issues/141[#141]
+
+🛠 Improvements
+
+* Add release notes for 7.2.0
+
+* Add documents for FreeMarker, Groovy template, Mustache, Thymeleaf link:{github}/issues/161[#161]
+* Add `@ConditionalOnBooleanProperty` on GrailsViewsGroovyTemplateAutoConfiguration link:{github}/issues/159[#159]
+* Configure Sign task and disable Configuration Cache link:{github}/issues/145[#145]
+* Improve build.gradle: configurations.resolutionStrategy link:{github}/issues/143[#143]
+
+🐞 Bug Fixes
+
+* Fix signing configuration
+* Correct the wrong package name of JsonViewUnitTest and MarkupViewUnitTest
+
+🚀 Dependency Upgrades
+
+* Upgrade to JUnit Jupiter 5.14.4 and JUnit Platform 1.14.4 link:{github}/issues/139[#139]
+* Upgrade to Gradle 8.14.7 link:{github}/issues/137[#137]
+* Upgrade to Grace 2024.2.0-RC2 link:{github}/issues/135[#135]
+
 === 7.2.0-RC2
 
 link:{github}/releases/tag/v7.2.0-RC2[release notes]
