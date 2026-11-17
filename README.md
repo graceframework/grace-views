@@ -4,9 +4,9 @@
 [![Grace Document](https://img.shields.io/badge/Grace_Document-latest-blue?style=flat&logo=asciidoctor&logoColor=E40046&labelColor=ffffff&color=f49b06)](https://graceframework.org/grace-views/latest/)
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
-[![Groovy Version](https://img.shields.io/badge/Groovy-4.0-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
-[![Grace Version](https://img.shields.io/badge/Grace-2024.2-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2024.2.0-M2)
-[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-3.5-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v3.5.16)
+[![Groovy Version](https://img.shields.io/badge/Groovy-5.0-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-5.0.html)
+[![Grace Version](https://img.shields.io/badge/Grace-2025.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2025.0.0-M3)
+[![Spring Boot Version](https://img.shields.io/badge/Spring_Boot-4.0-blue?style=flat&color=6db33f)](https://github.com/spring-projects/spring-boot/releases/tag/v4.0.9)
 
 # Grace Views
 
@@ -16,7 +16,7 @@ Grace Views provides additional view technologies to [Grace Framework](https://g
 
 * Markup views allow rendering of XML responses using Groovy's [MarkupTemplateEngine](https://docs.groovy-lang.org/latest/html/documentation/#_the_markuptemplateengine).
 
-Spring Boot includes auto-configuration support for the following [templating engines](https://docs.spring.io/spring-boot/3.5/reference/web/servlet.html#web.servlet.spring-mvc.template-engines):
+Spring Boot includes auto-configuration support for the following [templating engines](https://docs.spring.io/spring-boot/4.0/reference/web/servlet.html#web.servlet.spring-mvc.template-engines):
 
 * [FreeMarker](https://freemarker.apache.org/)
 
@@ -33,7 +33,7 @@ When you use one of these templating engines with the default configuration, you
 
 ## Ducumentation
 
-* [7.2.x](https://graceframework.org/grace-views/7.2.x/)
+* [8.0.x](https://graceframework.org/grace-views/8.0.x/)
 
 ## Versions
 
@@ -41,6 +41,7 @@ To make it easier for users to use and upgrade, Plugin adopts a version policy c
 
 | Plugin Version | Grace Version |
 |----------------|---------------|
+| 8.0.x          | 2025.0.x      |
 | 7.2.x          | 2024.2.x      |
 | 7.1.x          | 2024.1.x      |
 | 7.0.x          | 2024.0.x      |
