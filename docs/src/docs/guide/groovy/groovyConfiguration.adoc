@@ -1,0 +1,21 @@
+= Configuration
+
+Groovy Templates configuration can be altered with `app/conf/application.yml`.
+
+For example:
+
+[source,yaml]
+grails:
+    views:
+        groovy:
+            template:
+                enabled: true
+spring:
+    groovy:
+        template:
+            ...
+
+
+There are a number of `spring.groovy.template` properties that can be set if you want to customize the Groovy template engine.
+
+See the link:{springdoc}/appendix/application-properties/index.html#application-properties.templating.spring.groovy.template.allow-request-override[Groovy Templating Properties] section of the Spring Boot Appendix.

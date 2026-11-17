@@ -1,0 +1,19 @@
+= Configuration
+
+Thymeleaf template configuration can be altered with `app/conf/application.yml`.
+
+For example:
+
+[source,yaml]
+grails:
+    views:
+        thymeleaf:
+            enabled: true
+spring:
+    thymeleaf:
+        ...
+
+
+There are a number of `spring.thymeleaf` properties that can be set if you want to customize the Thymeleaf template engine.
+
+See the link:{springdoc}/appendix/application-properties/index.html#application-properties.templating.spring.thymeleaf.cache[Thymeleaf Templating Properties] section of the Spring Boot Appendix.

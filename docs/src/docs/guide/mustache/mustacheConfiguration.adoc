@@ -1,0 +1,19 @@
+= Configuration
+
+Mustache template configuration can be altered with `app/conf/application.yml`.
+
+For example:
+
+[source,yaml]
+grails:
+    views:
+        mustache:
+            enabled: true
+spring:
+    mustache:
+        ...
+
+
+There are a number of `spring.mustache` properties that can be set if you want to customize the Mustache template engine.
+
+See the link:{springdoc}/appendix/application-properties/index.html#application-properties.templating.spring.mustache.charset[Mustache Templating Properties] section of the Spring Boot Appendix.

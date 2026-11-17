@@ -28,3 +28,23 @@ markup:
   markupInstallation: Installation
   markupViewApi: Markup View API
   markupConfiguration: Configuration
+freemarker:
+  title: FreeMarker
+  freemarkerIntroduction: Introduction
+  freemarkerInstallation: Installation
+  freemarkerConfiguration: Configuration
+groovy:
+  title: Groovy Template
+  groovyIntroduction: Introduction
+  groovyInstallation: Installation
+  groovyConfiguration: Configuration
+mustache:
+  title: Mustache
+  mustacheIntroduction: Introduction
+  mustacheInstallation: Installation
+  mustacheConfiguration: Configuration
+thymeleaf:
+  title: Thymeleaf
+  thymeleafIntroduction: Introduction
+  thymeleafInstallation: Installation
+  thymeleafConfiguration: Configuration

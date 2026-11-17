@@ -1,9 +1,21 @@
 = Introduction
 
-The Grace Views project provides additional view technologies to the Grace framework, including JSON and Markup views.
+The Grace Views project provides additional view technologies to the Grace framework, including JSON and Markup views, and Spring Boot's template engines.
 
-JSON views allow rendering of JSON responses using Groovy's link:{groovyapi}/groovy/json/StreamingJsonBuilder.html[StreamingJsonBuilder].
+* JSON views allow rendering of JSON responses using Groovy's link:{groovyapi}/groovy/json/StreamingJsonBuilder.html[StreamingJsonBuilder].
 
-Markup views allow rendering of XML responses using Groovy's link:{groovyapi}/groovy/text/markup/MarkupTemplateEngine.html[MarkupTemplateEngine].
+* Markup views allow rendering of XML responses using Groovy's link:{groovyapi}/groovy/text/markup/MarkupTemplateEngine.html[MarkupTemplateEngine].
 
-However, the core of the project is extensible for potentially any kind of view implementation that is based on a Groovy DSL. The following sections cover usage of Groovy JSON views.
+Spring Boot includes auto-configuration support for the following link:https://docs.spring.io/spring-boot/3.5/reference/web/servlet.html#web.servlet.spring-mvc.template-engines[templating engines]:
+
+* link:https://freemarker.apache.org/docs/[FreeMarker]
+
+* link:g{roovydoc}/template-engines.html#_the_markuptemplateengine[Groovy Markup Template]
+
+* link:https://www.thymeleaf.org/[Thymeleaf]
+
+* link:https://mustache.github.io/[Mustache]
+
+Grace Views also provides support for these template engines, but easy to use them in Grace applications in development,
+
+When you use one of these templating engines with the default configuration, your templates are picked up automatically from `app/views`.
