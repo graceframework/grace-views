@@ -1,0 +1,8 @@
+= Installation
+
+Add the `grace-views-groovy-templates` dependency to your `build.gradle`.
+
+[source,groovy,subs="attributes"]
+----
+implementation "org.graceframework.views:grace-views-groovy-templates:{version}"
+----

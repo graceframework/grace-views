@@ -1,0 +1,5 @@
+= Introduction
+
+Grace Views Mustache includes `spring-boot-starter-mustache` which uses the Mustache template engine.
+
+Mustache Templates are written in Mustache template language, end with the file extension `.mustache` and reside in the `app/views` directory.

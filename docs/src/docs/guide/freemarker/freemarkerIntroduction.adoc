@@ -1,0 +1,5 @@
+= Introduction
+
+link:https://freemarker.apache.org/[Apache FreeMarker] is a template engine for generating any kind of text output from HTML to email and others.
+
+The Spring Framework has built-in integration for using Spring MVC with FreeMarker templates. Spring Boot provides auto-configuration support for Apache FreeMarker.

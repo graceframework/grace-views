@@ -1,0 +1,8 @@
+= Installation
+
+Add the `grace-views-mustache` dependency to your `build.gradle`.
+
+[source,groovy,subs="attributes"]
+----
+implementation "org.graceframework.views:grace-views-mustache:{version}"
+----

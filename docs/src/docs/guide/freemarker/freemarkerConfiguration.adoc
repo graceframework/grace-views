@@ -1,0 +1,19 @@
+= Configuration
+
+FreeMarker template configuration can be altered with `app/conf/application.yml`.
+
+For example:
+
+[source,yaml]
+grails:
+    views:
+        freemarker:
+            enabled: true
+spring:
+    freemarker:
+        ...
+
+
+There are a number of `spring.freemarker` properties that can be set if you want to customize the Freemarker template engine.
+
+See the link:{springdoc}/appendix/application-properties/index.html#application-properties.templating.spring.freemarker.allow-request-override[FreeMarker Templating Properties] section of the Spring Boot Appendix.
