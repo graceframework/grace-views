@@ -9,5 +9,6 @@ include(
     "grace-views-markup",
     "grace-views-mustache",
     "grace-views-templates",
-    "grace-views-test"
+    "grace-views-test",
+    "grace-views-thymeleaf"
 )
