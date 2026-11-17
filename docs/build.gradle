@@ -51,6 +51,7 @@ tasks.withType(Groovydoc) {
     }
     source = files
     classpath += configurations.documentation
+    javaVersion = JavaLanguageVersion.of(17)
 }
 
 publishGuide {
